@@ -24,3 +24,111 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ── Responsive utilities ─────────────────────────────────── */
+
+/* About – stats */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #e0e0e0; }
+.stat-card-0 { border-right: 1px solid #e0e0e0; }
+.stat-card-1 { border-right: 1px solid #e0e0e0; }
+
+/* Services – bento */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 12px;
+}
+
+/* Features – card row */
+.features-row {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  height: 380px;
+}
+
+/* Range – header + grid */
+.range-header { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; }
+.range-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 480px 480px;
+  border: 1px solid #e8e8e8;
+}
+
+/* Blog – card grid */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.blog-card { height: 520px; }
+
+/* FooterCTA */
+.footer-cta-bg { position: absolute; top: 0; right: 0; width: 65%; height: 100%; }
+.footer-cta-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+
+/* Footer */
+.footer-nav-row { display: flex; justify-content: space-between; align-items: flex-start; }
+.footer-nav-links { display: flex; gap: 2.5rem; }
+.footer-columns { display: flex; gap: 4rem; }
+.footer-bottom-bar { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1a1a1a; padding-top: 1.5rem; }
+
+
+/* ── iPad (769px – 1024px) ──────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 260px 260px 260px !important;
+  }
+  .bento-large { grid-row: 1 / 2 !important; grid-column: 1 / 3 !important; }
+  .bento-small { grid-row: auto !important; grid-column: auto !important; }
+
+  .features-row { height: 300px !important; }
+
+  .range-grid { grid-template-rows: 360px 360px !important; }
+
+  .blog-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .blog-card:last-child { display: none; }
+}
+
+/* ── Mobile (≤768px) ────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* About stats: stack vertically */
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .stat-card-0, .stat-card-1 { border-right: none !important; border-bottom: 1px solid #e0e0e0; }
+
+  /* Services bento: single column */
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .bento-large { grid-row: auto !important; grid-column: auto !important; min-height: 300px; }
+  .bento-small { grid-row: auto !important; grid-column: auto !important; min-height: 200px; }
+
+  /* Features: vertical stack */
+  .features-row { flex-direction: column !important; height: auto !important; gap: 10px !important; }
+  .feature-card { flex: none !important; height: 180px !important; min-width: 0 !important; }
+  .feature-shop { display: none !important; }
+
+  /* Range: single column */
+  .range-header { grid-template-columns: 1fr !important; gap: 1rem !important; }
+  .range-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 260px auto 260px 260px !important;
+  }
+  .range-cell-img { height: 260px !important; }
+  .range-cell-text { min-height: 260px; height: auto !important; }
+
+  /* Blog: single column */
+  .blog-grid { grid-template-columns: 1fr !important; }
+  .blog-card { height: 300px !important; }
+
+  /* FooterCTA */
+  .footer-cta-bg { width: 100% !important; height: 45% !important; top: auto !important; bottom: 0; right: 0; }
+  .footer-cta-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; }
+
+  /* Footer */
+  .footer-nav-row { flex-direction: column !important; gap: 2rem !important; }
+  .footer-nav-links { flex-wrap: wrap !important; gap: 0.75rem 1.5rem !important; }
+  .footer-columns { flex-direction: column !important; gap: 1.75rem !important; }
+  .footer-bottom-bar { flex-direction: column !important; gap: 0.75rem !important; align-items: flex-start !important; }
+}
