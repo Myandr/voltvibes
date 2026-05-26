@@ -159,58 +159,24 @@ export default function HeroSection() {
         </a>
       </div>
 
-      {/* Location — middle left */}
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        left: 'clamp(1.5rem, 4vw, 3rem)',
-        zIndex: 20,
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.45rem',
-        opacity: mounted ? 0.68 : 0,
-        transition: 'opacity 0.9s ease 0.9s',
-      }}>
+      {/* Location — middle left (desktop only) */}
+      <div className="hidden md:flex" style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', left: 'clamp(1.5rem, 4vw, 3rem)', zIndex: 20, alignItems: 'center', gap: '0.45rem', opacity: mounted ? 0.68 : 0, transition: 'opacity 0.9s ease 0.9s' }}>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
           <circle cx="12" cy="10" r="3"/>
         </svg>
-        <span style={{
-          fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
-          fontSize: '0.76rem',
-          color: '#fff',
-          letterSpacing: '0.07em',
-          textTransform: 'uppercase',
-        }}>
+        <span style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", fontSize: '0.76rem', color: '#fff', letterSpacing: '0.07em', textTransform: 'uppercase' }}>
           Dorsten, NRW
         </span>
       </div>
 
-      {/* Hours — middle right */}
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        right: 'clamp(1.5rem, 4vw, 3rem)',
-        zIndex: 20,
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.45rem',
-        opacity: mounted ? 0.68 : 0,
-        transition: 'opacity 0.9s ease 0.9s',
-      }}>
+      {/* Hours — middle right (desktop only) */}
+      <div className="hidden md:flex" style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', right: 'clamp(1.5rem, 4vw, 3rem)', zIndex: 20, alignItems: 'center', gap: '0.45rem', opacity: mounted ? 0.68 : 0, transition: 'opacity 0.9s ease 0.9s' }}>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <polyline points="12 6 12 12 16 14"/>
         </svg>
-        <span style={{
-          fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
-          fontSize: '0.76rem',
-          color: '#fff',
-          letterSpacing: '0.07em',
-          textTransform: 'uppercase',
-        }}>
+        <span style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", fontSize: '0.76rem', color: '#fff', letterSpacing: '0.07em', textTransform: 'uppercase' }}>
           Mo. – Sa. geöffnet
         </span>
       </div>

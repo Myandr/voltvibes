@@ -1,339 +1,309 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import PageHero from '../components/PageHero';
-import Footer from '../components/Footer';
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { Phone, Mail, MapPin, Clock, MessageCircle, Check, Users, Send } from "lucide-react"
+import PageHero from "../components/PageHero"
+import Footer from "../components/Footer"
+import { cn } from "@/lib/utils"
 
-const contactInfo = [
+const heroFeatures = [
   {
-    label: 'Telefon',
-    value: '+49 2362 9747100',
-    href: 'tel:+4923629747100',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-      </svg>
-    ),
+    icon: Users,
+    title: "Persönliche Beratung",
+    description: "Wir nehmen uns Zeit für dein Anliegen — persönlich und kompetent.",
   },
   {
-    label: 'WhatsApp',
-    value: '+49 151 2202936',
-    href: 'https://wa.me/4915122029036',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.099 1.514 5.818L0 24l6.335-1.482A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0"/>
-      </svg>
-    ),
+    icon: MessageCircle,
+    title: "Schnelle Antwort",
+    description: "Per Telefon, E-Mail oder WhatsApp — wir antworten so schnell wie möglich.",
   },
   {
-    label: 'E-Mail',
-    value: 'info@voltvibes-dorsten.de',
-    href: 'mailto:info@voltvibes-dorsten.de',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-        <polyline points="22,6 12,13 2,6"/>
-      </svg>
-    ),
+    icon: MapPin,
+    title: "Vor Ort Service",
+    description: "Besuch uns direkt in der Fußgängerzone Dorsten — wir freuen uns auf dich.",
   },
-  {
-    label: 'Adresse',
-    value: 'Lippestraße 34, 46282 Dorsten',
-    href: 'https://maps.google.com/?q=Lippestra%C3%9Fe+34,+46282+Dorsten',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-        <circle cx="12" cy="10" r="3"/>
-      </svg>
-    ),
-  },
-];
+]
 
 export default function KontaktPage() {
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-  const [sent, setSent] = useState(false);
+  const [form, setForm] = React.useState({
+    name: "",
+    email: "",
+    betreff: "",
+    nachricht: "",
+  })
+  const [submitted, setSubmitted] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!name.trim() || !message.trim()) return;
-    setSent(true);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      setSubmitted(true)
+    }, 800)
+  }
+
+  const inputClass =
+    "w-full rounded-lg bg-white border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8BBDE8]/60 focus:border-transparent transition-all"
+
   return (
-    <main className="flex flex-col flex-1">
+    <main className="flex flex-col flex-1 bg-white">
       <PageHero
         eyebrow="Wir freuen uns von dir zu hören"
         title="Kontakt"
         titleAccent="aufnehmen"
-        subtitle="Besuche uns in der Lippestraße 34, ruf an oder schreib uns — wir antworten schnell."
+        subtitle="Frage, Reparaturanfrage oder einfach hallo sagen — wir freuen uns auf deine Nachricht."
       />
 
-      <section style={{ width: '100%', background: '#fff', padding: '6rem 2rem', boxSizing: 'border-box' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      {/* Hero Image + Features */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-16">
+        <div className="relative overflow-hidden rounded-xl">
+          <Image
+            src="/images/gallery-3.jpg"
+            alt="VoltVibes Kontakt"
+            width={1200}
+            height={675}
+            className="aspect-video max-h-[500px] w-full rounded-xl object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent rounded-xl" />
+        </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '3rem', alignItems: 'start' }}>
-
-            {/* Contact info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <div>
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-bebas), sans-serif',
-                    fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-                    color: '#0e0e0e',
-                    margin: '0 0 0.5rem',
-                    letterSpacing: '0.02em',
-                  }}
-                >
-                  Erreich uns{' '}
-                  <em style={{ fontFamily: 'Georgia, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400 }}>
-                    direkt
-                  </em>
-                </h2>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: '#888', margin: 0, lineHeight: 1.65 }}>
-                  Mo–Fr 12–18 Uhr · Sa 10:30–14 Uhr
-                </p>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {contactInfo.map(({ label, value, href, icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={href.startsWith('http') ? '_blank' : undefined}
-                    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    style={{
-                      background: '#f5f5f5',
-                      borderRadius: '12px',
-                      padding: '1.1rem 1.25rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '1rem',
-                      textDecoration: 'none',
-                      transition: 'background 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#ebebeb'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#f5f5f5'; }}
-                  >
-                    <div
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',
-                        background: '#0C1523',
-                        color: '#8BBDE8',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {icon}
-                    </div>
-                    <div>
-                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#aaa', display: 'block' }}>
-                        {label}
-                      </span>
-                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', fontWeight: 600, color: '#0e0e0e' }}>
-                        {value}
-                      </span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-
-              {/* Hours */}
+        <div className="flex flex-col md:flex-row mt-8">
+          {heroFeatures.map((feature, index) => {
+            const Icon = feature.icon
+            return (
               <div
-                style={{
-                  background: '#0C1523',
-                  borderRadius: '16px',
-                  padding: '1.75rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '1rem',
-                }}
+                key={feature.title}
+                className="flex flex-row md:flex-col items-start md:items-center gap-4 md:gap-3 flex-1 px-6 py-4 md:text-center relative"
               >
-                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.07em', textTransform: 'uppercase', margin: 0 }}>
-                  Öffnungszeiten
-                </h3>
-                {[
-                  { days: 'Mo – Fr', time: '12:00 – 18:00 Uhr' },
-                  { days: 'Samstag', time: '10:30 – 14:00 Uhr' },
-                  { days: 'Sonntag', time: 'Geschlossen' },
-                ].map(({ days, time }) => (
-                  <div key={days} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>{days}</span>
-                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', fontWeight: 600, color: '#fff' }}>{time}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact form */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div>
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-bebas), sans-serif',
-                    fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-                    color: '#0e0e0e',
-                    margin: '0 0 0.5rem',
-                    letterSpacing: '0.02em',
-                  }}
-                >
-                  Schreib uns eine{' '}
-                  <em style={{ fontFamily: 'Georgia, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400 }}>
-                    Nachricht
-                  </em>
-                </h2>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: '#888', margin: 0 }}>
-                  Wir melden uns schnellstmöglich bei dir.
-                </p>
-              </div>
-
-              {sent ? (
-                <div
-                  style={{
-                    background: '#f5f5f5',
-                    borderRadius: '16px',
-                    padding: '3rem 2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '1rem',
-                    textAlign: 'center',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: '50%',
-                      background: '#0C1523',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8BBDE8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                  </div>
-                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#0e0e0e', margin: 0 }}>
-                    Nachricht gesendet!
-                  </h3>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.875rem', color: '#888', margin: 0 }}>
-                    Wir melden uns bald bei dir.
-                  </p>
+                {index > 0 && (
+                  <div className="hidden md:block absolute left-0 top-4 bottom-4 w-[2px] bg-gradient-to-b from-gray-200 via-transparent to-gray-200" />
+                )}
+                <Icon className="h-5 w-5 text-[#8BBDE8] flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-base text-gray-900">{feature.title}</h3>
+                  <p className="text-sm text-gray-500 mt-1">{feature.description}</p>
                 </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Form + Info */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
+          {/* Form — 3/5 */}
+          <div className="lg:col-span-3">
+            {submitted ? (
+              <div className="flex flex-col items-start gap-4 py-4">
+                <div className="flex items-center gap-3">
+                  <Check className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Nachricht gesendet!</p>
+                    <p className="text-sm text-gray-500">
+                      Danke, {form.name}! Wir melden uns so schnell wie möglich bei dir.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => { setSubmitted(false); setForm({ name: "", email: "", betreff: "", nachricht: "" }) }}
+                  className="text-sm text-[#8BBDE8] hover:underline underline-offset-2 transition-colors mt-2"
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label
-                      htmlFor="name"
-                      style={{
-                        fontFamily: 'var(--font-geist-sans), sans-serif',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                        color: '#555',
-                        letterSpacing: '0.03em',
-                      }}
-                    >
-                      Dein Name
+                  Weitere Nachricht senden
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Name <span className="text-[#8BBDE8]">*</span>
                     </label>
                     <input
                       id="name"
+                      name="name"
                       type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Max Mustermann"
                       required
-                      style={{
-                        background: '#f5f5f5',
-                        border: '1.5px solid transparent',
-                        borderRadius: '10px',
-                        padding: '0.85rem 1rem',
-                        fontFamily: 'var(--font-geist-sans), sans-serif',
-                        fontSize: '0.9rem',
-                        color: '#0e0e0e',
-                        outline: 'none',
-                        transition: 'border-color 0.2s ease',
-                      }}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = '#8BBDE8'; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = 'transparent'; }}
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Dein Name"
+                      className={inputClass}
                     />
                   </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label
-                      htmlFor="message"
-                      style={{
-                        fontFamily: 'var(--font-geist-sans), sans-serif',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                        color: '#555',
-                        letterSpacing: '0.03em',
-                      }}
-                    >
-                      Deine Nachricht
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      E-Mail <span className="text-[#8BBDE8]">*</span>
                     </label>
-                    <textarea
-                      id="message"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Ich brauche Hilfe mit meinem E-Scooter..."
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
                       required
-                      rows={5}
-                      style={{
-                        background: '#f5f5f5',
-                        border: '1.5px solid transparent',
-                        borderRadius: '10px',
-                        padding: '0.85rem 1rem',
-                        fontFamily: 'var(--font-geist-sans), sans-serif',
-                        fontSize: '0.9rem',
-                        color: '#0e0e0e',
-                        outline: 'none',
-                        resize: 'vertical',
-                        transition: 'border-color 0.2s ease',
-                      }}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = '#8BBDE8'; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = 'transparent'; }}
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="deine@email.de"
+                      className={inputClass}
                     />
                   </div>
+                </div>
 
+                <div className="space-y-1.5">
+                  <label htmlFor="betreff" className="block text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Betreff
+                  </label>
+                  <input
+                    id="betreff"
+                    name="betreff"
+                    type="text"
+                    value={form.betreff}
+                    onChange={handleChange}
+                    placeholder="Worum geht es?"
+                    className={inputClass}
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="nachricht" className="block text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    Nachricht <span className="text-[#8BBDE8]">*</span>
+                  </label>
+                  <textarea
+                    id="nachricht"
+                    name="nachricht"
+                    rows={6}
+                    required
+                    value={form.nachricht}
+                    onChange={handleChange}
+                    placeholder="Deine Nachricht an uns..."
+                    className={cn(inputClass, "resize-none")}
+                  />
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-1">
                   <button
                     type="submit"
-                    style={{
-                      background: '#0C1523',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: '999px',
-                      padding: '0.9rem 2rem',
-                      fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      transition: 'background 0.2s ease',
-                      alignSelf: 'flex-start',
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#1e3352'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#0C1523'; }}
+                    disabled={loading}
+                    className="inline-flex items-center justify-center gap-2 bg-[#8BBDE8] hover:bg-[#8BBDE8]/80 disabled:opacity-60 text-white text-sm font-semibold px-7 py-2.5 rounded-full transition-all duration-200 hover:gap-3"
                   >
-                    Nachricht senden →
+                    {loading ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        Wird gesendet…
+                      </>
+                    ) : (
+                      <>
+                        Nachricht senden
+                        <Send className="h-3.5 w-3.5" />
+                      </>
+                    )}
                   </button>
-                </form>
-              )}
-            </div>
-
+                  <p className="text-xs text-gray-400">
+                    Mit dem Absenden stimmst du unserer{" "}
+                    <Link href="/datenschutzerklarung" className="text-[#8BBDE8] hover:underline underline-offset-2 transition-colors">
+                      Datenschutzerklärung
+                    </Link>{" "}
+                    zu.
+                  </p>
+                </div>
+              </form>
+            )}
           </div>
+
+          {/* Info Card — 2/5 */}
+          <div className="lg:col-span-2">
+            <div className="rounded-xl bg-white border border-gray-200 p-7 sticky top-28 space-y-6">
+              <div>
+                <h2 className="text-lg font-semibold tracking-tight text-gray-900 mb-4">Kontaktdaten</h2>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <Phone className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-0.5">Telefon</p>
+                      <a href="tel:02362-9747100" className="text-sm font-medium text-gray-900 hover:text-[#8BBDE8] transition-colors">
+                        02362-9747100
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-0.5">E-Mail</p>
+                      <a href="mailto:info@voltvibes-dorsten.de" className="text-sm font-medium text-gray-900 hover:text-[#8BBDE8] transition-colors break-all">
+                        info@voltvibes-dorsten.de
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <MapPin className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-0.5">Adresse</p>
+                      <p className="text-sm font-medium text-gray-900">Lippestraße 34</p>
+                      <p className="text-sm text-gray-500">46282 Dorsten</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <MessageCircle className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-0.5">WhatsApp</p>
+                      <a
+                        href="https://wa.me/4923629747100"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-gray-900 hover:text-[#8BBDE8] transition-colors"
+                      >
+                        WhatsApp verfügbar
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-gray-200 pt-5">
+                <div className="flex items-start gap-3">
+                  <Clock className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                  <div className="w-full">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Öffnungszeiten</p>
+                    <table className="w-full text-sm">
+                      <tbody className="divide-y divide-gray-100">
+                        <tr>
+                          <td className="py-1.5 text-gray-500">Mo – Fr</td>
+                          <td className="py-1.5 text-right font-medium text-gray-900">12:00 – 18:00</td>
+                        </tr>
+                        <tr>
+                          <td className="py-1.5 text-gray-500">Samstag</td>
+                          <td className="py-1.5 text-right font-medium text-gray-900">10:30 – 14:00</td>
+                        </tr>
+                        <tr>
+                          <td className="py-1.5 text-gray-500">Sonntag</td>
+                          <td className="py-1.5 text-right text-gray-400">Geschlossen</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </section>
+      </div>
 
       <Footer />
     </main>
-  );
+  )
 }

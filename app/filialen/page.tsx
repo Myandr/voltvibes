@@ -1,271 +1,243 @@
-import PageHero from '../components/PageHero';
-import Footer from '../components/Footer';
+import Image from "next/image"
+import { MapPin, Phone, Mail, Clock, ExternalLink, Check } from "lucide-react"
+import PageHero from "../components/PageHero"
+import Footer from "../components/Footer"
 
-const filialen = [
-  {
-    city: 'Dorsten',
-    status: 'Geöffnet',
-    statusColor: '#22c55e',
-    address: 'Lippestraße 34',
-    zip: '46282 Dorsten',
-    hours: [
-      { days: 'Montag – Freitag', time: '12:00 – 18:00 Uhr' },
-      { days: 'Samstag', time: '10:30 – 14:00 Uhr' },
-      { days: 'Sonntag', time: 'Geschlossen' },
-    ],
-    features: [
-      'E-Scooter neu & gebraucht',
-      'Stunt Scooter & Zubehör',
-      'Probefahrten möglich',
-      'Professionelle Reparaturen',
-      'Ersatzteile vor Ort',
-      'Scooter-Ankauf',
-    ],
-    phone: '+49 2362 9747100',
-    email: 'info@voltvibes-dorsten.de',
-    maps: 'https://maps.google.com/?q=Lippestra%C3%9Fe+34,+46282+Dorsten',
-    dark: true,
-  },
-  {
-    city: 'Göttingen',
-    status: 'Neu eröffnet',
-    statusColor: '#8BBDE8',
-    address: 'Standort folgt',
-    zip: 'Göttingen',
-    hours: [
-      { days: 'Details', time: 'folgen in Kürze' },
-    ],
-    features: [
-      'E-Scooter Verkauf',
-      'Reparaturen',
-      'Ersatzteile & Zubehör',
-      'Beratung Seniorenmobile',
-      'Private Teststrecke',
-    ],
-    phone: '+49 2362 9747100',
-    email: 'info@voltvibes-dorsten.de',
-    maps: null,
-    dark: false,
-  },
-];
+const dorstenerServices = [
+  "Neue und gebrauchte Roller",
+  "Probefahrten möglich",
+  "Reparaturen aller Art",
+  "Ersatzteilverkauf",
+  "Rollerankauf",
+]
+
+const goettingerServices = [
+  "Schwerpunkt Seniorenmobile",
+  "Eigene Teststrecke",
+  "E-Scooter Beratung",
+  "Reparaturservice",
+  "Zubehör & Ersatzteile",
+]
+
+const stats = [
+  { label: "Standorte", value: "2" },
+  { label: "Werkstatt", value: "1" },
+  { label: "Eröffnung Göttingen", value: "2026" },
+]
 
 export default function FilialenPage() {
   return (
-    <main className="flex flex-col flex-1">
+    <main className="flex flex-col flex-1 bg-white">
       <PageHero
         eyebrow="Unsere Standorte"
-        title="Filialen &"
-        titleAccent="Standorte"
-        subtitle="VoltVibes ist in Dorsten und Göttingen für dich da — besuche uns und lass dich persönlich beraten."
+        title="Unsere"
+        titleAccent="Filialen"
+        subtitle="Aktuell in Dorsten — bald auch in Göttingen. Komm vorbei, schau dich um und fahr eine Proberunde."
       />
 
-      <section style={{ width: '100%', background: '#fff', padding: '6rem 2rem', boxSizing: 'border-box' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+      {/* Filialen */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 py-16 flex flex-col gap-8">
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '16px', alignItems: 'start' }}>
-            {filialen.map(({ city, status, statusColor, address, zip, hours, features, phone, email, maps, dark }) => (
-              <div
-                key={city}
-                style={{
-                  background: dark ? '#0C1523' : '#f5f5f5',
-                  borderRadius: '20px',
-                  padding: '2.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '2rem',
-                }}
-              >
-                {/* Header */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <div>
-                    <h2
-                      style={{
-                        fontFamily: 'var(--font-bebas), sans-serif',
-                        fontSize: '2.4rem',
-                        color: dark ? '#fff' : '#0e0e0e',
-                        margin: '0 0 0.2rem',
-                        letterSpacing: '0.02em',
-                      }}
-                    >
-                      {city}
-                    </h2>
-                    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: dark ? 'rgba(255,255,255,0.5)' : '#999', margin: 0 }}>
-                      {address}, {zip}
-                    </p>
-                  </div>
+        {/* Dorsten */}
+        <div className="group grid gap-4 lg:grid-cols-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors duration-500 overflow-hidden">
+
+          {/* Left: Info */}
+          <div className="p-8 flex flex-col gap-6">
+            <div>
+              <span className="inline-flex items-center rounded-full border border-[#8BBDE8]/40 bg-[#8BBDE8]/5 px-4 py-1.5 text-sm font-medium text-[#8BBDE8] mb-4">
+                Hauptfiliale
+              </span>
+              <h2 className="text-2xl font-semibold tracking-tight text-gray-900">VoltVibes Dorsten</h2>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <MapPin className="h-5 w-5 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-sm text-gray-900">Adresse</p>
+                <p className="text-sm text-gray-500">Lippestraße 34</p>
+                <p className="text-sm text-gray-500">46282 Dorsten</p>
+                <p className="text-xs text-gray-400 mt-0.5">(Fußgängerzone Innenstadt)</p>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                <a href="tel:02362-9747100" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                  02362-9747100
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                <a href="mailto:info@voltvibes-dorsten.de" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                  info@voltvibes-dorsten.de
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <Clock className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+              <div className="w-full">
+                <p className="font-semibold text-sm text-gray-900 mb-2">Öffnungszeiten</p>
+                <table className="w-full text-sm">
+                  <tbody className="divide-y divide-gray-100">
+                    <tr>
+                      <td className="py-1.5 text-gray-500">Mo – Fr</td>
+                      <td className="py-1.5 text-right font-medium text-gray-900">12:00 – 18:00</td>
+                    </tr>
+                    <tr>
+                      <td className="py-1.5 text-gray-500">Samstag</td>
+                      <td className="py-1.5 text-right font-medium text-gray-900">10:30 – 14:00</td>
+                    </tr>
+                    <tr>
+                      <td className="py-1.5 text-gray-500">Sonntag</td>
+                      <td className="py-1.5 text-right font-medium text-gray-400">Geschlossen</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <a
+              href="https://maps.google.com/?q=Lippestraße+34,+46282+Dorsten"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 border border-gray-200 px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors w-full justify-center"
+            >
+              <MapPin className="h-4 w-4" />
+              In Google Maps öffnen
+              <ExternalLink className="h-3 w-3 text-gray-400" />
+            </a>
+          </div>
+
+          {/* Right: Image */}
+          <div className="relative border border-gray-200 bg-white p-2 rounded-xl m-4">
+            <Image
+              src="/images/gallery-3.jpg"
+              alt="VoltVibes Dorsten"
+              width={600}
+              height={500}
+              className="w-full h-full object-cover rounded-xl aspect-video"
+            />
+            <div className="absolute inset-2 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-xl" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="text-xs font-semibold text-white mb-2">Angebot</p>
+              <div className="flex flex-wrap gap-1.5">
+                {dorstenerServices.map((s) => (
                   <span
-                    style={{
-                      fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.72rem',
-                      fontWeight: 600,
-                      letterSpacing: '0.06em',
-                      textTransform: 'uppercase',
-                      color: statusColor,
-                      background: `${statusColor}18`,
-                      borderRadius: '999px',
-                      padding: '0.3rem 0.85rem',
-                      whiteSpace: 'nowrap',
-                    }}
+                    key={s}
+                    className="inline-flex items-center gap-1 bg-white/15 backdrop-blur-sm border border-white/20 rounded-md px-2 py-1 text-xs font-medium text-white"
                   >
-                    {status}
+                    <Check className="h-3 w-3 text-[#8BBDE8] flex-shrink-0" />
+                    {s}
                   </span>
-                </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
 
-                {/* Hours */}
-                <div
-                  style={{
-                    borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : '#e8e8e8'}`,
-                    borderBottom: `1px solid ${dark ? 'rgba(255,255,255,0.1)' : '#e8e8e8'}`,
-                    padding: '1.5rem 0',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.6rem',
-                  }}
-                >
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: dark ? 'rgba(255,255,255,0.3)' : '#bbb', display: 'block', marginBottom: '0.25rem' }}>
-                    Öffnungszeiten
+        {/* Göttingen — Coming Soon */}
+        <div className="group grid gap-4 lg:grid-cols-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors duration-500 overflow-hidden opacity-85">
+
+          {/* Left: Info */}
+          <div className="p-8 flex flex-col gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="inline-flex items-center rounded-full border border-gray-200 px-4 py-1.5 text-sm font-medium text-gray-500">
+                  Neue Filiale
+                </span>
+                <span className="inline-flex items-center rounded-full bg-[#8BBDE8] px-4 py-1.5 text-sm font-medium text-[#0C1523]">
+                  Eröffnung Mai 2026
+                </span>
+              </div>
+              <h2 className="text-2xl font-semibold tracking-tight text-gray-900">VoltVibes Göttingen</h2>
+            </div>
+
+            <div className="rounded-xl bg-[#8BBDE8]/5 border border-[#8BBDE8]/20 p-4">
+              <p className="text-sm text-gray-600">
+                Eröffnung geplant: <strong className="text-gray-900">Mai 2026</strong>
+              </p>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <MapPin className="h-5 w-5 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-sm text-gray-900">Adresse</p>
+                <p className="text-sm text-gray-500">Groner Straße 8</p>
+                <p className="text-sm text-gray-500">37073 Göttingen</p>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                <span className="text-sm text-gray-500">+49 551 27077600</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                <span className="text-sm text-gray-500">info@voltvibes-goettingen.de</span>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <Clock className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+              <div className="w-full">
+                <p className="font-semibold text-sm text-gray-900 mb-2">Öffnungszeiten</p>
+                <p className="text-sm text-gray-400 italic">Werden zur Eröffnung bekanntgegeben.</p>
+              </div>
+            </div>
+
+            <div className="inline-flex items-center gap-2 text-sm text-gray-400 border border-gray-200 px-4 py-2.5 rounded-lg w-full justify-center cursor-not-allowed">
+              <MapPin className="h-4 w-4" />
+              Google Maps — bald verfügbar
+            </div>
+          </div>
+
+          {/* Right: Image */}
+          <div className="relative border border-gray-200 bg-white p-2 rounded-xl m-4">
+            <Image
+              src="/images/gallery-4.jpg"
+              alt="VoltVibes Göttingen"
+              width={600}
+              height={500}
+              className="w-full h-full object-cover rounded-xl aspect-video"
+            />
+            <div className="absolute inset-2 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-xl" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="text-xs font-semibold text-white mb-2">Angebot</p>
+              <div className="flex flex-wrap gap-1.5">
+                {goettingerServices.map((s) => (
+                  <span
+                    key={s}
+                    className="inline-flex items-center gap-1 bg-white/15 backdrop-blur-sm border border-white/20 rounded-md px-2 py-1 text-xs font-medium text-white"
+                  >
+                    <Check className="h-3 w-3 text-[#8BBDE8] flex-shrink-0" />
+                    {s}
                   </span>
-                  {hours.map(({ days, time }) => (
-                    <div key={days} style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
-                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: dark ? 'rgba(255,255,255,0.45)' : '#999' }}>
-                        {days}
-                      </span>
-                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: dark ? '#fff' : '#0e0e0e' }}>
-                        {time}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
 
-                {/* Features */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: dark ? 'rgba(255,255,255,0.3)' : '#bbb', display: 'block', marginBottom: '0.25rem' }}>
-                    Angebot
-                  </span>
-                  {features.map((f) => (
-                    <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                      <div
-                        style={{
-                          width: '6px',
-                          height: '6px',
-                          borderRadius: '50%',
-                          background: '#8BBDE8',
-                          flexShrink: 0,
-                        }}
-                      />
-                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: dark ? 'rgba(255,255,255,0.7)' : '#555' }}>
-                        {f}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+      </div>
 
-                {/* Contact */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <a
-                    href={`tel:${phone.replace(/\s/g, '')}`}
-                    style={{
-                      fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.875rem',
-                      fontWeight: 600,
-                      color: dark ? '#8BBDE8' : '#0C1523',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    {phone}
-                  </a>
-                  <a
-                    href={`mailto:${email}`}
-                    style={{
-                      fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.85rem',
-                      color: dark ? 'rgba(255,255,255,0.45)' : '#999',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    {email}
-                  </a>
-                </div>
-
-                {maps && (
-                  <a
-                    href={maps}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      background: dark ? 'rgba(255,255,255,0.08)' : '#e8e8e8',
-                      color: dark ? '#fff' : '#0e0e0e',
-                      borderRadius: '999px',
-                      padding: '0.7rem 1.5rem',
-                      fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.875rem',
-                      fontWeight: 600,
-                      textDecoration: 'none',
-                      textAlign: 'center',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '0.5rem',
-                    }}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    In Google Maps öffnen
-                  </a>
-                )}
+      {/* Stats Block */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pb-24">
+        <div className="bg-white border border-gray-200 rounded-xl p-10 md:p-16">
+          <div className="flex flex-wrap justify-between gap-10 text-center">
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col items-center gap-1">
+                <span className="text-4xl font-semibold md:text-5xl text-gray-900">{stat.value}</span>
+                <p className="text-sm text-gray-500">{stat.label}</p>
               </div>
             ))}
           </div>
-
-          {/* Repair pickup note */}
-          <div
-            style={{
-              background: '#f5f5f5',
-              borderRadius: '16px',
-              padding: '2rem 2.5rem',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '1.5rem',
-            }}
-          >
-            <div
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: '#0C1523',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8BBDE8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="1" y="3" width="15" height="13" rx="1"/>
-                <path d="M16 8h4l3 6v3h-7V8z"/>
-                <circle cx="5.5" cy="18.5" r="2.5"/>
-                <circle cx="18.5" cy="18.5" r="2.5"/>
-              </svg>
-            </div>
-            <div>
-              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 700, color: '#0e0e0e', margin: '0 0 0.4rem' }}>
-                Reparatur-Abholservice
-              </h3>
-              <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.875rem', color: '#777', margin: 0, lineHeight: 1.65 }}>
-                Du kannst deinen Scooter auch bei unseren Annahmestellen in{' '}
-                <strong style={{ color: '#0e0e0e' }}>Bottrop</strong> (AWK Smart Repair, Boschstraße 9) und{' '}
-                <strong style={{ color: '#0e0e0e' }}>Recklinghausen</strong> (Automanufaktur 57, Westring 57) abgeben.
-                Unser Servicemobil holt ihn ab und bringt ihn nach der Reparatur zurück.
-              </p>
-            </div>
-          </div>
-
         </div>
-      </section>
+      </div>
 
       <Footer />
     </main>
-  );
+  )
 }

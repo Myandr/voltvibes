@@ -1,200 +1,187 @@
-import PageHero from '../components/PageHero';
-import Footer from '../components/Footer';
-import Image from 'next/image';
+import Image from "next/image"
+import {
+  Wrench,
+  Zap,
+  Package,
+  Settings,
+  ArrowLeftRight,
+  Accessibility,
+  Phone,
+  ChevronRight,
+  Shield,
+  Check,
+  Tag,
+} from "lucide-react"
+import PageHero from "../components/PageHero"
+import Footer from "../components/Footer"
 
 const services = [
   {
-    num: '01',
-    title: 'Reifenpannen-Service',
-    desc: 'Platter Reifen? Unser erfahrenes Team tauscht deinen Reifen schnell und zuverlässig aus — damit du so schnell wie möglich wieder fahren kannst.',
-    img: '/images/gallery-3.jpg',
-    imgPos: 'center center',
+    icon: Zap,
+    title: "Reifenpannen-Reparatur",
+    description:
+      "Ein platter Reifen oder ein beschädigter Reifen? Kein Problem! Wir bieten schnelle und zuverlässige Reifenreparatur an E-Scootern aller Marken — oft noch am selben Tag.",
   },
   {
-    num: '02',
-    title: 'Bremsen & Akkus',
-    desc: 'Ob nachlassende Bremsleistung oder schwacher Akku — wir prüfen, reparieren und tauschen alle gängigen Komponenten deines E-Scooters.',
-    img: '/images/gallery-1.jpg',
-    imgPos: 'center center',
+    icon: Package,
+    title: "Stunt Scooter & Zubehör",
+    description:
+      "Große Auswahl von Anfänger bis Profi. Führende Marken: Core, Type-R, Panda. Inklusive Helme und Schutzausrüstung — alles aus einer Hand in unserer Filiale.",
   },
   {
-    num: '03',
-    title: 'Ersatzteile & Zubehör',
-    desc: 'Neue Reifen, Bremsen, Akkus oder praktisches Zubehör — wir führen alles, was du für deinen Scooter brauchst, direkt vor Ort.',
-    img: '/images/gallery-2.jpg',
-    imgPos: 'center center',
+    icon: Settings,
+    title: "Ersatzteile & Zubehör",
+    description:
+      "Breites Sortiment an Ersatzteilen: Reifen, Bremsen, Akkus, Kabel und vieles mehr. Wir helfen dir, das richtige Teil zu finden und einzubauen.",
   },
   {
-    num: '04',
-    title: 'Stunt Scooter Verkauf & Beratung',
-    desc: 'Hochwertige Stunt Scooter von Core, Type-R, Panda und weiteren Top-Marken — inklusive Helme und Schutzausrüstung. Lass dich von uns kompetent beraten.',
-    img: '/images/1779538765056-image_generation-google.png',
-    imgPos: 'center top',
+    icon: Wrench,
+    title: "Allgemeine Reparaturen",
+    description:
+      "E-Scooter-Reparaturen aller Art: Elektronik, Mechanik, Teilaustausch. Unsere erfahrenen Techniker sorgen dafür, dass dein Scooter schnell wieder rollt.",
   },
   {
-    num: '05',
-    title: 'E-Scooter Verkauf',
-    desc: 'Neu und gebraucht — eine große Auswahl zugelassener E-Scooter für die Stadt. Probefahrten sind jederzeit möglich.',
-    img: '/images/gallery-4.jpg',
-    imgPos: 'center top',
+    icon: ArrowLeftRight,
+    title: "Ankauf & Verkauf",
+    description:
+      "Neue und gebrauchte Roller zu fairen Preisen — direkt vor Ort. Wir nehmen deinen alten Scooter in Zahlung und beraten dich ehrlich beim Kauf.",
   },
   {
-    num: '06',
-    title: 'Seniorenmobilität',
-    desc: 'Komfortable und sichere Elektromobile für Senioren — für mehr Bewegungsfreiheit im Alltag. Wir beraten dich oder deine Angehörigen gerne persönlich.',
-    img: '/images/gallery-4.jpg',
-    imgPos: 'center center',
+    icon: Accessibility,
+    title: "Seniorenmobile",
+    description:
+      "Elektrische Mobilitätshilfen für Senioren: sicher, komfortabel und einfach zu bedienen. Wir beraten persönlich und bieten Testfahrten an.",
   },
-];
+]
+
+const heroFeatures = [
+  {
+    icon: Zap,
+    title: "Schnelle Abwicklung",
+    description: "Kurze Wartezeiten — viele Reparaturen erledigen wir noch am selben Tag.",
+  },
+  {
+    icon: Tag,
+    title: "Faire Preise",
+    description: "Transparente Preisgestaltung ohne versteckte Kosten. Immer ehrlich.",
+  },
+  {
+    icon: Shield,
+    title: "Top Qualität",
+    description: "Nur Originalteile und geprüfte Materialien — für dauerhaft gute Ergebnisse.",
+  },
+]
+
+const ctaChecklist = [
+  "Reifenpannen-Reparatur",
+  "Stunt Scooter & Zubehör",
+  "Ersatzteile & Zubehör",
+  "Allgemeine Reparaturen",
+  "Ankauf & Verkauf",
+  "Seniorenmobile",
+]
 
 export default function DienstleistungenPage() {
   return (
-    <main className="flex flex-col flex-1">
+    <main className="flex flex-col flex-1 bg-white">
       <PageHero
         eyebrow="Was wir bieten"
         title="Unsere"
         titleAccent="Dienstleistungen"
-        subtitle="Von der Reifenreparatur über Stunt Scooter bis zum Elektromobil — alles aus einer Hand in der Dorstener Innenstadt."
+        subtitle="Von der Reifenreparatur bis zum kompletten Umbau — wir sind dein Full-Service-Partner rund um E-Scooter und urbane Mobilität in Dorsten."
       />
 
-      <section style={{ width: '100%', background: '#fff', padding: '6rem 2rem', boxSizing: 'border-box' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+      {/* Hero Image + Features */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-16">
+        <div className="relative overflow-hidden rounded-xl">
+          <Image
+            src="/images/gallery-2.jpg"
+            alt="VoltVibes Dienstleistungen"
+            width={1200}
+            height={675}
+            className="aspect-video max-h-[500px] w-full rounded-xl object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent rounded-xl" />
+        </div>
 
-          {/* Intro */}
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', color: '#444', lineHeight: 1.65, maxWidth: '680px', margin: 0, fontWeight: 300 }}>
-            Bei VoltVibes Dorsten bekommst du alles rund um deinen Scooter — schnell, fair und persönlich.
-            Unser junges, enthusiastisches Team steht dir mit Rat und Tat zur Seite.
-          </p>
-
-          {/* Service cards */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: '16px',
-            }}
-          >
-            {services.map(({ num, title, desc, img, imgPos }) => (
+        <div className="flex flex-col md:flex-row mt-8">
+          {heroFeatures.map((feature, index) => {
+            const Icon = feature.icon
+            return (
               <div
-                key={num}
-                style={{
-                  background: '#f5f5f5',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
+                key={feature.title}
+                className="flex flex-row md:flex-col items-start md:items-center gap-4 md:gap-3 flex-1 px-6 py-4 md:text-center relative"
               >
-                <div style={{ position: 'relative', height: '180px', overflow: 'hidden' }}>
-                  <Image src={img} alt={title} fill style={{ objectFit: 'cover', objectPosition: imgPos }} />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 60%)' }} />
-                  <span
-                    style={{
-                      position: 'absolute',
-                      top: '1rem',
-                      left: '1rem',
-                      fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.72rem',
-                      fontWeight: 500,
-                      color: '#888',
-                      background: 'rgba(255,255,255,0.9)',
-                      borderRadius: '999px',
-                      padding: '0.25rem 0.75rem',
-                    }}
-                  >
-                    {num}
-                  </span>
-                </div>
-                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.6rem', flex: 1 }}>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-bebas), sans-serif',
-                      fontSize: '1.6rem',
-                      color: '#0e0e0e',
-                      margin: 0,
-                      letterSpacing: '0.02em',
-                    }}
-                  >
-                    {title}
-                  </h3>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.84rem', color: '#777', margin: 0, lineHeight: 1.6 }}>
-                    {desc}
-                  </p>
+                {index > 0 && (
+                  <div className="hidden md:block absolute left-0 top-4 bottom-4 w-[2px] bg-gradient-to-b from-gray-200 via-transparent to-gray-200" />
+                )}
+                <Icon className="h-5 w-5 text-[#8BBDE8] flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-base text-gray-900">{feature.title}</h3>
+                  <p className="text-sm text-gray-500 mt-1">{feature.description}</p>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* CTA row */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '2rem',
-              flexWrap: 'wrap',
-              borderTop: '1px solid #e8e8e8',
-              paddingTop: '3rem',
-            }}
-          >
-            <div style={{ flex: 1, minWidth: '260px' }}>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-bebas), sans-serif',
-                  fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
-                  color: '#0e0e0e',
-                  margin: '0 0 0.5rem',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                Fragen?{' '}
-                <em style={{ fontFamily: 'Georgia, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400 }}>
-                  Ruf uns an.
-                </em>
-              </h2>
-              <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: '#888', margin: 0, lineHeight: 1.6 }}>
-                Wir sind Mo–Fr 12–18 Uhr und Sa 10:30–14 Uhr erreichbar.
-              </p>
-            </div>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <a
-                href="tel:+4923629747100"
-                style={{
-                  background: '#0C1523',
-                  color: '#fff',
-                  borderRadius: '999px',
-                  padding: '0.75rem 1.75rem',
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.875rem',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                +49 2362 9747100
-              </a>
-              <a
-                href="/reparaturen"
-                style={{
-                  background: '#f5f5f5',
-                  color: '#0e0e0e',
-                  borderRadius: '999px',
-                  padding: '0.75rem 1.75rem',
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.875rem',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Zur Reparatur-Seite →
-              </a>
-            </div>
-          </div>
-
+            )
+          })}
         </div>
-      </section>
+      </div>
+
+      {/* Services Grid */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 py-16">
+        <div className="grid gap-px sm:grid-cols-2 md:grid-cols-3 border border-gray-200 rounded-xl overflow-hidden bg-gray-200">
+          {services.map((service) => {
+            const Icon = service.icon
+            return (
+              <div
+                key={service.title}
+                className="bg-white hover:bg-gray-50 transition-colors duration-300 p-7 flex flex-col gap-4"
+              >
+                <Icon className="h-5 w-5 text-[#8BBDE8]" />
+                <div>
+                  <h2 className="text-base font-semibold tracking-tight text-gray-900 mb-1.5">{service.title}</h2>
+                  <p className="text-sm text-gray-500 leading-relaxed">{service.description}</p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* CTA Block */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pb-24">
+        <div className="bg-white border border-gray-200 rounded-xl px-6 py-10 lg:px-20 lg:py-16">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+            <div className="flex-1">
+              <h4 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 mb-3">Termin vereinbaren</h4>
+              <p className="text-gray-500 mb-6">
+                Ruf uns an oder komm direkt in unsere Filiale in der Fußgängerzone Dorsten.
+                Wir helfen dir schnell und unkompliziert.
+              </p>
+              <a
+                href="tel:02362-9747100"
+                className="inline-flex items-center gap-2 bg-[#8BBDE8] hover:bg-[#8BBDE8]/80 text-[#0C1523] text-sm font-semibold px-6 py-3 rounded-lg transition-colors"
+              >
+                <Phone className="h-4 w-4" />
+                02362-9747100
+                <ChevronRight className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="flex-shrink-0">
+              <ul className="space-y-3">
+                {ctaChecklist.map((item) => (
+                  <li key={item} className="flex items-center text-sm text-gray-700">
+                    <Check className="mr-4 size-4 flex-shrink-0 text-[#8BBDE8]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Footer />
     </main>
-  );
+  )
 }
