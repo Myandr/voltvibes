@@ -159,6 +159,9 @@ export default function SellScooterSection() {
           }
         }
         @media (max-width: 640px) {
+          .sell-overlay {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.25) 20%, rgba(255,255,255,0.02) 60%, rgba(255,255,255,0) 100%) !important;
+          }
           .sell-section {
             padding: 5rem 1.25rem 4rem !important;
             min-height: unset !important;
