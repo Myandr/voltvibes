@@ -47,13 +47,24 @@ export default function ServicesSection() {
     <section
       style={{
         width: '100%',
-        background: '#fff',
+        backgroundImage: 'url(/images/services-background2.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         padding: '6rem 2rem',
         boxSizing: 'border-box',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
+      {/* Top/bottom white fade overlay */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to bottom, #fff 0%, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.1) 70%, #fff 100%)',
+        zIndex: 0,
+        pointerEvents: 'none',
+      }} />
       <div
         style={{
           maxWidth: '1280px',

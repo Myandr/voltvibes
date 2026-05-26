@@ -72,6 +72,9 @@ body {
 .footer-bottom-bar { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1a1a1a; padding-top: 1.5rem; }
 
 
+/* ── News article grid ─────────────────────────────────── */
+.news-article { display: grid; grid-template-columns: 1fr 1fr; min-height: 360px; }
+
 /* ── iPad (769px – 1024px) ──────────────────────────────── */
 @media (min-width: 769px) and (max-width: 1024px) {
   .bento-grid {

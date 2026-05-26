@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import { BlurTextEffect } from './BlurTextEffect';
 
 const posts = [
-  { id: 1, tag: 'Technology', title: 'The Future of Electric Vehicles: How VoltVibes is Paving the Way', img: '/images/1779488754826-image_generation-google.png', imgPos: 'center center' },
-  { id: 2, tag: 'Technology', title: 'How VoltVibes is Revolutionizing Urban Mobility',                   img: '/images/gallery-2.jpg',                              imgPos: 'center center' },
-  { id: 3, tag: 'Technology', title: 'The Importance of Sustainable Charging Solutions for the Future of EVs', img: '/images/gallery-3.jpg',                         imgPos: 'center center' },
+  { id: 1, tag: 'Ratgeber', title: 'E-Scooter kaufen in Dorsten — worauf du achten solltest', img: '/images/1779488754826-image_generation-google.png', imgPos: 'center center' },
+  { id: 2, tag: 'Reparatur', title: 'Die häufigsten Scooter-Defekte und wie wir sie beheben',   img: '/images/gallery-2.jpg',                              imgPos: 'center center' },
+  { id: 3, tag: 'Stunt Scooter', title: 'Stunt Scooter für Einsteiger: Welches Modell passt zu dir?', img: '/images/gallery-3.jpg',                         imgPos: 'center center' },
 ];
 
 function useFadeIn(delay = 0) {
@@ -44,9 +44,9 @@ export default function BlogSection() {
             lineHeight: 1, color: '#0e0e0e', margin: 0, letterSpacing: '0.01em', textAlign: 'center',
           }}
         >
-          <BlurTextEffect scrollTrigger>Stay Informed with </BlurTextEffect>
+          <BlurTextEffect scrollTrigger>Aktuelles aus </BlurTextEffect>
           <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
-            <BlurTextEffect scrollTrigger delay={0.22}>VoltVibes</BlurTextEffect>
+            <BlurTextEffect scrollTrigger delay={0.22}>Dorsten</BlurTextEffect>
           </em>
         </h2>
 

@@ -7,7 +7,7 @@ import { BlurTextEffect } from './BlurTextEffect';
 const features = [
   { id: 'motor',      num: '01', title: 'Schnelle Reparatur',       desc: 'Platte Reifen, Bremsen, Akkus — wir reparieren alle Scooter-Modelle schnell und zuverlässig.', img: '/images/gallery-3.jpg',                              imgPos: 'center center' },
   { id: 'stability',  num: '02', title: 'Große Auswahl',            desc: 'Helme, Schutzausrüstung, Ersatzteile, Zubehör — alles was du brauchst, direkt vor Ort.',        img: '/images/1779538765056-image_generation-google.png',  imgPos: 'center top'    },
-  { id: 'visibility', num: '03', title: 'Persönliche Beratung',     desc: 'Unser junges, enthusiastisches Team berät dich kompetent — von Dorsten bis Göttingen.',          img: '/images/gallery-4.jpg',                              imgPos: 'center center' },
+  { id: 'visibility', num: '03', title: 'Persönliche Beratung',     desc: 'Unser junges, enthusiastisches Team berät dich kompetent — direkt in der Dorstener Innenstadt.',  img: '/images/gallery-4.jpg',                              imgPos: 'center center' },
 ];
 
 const defaultFlex: Record<string, number> = { motor: 1.5, stability: 1, visibility: 1, shop: 0.55 };
@@ -64,6 +64,66 @@ export default function FeaturesSection() {
           <BlurTextEffect scrollTrigger delay={0.28}> besonders macht</BlurTextEffect>
         </h2>
 
+        <style>{`
+          .features-row {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            align-items: stretch;
+            min-height: 320px;
+          }
+          .feature-card {
+            flex-shrink: 0;
+          }
+          .feature-card-title {
+            font-family: var(--font-geist-sans), sans-serif;
+            font-size: clamp(1rem, 1.6vw, 1.35rem);
+            font-weight: 700;
+            color: #0e0e0e;
+            margin: 0 0 0.4rem 0;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .feature-arrow {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #0e0e0e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          }
+          @media (max-width: 680px) {
+            .features-row {
+              flex-direction: column;
+              min-height: unset;
+            }
+            .feature-card {
+              flex: none !important;
+              width: 100% !important;
+              min-height: 220px;
+            }
+            .feature-shop {
+              flex: none !important;
+              width: 100% !important;
+              height: 80px;
+            }
+            .feature-card-title {
+              white-space: normal;
+              overflow: visible;
+              text-overflow: unset;
+            }
+            .feature-arrow {
+              opacity: 1 !important;
+              transform: none !important;
+            }
+          }
+        `}</style>
+
         {/* Cards row */}
         <div
           ref={cards.ref}
@@ -114,26 +174,21 @@ export default function FeaturesSection() {
                   <div style={{ height: '1px', background: '#ddd' }} />
                   <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '0.75rem' }}>
                     <div style={{ minWidth: 0, flex: 1 }}>
-                      <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1rem, 1.6vw, 1.35rem)', fontWeight: 700, color: '#0e0e0e', margin: '0 0 0.4rem 0', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {title}
-                      </h3>
-                      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#888', margin: 0, lineHeight: 1.5, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                      <h3 className="feature-card-title">{title}</h3>
+                      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#888', margin: 0, lineHeight: 1.5 }}>
                         {desc}
                       </p>
                     </div>
-
-                    {/* Round arrow button */}
-                    <div style={{
-                      flexShrink: 0,
-                      width: '44px', height: '44px', borderRadius: '50%',
-                      background: '#0e0e0e', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      opacity: isHovered ? 1 : 0,
-                      transform: isHovered ? 'scale(1) translateY(0)' : 'scale(0.7) translateY(8px)',
-                      transition: 'opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                      cursor: 'pointer',
-                      pointerEvents: isHovered ? 'auto' : 'none',
-                    }}>
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div
+                      className="feature-arrow"
+                      style={{
+                        opacity: isHovered ? 1 : 0,
+                        transform: isHovered ? 'scale(1) translateY(0)' : 'scale(0.7) translateY(8px)',
+                        transition: 'opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        pointerEvents: isHovered ? 'auto' : 'none',
+                      }}
+                    >
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M4 14L14 4M14 4H7M14 4V11" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>

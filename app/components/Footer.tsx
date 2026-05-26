@@ -67,10 +67,15 @@ export default function Footer() {
         <div className="footer-nav-row">
           {/* Nav links */}
           <div className="footer-nav-links">
-            {['Über uns', 'Dienstleistungen', 'Reparaturen', 'Das Team'].map((link) => (
+            {[
+              { label: 'Über uns', href: '/das-team' },
+              { label: 'Dienstleistungen', href: '/dienstleistungen' },
+              { label: 'Reparaturen', href: '/reparaturen' },
+              { label: 'Das Team', href: '/das-team' },
+            ].map(({ label, href }) => (
               <a
-                key={link}
-                href="#"
+                key={label}
+                href={href}
                 style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
                   fontSize: '0.9rem',
@@ -78,7 +83,7 @@ export default function Footer() {
                   textDecoration: 'none',
                 }}
               >
-                {link}
+                {label}
               </a>
             ))}
           </div>
@@ -97,10 +102,16 @@ export default function Footer() {
               >
                 Sortiment
               </span>
-              {['E-Scooter', 'Stunt Scooter', 'Elektromobile für Senioren'].map((item) => (
+              {[
+                { label: 'E-Scooter', href: 'https://voltvibes-dorsten.com/shop/E-Scooter-c186896506/' },
+                { label: 'Stunt Scooter', href: 'https://voltvibes-dorsten.com/shop/Stunt-Scooter-c190512799/' },
+                { label: 'Elektromobile für Senioren', href: 'https://voltvibes-dorsten.com/shop/Elektromobil-fur-Senioren-c187103761/' },
+              ].map(({ label, href }) => (
                 <a
-                  key={item}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '0.82rem',
@@ -108,7 +119,7 @@ export default function Footer() {
                     textDecoration: 'none',
                   }}
                 >
-                  {item}
+                  {label}
                 </a>
               ))}
             </div>
@@ -123,12 +134,12 @@ export default function Footer() {
                   fontWeight: 600,
                 }}
               >
-                Follow Us
+                Social Media
               </span>
               {[
                 { label: 'Instagram', href: 'https://instagram.com/voltvibes_dorsten' },
-                { label: 'Filialen', href: '#' },
-                { label: 'Kontakt', href: 'mailto:info@voltvibes-dorsten.de' },
+                { label: 'Filialen', href: '/filialen' },
+                { label: 'Kontakt', href: '/kontakt' },
               ].map(({ label, href }) => (
                 <a
                   key={label}
@@ -163,7 +174,7 @@ export default function Footer() {
               zIndex: 2,
             }}
           >
-            Stay Connected with VoltVibes
+            Bleib verbunden mit VoltVibes
           </h2>
 
           {/* Watermark text */}
@@ -198,7 +209,7 @@ export default function Footer() {
             ©2026 VoltVibes Dorsten. Alle Rechte vorbehalten.
           </span>
           <div style={{ display: 'flex', gap: '2rem' }}>
-            {['Privacy Policy', 'Terms & Conditions'].map((item) => (
+            {['Datenschutz', 'Impressum'].map((item) => (
               <a
                 key={item}
                 href="#"
