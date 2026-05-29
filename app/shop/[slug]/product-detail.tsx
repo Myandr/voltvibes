@@ -73,7 +73,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
   return (
     <div style={{ background: '#fff' }}>
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
         <nav className="flex items-center gap-1.5 text-xs text-[#888]">
           <Link href="/" className="hover:text-[#0e0e0e] transition-colors">Home</Link>
           <ChevronRight className="h-3 w-3" />
@@ -142,14 +142,8 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
           {/* Product Info */}
           <div className="flex flex-col">
             <p className="text-xs uppercase tracking-widest text-[#888] font-medium">{product.vendor}</p>
-            <h1
-              className="mt-2 leading-tight text-[#0e0e0e]"
-              style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '0.02em' }}
-            >
-              {product.title}
-            </h1>
 
-            <div className="mt-5 flex items-baseline gap-3">
+            <div className="mt-4 flex items-baseline gap-3">
               <span className="text-3xl font-bold text-[#0e0e0e]">
                 {variantPrice.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
               </span>
