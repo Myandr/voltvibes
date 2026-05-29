@@ -1,13 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { BlurTextEffect } from './BlurTextEffect';
 
 const posts = [
-  { id: 1, tag: 'Ratgeber', title: 'E-Scooter kaufen in Dorsten — worauf du achten solltest', img: '/images/1779488754826-image_generation-google.png', imgPos: 'center center' },
-  { id: 2, tag: 'Reparatur', title: 'Die häufigsten Scooter-Defekte und wie wir sie beheben',   img: '/images/gallery-2.jpg',                              imgPos: 'center center' },
-  { id: 3, tag: 'Stunt Scooter', title: 'Stunt Scooter für Einsteiger: Welches Modell passt zu dir?', img: '/images/gallery-3.jpg',                         imgPos: 'center center' },
+  { id: 1, tag: 'Ratgeber',     title: 'E-Scooter kaufen in Dorsten — worauf du achten solltest',       img: '/images/1779488754826-image_generation-google.png', imgPos: 'center center', href: '/news-and-events/e-scooter-kaufen-dorsten' },
+  { id: 2, tag: 'Reparatur',    title: 'Die häufigsten Scooter-Defekte und wie wir sie beheben',         img: '/images/gallery-2.jpg',                              imgPos: 'center center', href: '/news-and-events/stunt-scooter-kinder'      },
+  { id: 3, tag: 'Stunt Scooter',title: 'Stunt Scooter für Einsteiger: Welches Modell passt zu dir?',    img: '/images/gallery-3.jpg',                              imgPos: 'center center', href: '/news-and-events/stunt-scooter-kinder'      },
 ];
 
 function useFadeIn(delay = 0) {
@@ -52,18 +53,20 @@ export default function BlogSection() {
 
         {/* Cards */}
         <div className="blog-grid">
-          {posts.map(({ id, tag, title, img, imgPos }, idx) => {
+          {posts.map(({ id, tag, title, img, imgPos, href }, idx) => {
             const { ref, visible } = cardRefs[idx];
             return (
-              <div
+              <Link
                 key={id}
-                ref={ref}
+                href={href}
+                ref={ref as React.Ref<HTMLAnchorElement>}
                 className="blog-card"
                 style={{
                   position: 'relative', borderRadius: '18px', overflow: 'hidden', cursor: 'pointer',
                   opacity: visible ? 1 : 0,
                   transform: visible ? 'translateY(0) scale(1)' : 'translateY(36px) scale(0.97)',
                   transition: 'opacity 0.65s ease, transform 0.65s ease',
+                  textDecoration: 'none', display: 'block',
                 }}
               >
                 <Image src={img} alt={title} fill style={{ objectFit: 'cover', objectPosition: imgPos, transition: 'transform 0.4s ease' }} />
@@ -76,7 +79,7 @@ export default function BlogSection() {
                     {title}
                   </h3>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

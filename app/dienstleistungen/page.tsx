@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import {
   Wrench,
   Zap,
@@ -21,36 +22,42 @@ const services = [
     title: "Reifenpannen-Reparatur",
     description:
       "Ein platter Reifen oder ein beschädigter Reifen? Kein Problem! Wir bieten schnelle und zuverlässige Reifenreparatur an E-Scootern aller Marken — oft noch am selben Tag.",
+    href: "/reparaturen",
   },
   {
     icon: Package,
     title: "Stunt Scooter & Zubehör",
     description:
       "Große Auswahl von Anfänger bis Profi. Führende Marken: Core, Type-R, Panda. Inklusive Helme und Schutzausrüstung — alles aus einer Hand in unserer Filiale.",
+    href: "/shop",
   },
   {
     icon: Settings,
     title: "Ersatzteile & Zubehör",
     description:
       "Breites Sortiment an Ersatzteilen: Reifen, Bremsen, Akkus, Kabel und vieles mehr. Wir helfen dir, das richtige Teil zu finden und einzubauen.",
+    href: "/shop",
   },
   {
     icon: Wrench,
     title: "Allgemeine Reparaturen",
     description:
       "E-Scooter-Reparaturen aller Art: Elektronik, Mechanik, Teilaustausch. Unsere erfahrenen Techniker sorgen dafür, dass dein Scooter schnell wieder rollt.",
+    href: "/reparaturen",
   },
   {
     icon: ArrowLeftRight,
     title: "Ankauf & Verkauf",
     description:
       "Neue und gebrauchte Roller zu fairen Preisen — direkt vor Ort. Wir nehmen deinen alten Scooter in Zahlung und beraten dich ehrlich beim Kauf.",
+    href: "/shop",
   },
   {
     icon: Accessibility,
     title: "Seniorenmobile",
     description:
       "Elektrische Mobilitätshilfen für Senioren: sicher, komfortabel und einfach zu bedienen. Wir beraten persönlich und bieten Testfahrten an.",
+    href: "/shop",
   },
 ]
 
@@ -133,16 +140,21 @@ export default function DienstleistungenPage() {
           {services.map((service) => {
             const Icon = service.icon
             return (
-              <div
+              <Link
                 key={service.title}
-                className="bg-white hover:bg-gray-50 transition-colors duration-300 p-7 flex flex-col gap-4"
+                href={service.href}
+                className="bg-white hover:bg-gray-50 transition-colors duration-300 p-7 flex flex-col gap-4 group"
+                style={{ textDecoration: 'none' }}
               >
                 <Icon className="h-5 w-5 text-[#8BBDE8]" />
                 <div>
-                  <h2 className="text-base font-semibold tracking-tight text-gray-900 mb-1.5">{service.title}</h2>
+                  <h2 className="text-base font-semibold tracking-tight text-gray-900 mb-1.5 group-hover:text-[#8BBDE8] transition-colors">{service.title}</h2>
                   <p className="text-sm text-gray-500 leading-relaxed">{service.description}</p>
                 </div>
-              </div>
+                <div className="mt-auto flex items-center gap-1 text-xs font-semibold text-[#8BBDE8] opacity-0 group-hover:opacity-100 transition-opacity">
+                  Mehr erfahren <ChevronRight className="h-3 w-3" />
+                </div>
+              </Link>
             )
           })}
         </div>

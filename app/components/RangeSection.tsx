@@ -72,7 +72,7 @@ export default function RangeSection() {
               <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: '#666', margin: 0, lineHeight: 1.6, maxWidth: '320px' }}>
                 Neu und gebraucht — wir führen eine große Auswahl zugelassener E-Scooter für die Stadt. Probefahrten möglich.
               </p>
-              <VVButton href="#inventory" variant="blue">Jetzt entdecken</VVButton>
+              <VVButton href="/shop" variant="blue">Jetzt entdecken</VVButton>
             </div>
           </div>
 
@@ -84,7 +84,7 @@ export default function RangeSection() {
               <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: '#666', margin: 0, lineHeight: 1.6, maxWidth: '320px' }}>
                 Hochwertige Stunt Scooter von Core, Type-R, Panda und weiteren Top-Marken — inklusive Helme und Schutzausrüstung.
               </p>
-              <VVButton href="#inventory" variant="blue">Jetzt entdecken</VVButton>
+              <VVButton href="/shop" variant="blue">Jetzt entdecken</VVButton>
             </div>
           </div>
 

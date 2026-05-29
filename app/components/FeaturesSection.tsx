@@ -1,13 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { BlurTextEffect } from './BlurTextEffect';
 
 const features = [
-  { id: 'motor',      num: '01', title: 'Schnelle Reparatur',       desc: 'Platte Reifen, Bremsen, Akkus — wir reparieren alle Scooter-Modelle schnell und zuverlässig.', img: '/images/gallery-3.jpg',                              imgPos: 'center center' },
-  { id: 'stability',  num: '02', title: 'Große Auswahl',            desc: 'Helme, Schutzausrüstung, Ersatzteile, Zubehör — alles was du brauchst, direkt vor Ort.',        img: '/images/1779538765056-image_generation-google.png',  imgPos: 'center top'    },
-  { id: 'visibility', num: '03', title: 'Persönliche Beratung',     desc: 'Unser junges, enthusiastisches Team berät dich kompetent — direkt in der Dorstener Innenstadt.',  img: '/images/gallery-4.jpg',                              imgPos: 'center center' },
+  { id: 'motor',      num: '01', title: 'Schnelle Reparatur',       desc: 'Platte Reifen, Bremsen, Akkus — wir reparieren alle Scooter-Modelle schnell und zuverlässig.', img: '/images/gallery-3.jpg',                              imgPos: 'center center', href: '/reparaturen' },
+  { id: 'stability',  num: '02', title: 'Große Auswahl',            desc: 'Helme, Schutzausrüstung, Ersatzteile, Zubehör — alles was du brauchst, direkt vor Ort.',        img: '/images/1779538765056-image_generation-google.png',  imgPos: 'center top',    href: '/shop'        },
+  { id: 'visibility', num: '03', title: 'Persönliche Beratung',     desc: 'Unser junges, enthusiastisches Team berät dich kompetent — direkt in der Dorstener Innenstadt.',  img: '/images/gallery-4.jpg',                              imgPos: 'center center', href: '/kontakt'     },
 ];
 
 const defaultFlex: Record<string, number> = { motor: 1.5, stability: 1, visibility: 1, shop: 0.55 };
@@ -134,7 +135,7 @@ export default function FeaturesSection() {
             transition: 'opacity 0.7s ease, transform 0.7s ease',
           }}
         >
-          {features.map(({ id, num, title, desc, img, imgPos }) => {
+          {features.map(({ id, num, title, desc, img, imgPos, href }) => {
             const isHovered = hovered === id;
             return (
               <div
@@ -146,7 +147,7 @@ export default function FeaturesSection() {
                   flex: getFlex(id), minWidth: 0, background: '#f5f5f5', borderRadius: '16px',
                   padding: '1.75rem', boxSizing: 'border-box', display: 'flex',
                   flexDirection: 'column', justifyContent: 'space-between',
-                  overflow: 'hidden', cursor: 'default', position: 'relative',
+                  overflow: 'hidden', cursor: 'pointer', position: 'relative',
                   transition: 'flex 0.45s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
               >
@@ -179,7 +180,8 @@ export default function FeaturesSection() {
                         {desc}
                       </p>
                     </div>
-                    <div
+                    <Link
+                      href={href}
                       className="feature-arrow"
                       style={{
                         opacity: isHovered ? 1 : 0,
@@ -191,7 +193,7 @@ export default function FeaturesSection() {
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M4 14L14 4M14 4H7M14 4V11" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -210,9 +212,9 @@ export default function FeaturesSection() {
             {[{ top: '1.25rem', left: '1.25rem' }, { top: '1.25rem', right: '1.25rem' }, { bottom: '1.25rem', left: '1.25rem' }, { bottom: '1.25rem', right: '1.25rem' }].map((pos, i) => (
               <div key={i} style={{ position: 'absolute', width: '5px', height: '5px', borderRadius: '50%', background: '#bbb', ...pos }} />
             ))}
-            <a href="#inventory" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#333', textDecoration: 'none', background: '#ebebeb', borderRadius: '999px', padding: '0.6rem 1.25rem', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Link href="/shop" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#333', textDecoration: 'none', background: '#ebebeb', borderRadius: '999px', padding: '0.6rem 1.25rem', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               Shop Now <span style={{ fontSize: '0.9rem' }}>→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

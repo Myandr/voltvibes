@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { BlurTextEffect } from './BlurTextEffect';
 
@@ -22,19 +23,30 @@ function useFadeIn(delay = 0) {
   return { ref, visible };
 }
 
-function FadeCard({ children, delay, style, className }: { children: React.ReactNode; delay: number; style?: React.CSSProperties; className?: string }) {
+function FadeCard({ children, delay, style, className, href }: { children: React.ReactNode; delay: number; style?: React.CSSProperties; className?: string; href?: string }) {
   const { ref, visible } = useFadeIn(delay);
+  const combined = {
+    ...style,
+    opacity: visible ? 1 : 0,
+    transform: visible ? 'translateY(0)' : 'translateY(24px)',
+    transition: 'opacity 0.6s ease, transform 0.6s ease',
+  };
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        className={className}
+        style={{ ...combined, textDecoration: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}
+      >
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        ...style,
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(24px)',
-        transition: 'opacity 0.6s ease, transform 0.6s ease',
-      }}
-    >
+    <div ref={ref} className={className} style={combined}>
       {children}
     </div>
   );
@@ -45,6 +57,7 @@ export default function ServicesSection() {
 
   return (
     <section
+      id="services"
       style={{
         width: '100%',
         backgroundImage: 'url(/images/services-background2.png)',
@@ -114,9 +127,10 @@ export default function ServicesSection() {
 
         {/* Bento Grid */}
         <div className="bento-grid">
-          {/* Large card */}
+          {/* Large card → Reparaturen */}
           <FadeCard
             delay={100}
+            href="/reparaturen"
             className="bento-large"
             style={{
               gridRow: '1 / 3',
@@ -125,15 +139,24 @@ export default function ServicesSection() {
               overflow: 'hidden',
               position: 'relative',
               background: '#111',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-end',
               padding: '2rem',
               boxSizing: 'border-box',
+              cursor: 'pointer',
             }}
           >
             <Image src="/images/gallery-3.jpg" alt="" fill style={{ objectFit: 'cover', objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 55%)', zIndex: 1 }} />
+            {/* Arrow button top-right */}
+            <div style={{
+              position: 'absolute', top: '1rem', right: '1rem', zIndex: 3,
+              width: '36px', height: '36px', borderRadius: '50%',
+              background: '#0e0e0e',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 11L11 3M11 3H5M11 3V9" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
             <div style={{ position: 'relative', zIndex: 2 }}>
               <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.25rem', fontWeight: 700, color: '#fff', margin: '0 0 0.5rem' }}>
                 Professionelle Reparatur
@@ -144,16 +167,17 @@ export default function ServicesSection() {
             </div>
           </FadeCard>
 
-          {/* Small cards */}
+          {/* Small cards → Shop */}
           {[
-            { title: 'Stunt Scooter',            row: '1', col: '2', img: '/images/1779538765056-image_generation-google.png', pos: 'center top', delay: 200 },
-            { title: 'Ersatzteile & Zubehör',   row: '1', col: '3', img: '/images/gallery-1.jpg',  pos: 'center center', delay: 300 },
-            { title: 'E-Scooter Verkauf',        row: '2', col: '2', img: '/images/gallery-2.jpg',  pos: 'center center', delay: 350 },
-            { title: 'Seniorenmobilität',         row: '2', col: '3', img: '/images/gallery-4.jpg',  pos: 'center top',    delay: 450 },
+            { title: 'Stunt Scooter',          row: '1', col: '2', img: '/images/1779538765056-image_generation-google.png', pos: 'center top',    delay: 200 },
+            { title: 'Ersatzteile & Zubehör',  row: '1', col: '3', img: '/images/gallery-1.jpg',  pos: 'center center', delay: 300 },
+            { title: 'E-Scooter Verkauf',       row: '2', col: '2', img: '/images/gallery-2.jpg',  pos: 'center center', delay: 350 },
+            { title: 'Seniorenmobilität',        row: '2', col: '3', img: '/images/gallery-4.jpg',  pos: 'center top',    delay: 450 },
           ].map(({ title, row, col, img, pos, delay }) => (
             <FadeCard
               key={title}
               delay={delay}
+              href="/shop"
               className="bento-small"
               style={{
                 gridRow: row,
@@ -162,11 +186,9 @@ export default function ServicesSection() {
                 overflow: 'hidden',
                 position: 'relative',
                 background: '#111',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-end',
                 padding: '1.5rem',
                 boxSizing: 'border-box',
+                cursor: 'pointer',
               }}
             >
               <Image src={img} alt="" fill style={{ objectFit: 'cover', objectPosition: pos }} />
@@ -177,7 +199,6 @@ export default function ServicesSection() {
                 width: '36px', height: '36px', borderRadius: '50%',
                 background: '#0e0e0e',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'pointer',
               }}>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M3 11L11 3M11 3H5M11 3V9" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
