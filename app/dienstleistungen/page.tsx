@@ -116,7 +116,7 @@ export default function DienstleistungenPage() {
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6">
                     <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/60 mb-1.5 sm:mb-2">{card.label}</p>
                     <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight mb-2 sm:mb-3">{card.title}</p>
-                    <p className="text-sm sm:text-base text-white/80 leading-relaxed">{card.desc}</p>
+                    <p className="hidden sm:block text-sm sm:text-base text-white/80 leading-relaxed">{card.desc}</p>
                   </div>
                 </Link>
               ))}
@@ -181,7 +181,7 @@ export default function DienstleistungenPage() {
                 href="/news-and-events"
                 className="group flex items-center gap-4"
               >
-                <div className="relative overflow-hidden rounded-xl shrink-0 w-44 h-36 sm:w-52 sm:h-40">
+                <div className="relative overflow-hidden rounded-xl shrink-0 w-28 h-24 sm:w-44 sm:h-36 lg:w-52 lg:h-40">
                   <Image
                     src={article.image}
                     alt={article.title}

@@ -121,8 +121,8 @@ export default function CustomerStoriesSection() {
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
 
-        <div className="absolute top-1/2 -translate-y-1/2 left-10 max-w-sm md:max-w-md">
-          <p className="text-white font-bold text-xl md:text-2xl leading-snug">
+        <div className="absolute top-1/2 -translate-y-1/2 left-6 right-6 sm:left-10 sm:right-auto sm:max-w-sm md:max-w-md">
+          <p className="text-white font-bold text-lg sm:text-xl md:text-2xl leading-snug">
             &ldquo;{story.quote}&rdquo;
           </p>
         </div>

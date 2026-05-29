@@ -93,8 +93,8 @@ export default function TeamCarouselSection() {
           }}
         >
           <div className="relative max-w-6xl mx-auto flex items-end justify-center gap-4">
-            {/* Left card */}
-            <div className="relative w-[300px] h-[420px] rounded-2xl overflow-hidden flex-shrink-0 opacity-90">
+            {/* Left card — hidden on mobile */}
+            <div className="hidden lg:block relative w-[300px] h-[420px] rounded-2xl overflow-hidden flex-shrink-0 opacity-90">
               <Image src={left.image} alt={left.name} fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 p-5">
@@ -103,8 +103,8 @@ export default function TeamCarouselSection() {
               </div>
             </div>
 
-            {/* Center card (featured) */}
-            <div className="relative w-[400px] h-[560px] rounded-2xl overflow-hidden flex-shrink-0 shadow-2xl z-10">
+            {/* Center card (featured) — full width on mobile, fixed width on desktop */}
+            <div className="relative w-full lg:w-[400px] h-[420px] sm:h-[500px] lg:h-[560px] rounded-2xl overflow-hidden flex-shrink-0 shadow-2xl z-10">
               <Image src={center.image} alt={center.name} fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 p-6">
@@ -113,8 +113,8 @@ export default function TeamCarouselSection() {
               </div>
             </div>
 
-            {/* Right card */}
-            <div className="relative w-[300px] h-[420px] rounded-2xl overflow-hidden flex-shrink-0 opacity-90">
+            {/* Right card — hidden on mobile */}
+            <div className="hidden lg:block relative w-[300px] h-[420px] rounded-2xl overflow-hidden flex-shrink-0 opacity-90">
               <Image src={right.image} alt={right.name} fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 p-5">

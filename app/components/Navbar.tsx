@@ -187,7 +187,7 @@ export default function Navbar() {
                   size="sm"
                   className={cn(
                     'rounded-full font-medium bg-[#0C1523] text-white hover:bg-[#0C1523]/90 px-6 text-sm',
-                    isLight ? 'lg:inline-flex' : 'hidden'
+                    isLight ? 'hidden lg:inline-flex' : 'hidden'
                   )}
                 >
                   <Link href="/kontakt" onClick={close}>Kontakt</Link>

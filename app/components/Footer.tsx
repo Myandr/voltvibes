@@ -88,7 +88,7 @@ export default function Footer() {
         style={{
           width: '100%',
           background: '#080808',
-          padding: '3.5rem 3rem 2.5rem',
+          padding: '3.5rem clamp(1rem, 5vw, 3rem) 2.5rem',
           boxSizing: 'border-box',
           position: 'relative',
           overflow: 'hidden',

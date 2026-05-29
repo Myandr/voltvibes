@@ -56,12 +56,23 @@ export const BlurTextEffect: React.FC<BlurTextEffectProps> = ({
     return () => observer.disconnect();
   }, [children, delay, scrollTrigger]);
 
+  const words = children.split(' ');
+
   return (
     <span className={`inline-block ${className}`} ref={containerRef}>
-      {children.split('').map((char, i) => (
-        <span key={`${char}-${i}`} className="char inline-block" style={{ whiteSpace: 'pre' }}>
-          {char === ' ' ? ' ' : char}
-        </span>
+      {words.map((word, wi) => (
+        <React.Fragment key={wi}>
+          <span className="inline-block" style={{ whiteSpace: 'nowrap' }}>
+            {word.split('').map((char, ci) => (
+              <span key={ci} className="char inline-block" style={{ whiteSpace: 'pre' }}>
+                {char}
+              </span>
+            ))}
+          </span>
+          {wi < words.length - 1 && (
+            <span className="char inline-block" style={{ whiteSpace: 'pre' }}>{' '}</span>
+          )}
+        </React.Fragment>
       ))}
     </span>
   );
