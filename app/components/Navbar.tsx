@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { Equal, X } from 'lucide-react';
+import { Equal, X, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/liquid-glass-button';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/lib/cart-context';
 
 const navLinks = [
   { label: 'Shop', href: '/shop' },
@@ -14,6 +15,30 @@ const navLinks = [
   { label: 'Filialen', href: '/filialen' },
   { label: 'Das Team', href: '/das-team' },
 ];
+
+function CartIcon({ isScrolled }: { isScrolled: boolean }) {
+  const { totalQuantity } = useCart();
+  return (
+    <Link
+      href="/shop/warenkorb"
+      aria-label="Warenkorb"
+      className="relative flex items-center justify-center"
+    >
+      <ShoppingBag
+        size={20}
+        className={cn(
+          'transition-colors duration-150',
+          isScrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white'
+        )}
+      />
+      {totalQuantity > 0 && (
+        <span className="absolute -top-1.5 -right-1.5 h-4 w-4 rounded-full bg-[#8BBDE8] text-[#0C1523] text-[10px] font-bold flex items-center justify-center leading-none">
+          {totalQuantity > 9 ? '9+' : totalQuantity}
+        </span>
+      )}
+    </Link>
+  );
+}
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -62,38 +87,27 @@ export default function Navbar() {
                 </span>
               </Link>
 
-              <button
-                onClick={() => setMenuOpen((o) => !o)}
-                aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
-                aria-expanded={menuOpen}
-                className={cn('relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden', isScrolled ? 'text-gray-800' : 'text-white')}
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {menuOpen ? (
-                    <motion.span
-                      key="x"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.18 }}
-                      className="flex"
-                    >
-                      <X size={22} />
-                    </motion.span>
-                  ) : (
-                    <motion.span
-                      key="menu"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.18 }}
-                      className="flex"
-                    >
-                      <Equal size={22} />
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </button>
+              <div className="flex items-center gap-4 lg:hidden">
+                <CartIcon isScrolled={isScrolled} />
+                <button
+                  onClick={() => setMenuOpen((o) => !o)}
+                  aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
+                  aria-expanded={menuOpen}
+                  className={cn('relative z-20 -m-2.5 -mr-1 cursor-pointer p-2.5', isScrolled ? 'text-gray-800' : 'text-white')}
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {menuOpen ? (
+                      <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }} className="flex">
+                        <X size={22} />
+                      </motion.span>
+                    ) : (
+                      <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }} className="flex">
+                        <Equal size={22} />
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </div>
             </div>
 
             {/* ── Desktop: centered nav links ── */}
@@ -113,13 +127,13 @@ export default function Navbar() {
               </ul>
             </div>
 
-            {/* ── Mobile drawer + desktop CTAs ── */}
+            {/* ── Desktop: right side (cart + CTA) ── */}
             <div
               className={cn(
                 'mb-6 hidden w-full flex-wrap items-center justify-end space-y-8',
                 'rounded-3xl border border-white/10 bg-[#0C1523] p-6 shadow-2xl shadow-black/40',
                 'md:flex-nowrap',
-                'lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0',
+                'lg:m-0 lg:flex lg:w-fit lg:gap-4 lg:space-y-0',
                 'lg:rounded-none lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none',
                 menuOpen && 'block'
               )}
@@ -147,6 +161,11 @@ export default function Navbar() {
                 </ul>
               </div>
 
+              {/* Desktop cart icon */}
+              <div className="hidden lg:flex items-center">
+                <CartIcon isScrolled={isScrolled} />
+              </div>
+
               {/* CTA buttons */}
               <div className="flex w-full flex-col gap-2 sm:flex-row md:w-fit">
                 <Button
@@ -159,8 +178,6 @@ export default function Navbar() {
                 >
                   <Link href="/kontakt" onClick={close}>Termin vereinbaren</Link>
                 </Button>
-
-                {/* Scrolled-only compact CTA (desktop) */}
                 <Button
                   asChild
                   size="sm"
