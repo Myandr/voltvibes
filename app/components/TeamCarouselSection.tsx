@@ -12,12 +12,6 @@ const teamMembers = [
   { name: "Jonas Schulz", role: "Scooter-Spezialist", image: "/images/gallery-4.jpg" },
 ]
 
-const italicStyle = {
-  fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
-  color: "#8BBDE8",
-  fontStyle: "italic",
-  fontWeight: 400,
-} as const
 
 function useFadeIn(threshold = 0.2) {
   const ref = useRef<HTMLDivElement>(null)
@@ -55,34 +49,26 @@ export default function TeamCarouselSection() {
   const carousel = useFadeIn(0.1)
 
   return (
-    <section className="relative bg-white pt-40 pb-20 px-4 overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/services-background.png"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-          aria-hidden
-        />
-        {/* Top white gradient */}
-        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-white to-transparent" />
-        {/* Bottom white gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-white to-transparent" />
-      </div>
+    <section className="relative bg-white pt-40 pb-20 px-4">
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative">
         {/* Header */}
         <div className="text-center mb-14">
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 leading-tight">
-            <BlurTextEffect scrollTrigger delay={0}>Euer </BlurTextEffect>
-            <span style={italicStyle} className="text-5xl md:text-7xl">
-              <BlurTextEffect scrollTrigger delay={0.15}>VoltVibes</BlurTextEffect>
-            </span>
-            <BlurTextEffect scrollTrigger delay={0.3}> Team</BlurTextEffect>
-          </h2>
+          <div className="relative inline-block">
+            <h2 style={{ lineHeight: 0.9 }}>
+              <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
+                <BlurTextEffect scrollTrigger delay={0}>Euer </BlurTextEffect>
+              </span>
+              <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+                <BlurTextEffect scrollTrigger delay={0.15}>VoltVibes</BlurTextEffect>
+              </em>
+              <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
+                <BlurTextEffect scrollTrigger delay={0.3}> Team</BlurTextEffect>
+              </span>
+            </h2>
+            <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.45) 0%, transparent 32%)' }} />
+          </div>
           <div
             ref={subtitle.ref}
             style={{

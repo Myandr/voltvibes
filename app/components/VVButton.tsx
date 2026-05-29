@@ -8,9 +8,11 @@ interface VVButtonProps {
   /** 'light' = white bg + dark icon  |  'dark' = dark bg + white icon  |  'blue' = brand blue bg + dark icon */
   variant?: 'light' | 'dark' | 'blue';
   className?: string;
+  target?: string;
+  rel?: string;
 }
 
-export default function VVButton({ href, children, variant = 'light', className = '' }: VVButtonProps) {
+export default function VVButton({ href, children, variant = 'light', className = '', target, rel }: VVButtonProps) {
   const bg    = variant === 'light' ? '#fff'     : variant === 'blue' ? '#8BBDE8' : '#0e0e0e';
   const text  = variant === 'light' ? '#0C1523'  : '#fff';
   const iconBg= variant === 'light' ? '#0C1523'  : variant === 'blue' ? '#fff' : '#fff';
@@ -19,6 +21,8 @@ export default function VVButton({ href, children, variant = 'light', className 
   return (
     <a
       href={href}
+      target={target}
+      rel={rel}
       className={`group relative inline-flex items-center rounded-full h-12 p-1 ps-6 pe-14 overflow-hidden cursor-pointer w-fit transition-[padding] duration-500 hover:ps-14 hover:pe-6 no-underline ${className}`}
       style={{
         background:    bg,

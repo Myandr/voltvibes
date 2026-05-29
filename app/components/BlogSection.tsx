@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from 'react';
 import { BlurTextEffect } from './BlurTextEffect';
 
 const posts = [
-  { id: 1, tag: 'Ratgeber',     title: 'E-Scooter kaufen in Dorsten — worauf du achten solltest',       img: '/images/1779488754826-image_generation-google.png', imgPos: 'center center', href: '/news-and-events/e-scooter-kaufen-dorsten' },
-  { id: 2, tag: 'Reparatur',    title: 'Die häufigsten Scooter-Defekte und wie wir sie beheben',         img: '/images/gallery-2.jpg',                              imgPos: 'center center', href: '/news-and-events/stunt-scooter-kinder'      },
-  { id: 3, tag: 'Stunt Scooter',title: 'Stunt Scooter für Einsteiger: Welches Modell passt zu dir?',    img: '/images/gallery-3.jpg',                              imgPos: 'center center', href: '/news-and-events/stunt-scooter-kinder'      },
+  { id: 1, tag: 'Ratgeber',     title: 'E-Scooter kaufen in Dorsten — worauf du achten solltest',       img: '/images/1779488754826-image_generation-google.png', imgPos: 'center center', href: '/news-and-events' },
+  { id: 2, tag: 'Reparatur',    title: 'Die häufigsten Scooter-Defekte und wie wir sie beheben',         img: '/images/gallery-2.jpg',                              imgPos: 'center center', href: '/news-and-events'      },
+  { id: 3, tag: 'Stunt Scooter',title: 'Stunt Scooter für Einsteiger: Welches Modell passt zu dir?',    img: '/images/gallery-3.jpg',                              imgPos: 'center center', href: '/news-and-events'      },
 ];
 
 function useFadeIn(delay = 0) {

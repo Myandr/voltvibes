@@ -14,7 +14,8 @@ const navLinks = [
   { label: 'Dienstleistungen', href: '/dienstleistungen' },
   { label: 'Reparaturen', href: '/reparaturen' },
   { label: 'Filialen', href: '/filialen' },
-  { label: 'Das Team', href: '/das-team' },
+  { label: 'Team', href: '/das-team' },
+  { label: 'News', href: '/news-and-events' },
 ];
 
 function CartIcon({ isLight }: { isLight: boolean }) {
@@ -175,21 +176,21 @@ export default function Navbar() {
                   asChild
                   size="sm"
                   className={cn(
-                    'rounded-full bg-white text-[#0C1523] hover:bg-white/90 font-medium',
+                    'rounded-full bg-white text-[#0C1523] hover:bg-white/90 font-medium px-6 text-sm',
                     isLight && 'lg:hidden'
                   )}
                 >
-                  <Link href="/kontakt" onClick={close}>Termin vereinbaren</Link>
+                  <Link href="/kontakt" onClick={close}>Kontakt</Link>
                 </Button>
                 <Button
                   asChild
                   size="sm"
                   className={cn(
-                    'rounded-full font-medium bg-[#0C1523] text-white hover:bg-[#0C1523]/90',
+                    'rounded-full font-medium bg-[#0C1523] text-white hover:bg-[#0C1523]/90 px-6 text-sm',
                     isLight ? 'lg:inline-flex' : 'hidden'
                   )}
                 >
-                  <Link href="/kontakt" onClick={close}>Termin vereinbaren</Link>
+                  <Link href="/kontakt" onClick={close}>Kontakt</Link>
                 </Button>
               </div>
             </div>

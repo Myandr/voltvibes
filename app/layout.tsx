@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import SmoothScroll from "./components/SmoothScroll";
 import { CartProvider } from "@/lib/cart-context";
 
 const geistSans = Geist({
@@ -38,7 +37,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>
-          <SmoothScroll />
           <Navbar />
           {children}
         </CartProvider>

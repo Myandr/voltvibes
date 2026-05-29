@@ -81,9 +81,9 @@ export default function CustomerStoriesSection() {
     <section className="bg-white py-20 px-4">
       {/* Header */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-tight">
           <BlurTextEffect scrollTrigger delay={0}>Kunden</BlurTextEffect>
-          <span style={italicStyle} className="text-4xl md:text-5xl">
+          <span style={italicStyle} className="text-5xl md:text-6xl lg:text-7xl">
             <BlurTextEffect scrollTrigger delay={0.2}>stimmen</BlurTextEffect>
           </span>
         </h2>

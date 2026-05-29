@@ -1,5 +1,4 @@
 import Footer from "../components/Footer"
-import PageHero from "../components/PageHero"
 import ShopClient from "./ShopClient"
 import { fetchProducts } from "@/lib/shopify"
 import { AlertTriangle, Settings, Wifi, KeyRound } from "lucide-react"
@@ -16,13 +15,6 @@ export default async function ShopPage() {
 
   return (
     <main className="flex flex-col flex-1 min-h-screen bg-white">
-      <PageHero
-        eyebrow="VoltVibes Dorsten"
-        title="Unser"
-        titleAccent="Shop"
-        subtitle="E-Scooter, Stunt Scooter, Helme und Elektromobile — direkt in der Dorstener Innenstadt."
-      />
-
       {!result.ok ? (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           {(() => {

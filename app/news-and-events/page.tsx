@@ -1,17 +1,18 @@
+'use client'
+
+import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import PageHero from "../components/PageHero"
 import Footer from "../components/Footer"
-import { cn } from "@/lib/utils"
+import { BlurTextEffect } from "../components/BlurTextEffect"
+import CustomerStoriesSection from "../components/CustomerStoriesSection"
 
 type BadgeColor = "red" | "blue" | "green" | "purple"
 
 const tagColors: Record<BadgeColor, string> = {
-  red:    "bg-[#8BBDE8]/10 text-[#8BBDE8] border-[#8BBDE8]/20",
-  blue:   "bg-blue-600/10 text-blue-600 border-blue-600/20",
-  green:  "bg-green-600/10 text-green-600 border-green-600/20",
-  purple: "bg-purple-600/10 text-purple-600 border-purple-600/20",
+  red:    "border border-[#8BBDE8]/30 bg-[#8BBDE8]/8 text-[#8BBDE8]",
+  blue:   "border border-blue-500/30 bg-blue-500/8 text-blue-600",
+  green:  "border border-green-500/30 bg-green-500/8 text-green-600",
+  purple: "border border-purple-500/30 bg-purple-500/8 text-purple-600",
 }
 
 const articles = [
@@ -23,7 +24,7 @@ const articles = [
     title: "VoltVibes beim Nachhaltigkeitstag der VHS Dorsten",
     excerpt:
       "VoltVibes beteiligt sich am Nachhaltigkeitstag der VHS Dorsten. Spannende Aktionen, Gespräche mit Besuchern, Workshops und Vorträge rund um nachhaltige Mobilität erwarten euch am Im Werth 6.",
-    image: "/images/news-1.jpg",
+    image: "/images/gallery-1.jpg",
   },
   {
     slug: "stunt-scooter-kinder",
@@ -33,7 +34,7 @@ const articles = [
     title: "Stunt-Scooter für junge Fahrer jetzt im Sortiment",
     excerpt:
       "VoltVibes erweitert sein Sortiment um hochwertige Stunt-Scooter speziell für junge Fahrer: stabile Bauweise, hohe Sicherheit, modernes Design.",
-    image: "/images/image-768x768.png",
+    image: "/images/scooter-palmen.png",
   },
   {
     slug: "partnerstation-bottrop",
@@ -43,7 +44,7 @@ const articles = [
     title: "Neue Partnerstation in Bottrop bei AWK Smart Repair",
     excerpt:
       "Ab sofort Pickup-Point bei AWK Smart Repair in Bottrop. Scooter dort abgeben, wir holen, reparieren und liefern zurück — ganz bequem.",
-    image: "/images/news-3.jpg",
+    image: "/images/gallery-4.jpg",
   },
   {
     slug: "goettingen-2026",
@@ -53,103 +54,147 @@ const articles = [
     title: "VoltVibes Göttingen — Eröffnung Mai 2026",
     excerpt:
       "Wir expandieren! Im Mai 2026 eröffnet unsere neue Filiale in Göttingen mit Schwerpunkt auf Seniorenmobilen und einer eigenen Teststrecke. Seid dabei!",
-    image: "/images/gallery-2.jpg",
+    image: "/images/gallery-3.jpg",
   },
 ]
 
+function useFadeIn(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
+      { threshold }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [threshold])
+  return { ref, visible }
+}
+
+function fadeStyle(visible: boolean, delay = 0, y = 16): React.CSSProperties {
+  return {
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : `translateY(${y}px)`,
+    transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
+  }
+}
+
 function TagBadge({ tag, color }: { tag: string; color: BadgeColor }) {
   return (
-    <span className={cn("inline-flex rounded-full border px-4 py-1.5 text-xs font-medium tracking-wide", tagColors[color])}>
+    <span className={`inline-flex rounded-full px-3 py-1 text-xs font-medium tracking-wide ${tagColors[color]}`}>
       {tag}
     </span>
   )
 }
 
 export default function NewsAndEventsPage() {
-  const [featured, ...rest] = articles
+  const heroSub = useFadeIn()
+  const featured = useFadeIn(0.1)
+  const grid = useFadeIn(0.1)
+
+  const [featuredArticle, ...rest] = articles
 
   return (
     <main className="flex flex-col flex-1 bg-white">
-      <PageHero
-        eyebrow="Aktuelles"
-        title="News"
-        titleAccent="& Events"
-        subtitle="Aktuelles aus dem VoltVibes-Universum — Events, Produktneuheiten und Ankündigungen."
-      />
 
-      {/* Content */}
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 py-16">
-
-        {/* Featured */}
-        <div className="group grid gap-4 lg:grid-cols-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors duration-500 overflow-hidden mb-12">
-
-          {/* Left: Info */}
-          <div className="p-8 flex flex-col justify-center relative order-2 lg:order-1">
-            <div className="relative">
-              <div className="flex items-center gap-3 mb-4">
-                <TagBadge tag={featured.tag} color={featured.tagColor} />
-                <span className="text-xs text-gray-400">{featured.date}</span>
-              </div>
-              <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-3 group-hover:text-[#8BBDE8] transition-colors">
-                {featured.title}
-              </h2>
-              <p className="text-sm text-gray-500 leading-relaxed mb-5">{featured.excerpt}</p>
-              <Link href={`/news-and-events/${featured.slug}`} className="inline-flex items-center gap-1 text-sm font-semibold text-[#8BBDE8] hover:gap-2 transition-all">
-                Weiterlesen <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Right: Image */}
-          <div className="relative isolate border border-gray-200 bg-white p-2 rounded-xl m-4 order-1 lg:order-2">
-            <Image
-              src={featured.image}
-              alt={featured.title}
-              width={600}
-              height={400}
-              className="w-full h-full object-cover rounded-xl aspect-video"
-            />
-            <div className="absolute inset-2 bg-gradient-to-t from-white/20 via-transparent to-transparent rounded-xl" />
-          </div>
+      {/* ── Hero Title ── */}
+      <div className="w-full pt-40 pb-16 px-4 text-center">
+        <div className="relative inline-block">
+          <h1 style={{ lineHeight: 0.9 }}>
+            <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
+              <BlurTextEffect scrollTrigger delay={0}>News </BlurTextEffect>
+            </span>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+              <BlurTextEffect scrollTrigger delay={0.15}>& Events</BlurTextEffect>
+            </em>
+          </h1>
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.45) 0%, transparent 32%)' }} />
         </div>
-
-        {/* Further Articles — Card Grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((article) => (
-            <article
-              key={article.slug}
-              className="rounded-xl border border-gray-200 bg-white overflow-hidden hover:bg-gray-50 transition-colors duration-300 group"
-            >
-              <div className="relative aspect-video overflow-hidden">
-                <Image
-                  src={article.image}
-                  alt={article.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent" />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <TagBadge tag={article.tag} color={article.tagColor} />
-                  <span className="text-xs text-gray-400">{article.date}</span>
-                </div>
-                <h3 className="text-base font-semibold tracking-tight text-gray-900 mb-2 group-hover:text-[#8BBDE8] transition-colors leading-snug">
-                  {article.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed line-clamp-3">
-                  {article.excerpt}
-                </p>
-                <Link href={`/news-and-events/${article.slug}`} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#8BBDE8] hover:gap-2 transition-all">
-                  Weiterlesen <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </article>
-          ))}
+        <div ref={heroSub.ref} style={fadeStyle(heroSub.visible, 0.35)}>
+          <p className="text-xs sm:text-sm text-zinc-500 max-w-xs sm:max-w-sm mx-auto leading-relaxed mt-4">
+            Aktuelles aus dem VoltVibes-Universum — Events, Produktneuheiten und Ankündigungen.
+          </p>
         </div>
-
       </div>
 
+      {/* ── Featured Article ── */}
+      <div className="px-4">
+        <div className="max-w-6xl mx-auto w-full pb-6 sm:pb-8">
+          <div ref={featured.ref} style={fadeStyle(featured.visible, 0.1, 24)}>
+            <div className="relative overflow-hidden rounded-2xl h-[340px] sm:h-[460px] lg:h-[520px] group">
+              <Image
+                src={featuredArticle.image}
+                alt={featuredArticle.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
+              {/* Gradient: dark bottom + faint left vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
+
+              {/* Bottom: title + excerpt + date */}
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 lg:p-10 flex flex-col gap-2 sm:gap-3">
+                <p className="text-xs text-white/50 uppercase tracking-widest font-medium">{featuredArticle.date}</p>
+                <h2
+                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight max-w-xl"
+                  style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}
+                >
+                  {featuredArticle.title}
+                </h2>
+                <p className="text-base text-white/70 leading-relaxed max-w-lg hidden sm:block line-clamp-2">
+                  {featuredArticle.excerpt}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Article Grid ── */}
+      <div className="px-4 pb-12 sm:pb-20">
+        <div className="max-w-6xl mx-auto w-full">
+          <div ref={grid.ref} style={fadeStyle(grid.visible, 0.1, 24)}>
+
+            {/* Asymmetric grid: 1 tall left + 2 stacked right */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {rest.map((article, i) => (
+                <article
+                  key={article.slug}
+                  className={`group relative overflow-hidden rounded-2xl ${i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+                  style={{ aspectRatio: i === 0 && typeof window !== 'undefined' ? undefined : undefined }}
+                >
+                  <div className="relative w-full h-[280px] sm:h-[320px] overflow-hidden rounded-2xl">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                    {/* Text overlay bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-1.5">
+                      <p className="text-[10px] text-white/50 uppercase tracking-widest font-medium">{article.date}</p>
+                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
+                        {article.title}
+                      </h3>
+                      <p className="text-sm text-white/65 leading-relaxed line-clamp-2 mt-0.5">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <CustomerStoriesSection />
       <Footer />
     </main>
   )
