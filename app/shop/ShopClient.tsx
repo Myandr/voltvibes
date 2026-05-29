@@ -7,6 +7,13 @@ import { type ShopifyProduct, type CategoryInfo } from "@/lib/shopify"
 import { SlidersHorizontal, X, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+const QUICK_CATEGORIES = [
+  { label: "E-Scooter",                value: "e-scooter"    },
+  { label: "Stunt Scooter",            value: "stunt"        },
+  { label: "Elektromobil für Senioren",value: "elektromobil" },
+  { label: "Helme & Schoner",          value: "helm"         },
+]
+
 const SORT_OPTIONS = [
   { value: "empfohlen",  label: "Empfohlen" },
   { value: "price-asc", label: "Preis aufsteigend" },
@@ -201,8 +208,46 @@ export default function ShopClient({ initialProducts, categories }: Props) {
     </div>
   )
 
+  const toggleQuick = (value: string) => {
+    if (selectedCategories.length === 1 && selectedCategories[0] === value) {
+      setSelectedCategories([])
+    } else {
+      setSelectedCategories([value])
+    }
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+      {/* Quick category chips */}
+      <div className="flex flex-wrap gap-2 mb-8">
+        {QUICK_CATEGORIES.map((cat) => {
+          const active = selectedCategories.length === 1 && selectedCategories[0] === cat.value
+          return (
+            <button
+              key={cat.value}
+              onClick={() => toggleQuick(cat.value)}
+              className={cn(
+                "px-4 py-2 text-sm font-medium rounded-sm border transition-colors duration-150",
+                active
+                  ? "bg-[#0C1523] border-[#0C1523] text-white"
+                  : "bg-white border-[#e5e5e5] text-[#555] hover:border-[#0C1523] hover:text-[#0e0e0e]"
+              )}
+            >
+              {cat.label}
+            </button>
+          )
+        })}
+        {selectedCategories.length > 0 && (
+          <button
+            onClick={() => setSelectedCategories([])}
+            className="px-4 py-2 text-sm text-[#8BBDE8] hover:underline"
+          >
+            Alle anzeigen
+          </button>
+        )}
+      </div>
+
       <div className="flex gap-8">
         {/* Desktop filter sidebar */}
         <aside className="hidden lg:block">
@@ -292,6 +337,13 @@ export default function ShopClient({ initialProducts, categories }: Props) {
             </div>
           )}
         </div>
+      </div>
+
+      {/* SEO description */}
+      <div className="mt-16 pt-10 border-t border-[#e5e5e5]">
+        <p className="text-sm text-[#888] leading-relaxed max-w-3xl">
+          Im VoltVibes Onlineshop finden Sie alles rund um moderne Mobilität – von E-Scootern über Stunt-Scooter für Kinder bis hin zu komfortablen Senioren-Mobilen. Entdecken Sie eine große Auswahl an Zubehör und Ersatzteilen für Ihr Fahrzeug sowie zuverlässige Serviceleistungen. VoltVibes bietet Ihnen innovative Produkte, kompetente Beratung und erstklassigen Kundensupport – damit Sie jederzeit sicher und flexibel unterwegs sind. Egal ob für Alltag, Freizeit oder spezielle Mobilitätsbedürfnisse: VoltVibes ist Ihr zuverlässiger Partner.
+        </p>
       </div>
 
       {/* Mobile filter drawer */}

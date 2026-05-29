@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/liquid-glass-button';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { label: 'Shop', href: '/shop' },
@@ -16,7 +17,7 @@ const navLinks = [
   { label: 'Das Team', href: '/das-team' },
 ];
 
-function CartIcon({ isScrolled }: { isScrolled: boolean }) {
+function CartIcon({ isLight }: { isLight: boolean }) {
   const { totalQuantity } = useCart();
   return (
     <Link
@@ -28,7 +29,7 @@ function CartIcon({ isScrolled }: { isScrolled: boolean }) {
         size={20}
         className={cn(
           'transition-colors duration-150',
-          isScrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white'
+          isLight ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white'
         )}
       />
       {totalQuantity > 0 && (
@@ -43,6 +44,8 @@ function CartIcon({ isScrolled }: { isScrolled: boolean }) {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const pathname = usePathname();
+  const isLight = isScrolled || pathname !== '/';
 
   React.useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -78,9 +81,9 @@ export default function Navbar() {
                 aria-label="VoltVibes Home"
                 className="flex items-center gap-2"
               >
-                <SlashIcon color={isScrolled ? '#0C1523' : '#ffffff'} />
+                <SlashIcon color={isLight ? '#0C1523' : '#ffffff'} />
                 <span
-                  className={cn('font-semibold text-[1.05rem] tracking-tight', isScrolled ? 'text-gray-900' : 'text-white')}
+                  className={cn('font-semibold text-[1.05rem] tracking-tight', isLight ? 'text-gray-900' : 'text-white')}
                   style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
                 >
                   VoltVibes
@@ -88,12 +91,12 @@ export default function Navbar() {
               </Link>
 
               <div className="flex items-center gap-4 lg:hidden">
-                <CartIcon isScrolled={isScrolled} />
+                <CartIcon isLight={isLight} />
                 <button
                   onClick={() => setMenuOpen((o) => !o)}
                   aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
                   aria-expanded={menuOpen}
-                  className={cn('relative z-20 -m-2.5 -mr-1 cursor-pointer p-2.5', isScrolled ? 'text-gray-800' : 'text-white')}
+                  className={cn('relative z-20 -m-2.5 -mr-1 cursor-pointer p-2.5', isLight ? 'text-gray-800' : 'text-white')}
                 >
                   <AnimatePresence mode="wait" initial={false}>
                     {menuOpen ? (
@@ -117,7 +120,7 @@ export default function Navbar() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className={cn('block duration-150 font-[450] tracking-[0.01em]', isScrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white')}
+                      className={cn('block duration-150 font-[450] tracking-[0.01em]', isLight ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white')}
                       style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
                     >
                       {link.label}
@@ -163,7 +166,7 @@ export default function Navbar() {
 
               {/* Desktop cart icon */}
               <div className="hidden lg:flex items-center">
-                <CartIcon isScrolled={isScrolled} />
+                <CartIcon isLight={isLight} />
               </div>
 
               {/* CTA buttons */}
@@ -173,7 +176,7 @@ export default function Navbar() {
                   size="sm"
                   className={cn(
                     'rounded-full bg-white text-[#0C1523] hover:bg-white/90 font-medium',
-                    isScrolled && 'lg:hidden'
+                    isLight && 'lg:hidden'
                   )}
                 >
                   <Link href="/kontakt" onClick={close}>Termin vereinbaren</Link>
@@ -183,7 +186,7 @@ export default function Navbar() {
                   size="sm"
                   className={cn(
                     'rounded-full font-medium bg-[#0C1523] text-white hover:bg-[#0C1523]/90',
-                    isScrolled ? 'lg:inline-flex' : 'hidden'
+                    isLight ? 'lg:inline-flex' : 'hidden'
                   )}
                 >
                   <Link href="/kontakt" onClick={close}>Termin vereinbaren</Link>
