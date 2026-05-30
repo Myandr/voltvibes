@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+const port = Number(process.env.SMTP_PORT ?? 587);
+
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT ?? 587),
-  secure: false, // STARTTLS auf Port 587
+  port,
+  secure: port === 465, // true für SSL (465), false für STARTTLS (587)
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
