@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Phone, Mail, MapPin, Clock, MessageCircle, Check, Send } from "lucide-react"
 import Footer from "../components/Footer"
 import { BlurTextEffect } from "../components/BlurTextEffect"
+import ConsentMap from "../components/ConsentMap"
 import CustomerStoriesSection from "../components/CustomerStoriesSection"
 import { cn } from "@/lib/utils"
 
@@ -329,15 +330,10 @@ export default function KontaktPage() {
       <div className="px-4 py-8 sm:py-12">
         <div className="max-w-6xl mx-auto w-full">
           <div ref={mapSection.ref} style={fadeStyle(mapSection.visible, 0.1, 24)} className="relative rounded-2xl overflow-hidden h-[300px] sm:h-[380px]">
-            <iframe
+            <ConsentMap
               src="https://maps.google.com/maps?q=Lippestraße+34,+46282+Dorsten&output=embed&z=16"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: 'grayscale(20%) contrast(1.05)' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
               title="VoltVibes Dorsten"
+              address="Lippestraße 34, 46282 Dorsten"
             />
           </div>
         </div>

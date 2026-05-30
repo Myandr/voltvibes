@@ -7,6 +7,7 @@ import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react"
 import Footer from "../components/Footer"
 import CustomerStoriesSection from "../components/CustomerStoriesSection"
 import { BlurTextEffect } from "../components/BlurTextEffect"
+import ConsentMap from "../components/ConsentMap"
 
 function useFadeIn(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
@@ -79,15 +80,10 @@ export default function FilialenPage() {
 
             {/* Map */}
             <div ref={dorstMap.ref} style={fadeStyle(dorstMap.visible, 0.1, 24)} className="relative rounded-2xl overflow-hidden h-[340px] sm:h-[420px] lg:h-full min-h-[340px]">
-              <iframe
+              <ConsentMap
                 src="https://maps.google.com/maps?q=Lippestraße+34,+46282+Dorsten&output=embed&z=16"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: 'grayscale(20%) contrast(1.05)' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
                 title="VoltVibes Dorsten"
+                address="Lippestraße 34, 46282 Dorsten"
               />
             </div>
 
@@ -184,15 +180,10 @@ export default function FilialenPage() {
 
             {/* Map Göttingen */}
             <div className="relative rounded-2xl overflow-hidden h-[300px] sm:h-[380px]">
-              <iframe
+              <ConsentMap
                 src="https://maps.google.com/maps?q=Groner+Straße+8,+37073+Göttingen&output=embed&z=16"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: 'grayscale(20%) contrast(1.05)' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
                 title="VoltVibes Göttingen"
+                address="Groner Straße 8, 37073 Göttingen"
               />
             </div>
 

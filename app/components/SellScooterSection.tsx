@@ -97,48 +97,45 @@ const steps = [
     num: '01',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2"/>
-        <line x1="9" y1="7" x2="15" y2="7"/>
-        <line x1="9" y1="11" x2="15" y2="11"/>
-        <line x1="9" y1="15" x2="12" y2="15"/>
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     ),
-    title: 'Scooter-Daten teilen',
-    desc: 'Teile uns deinen Scooter und ein paar wichtige Details mit.',
+    title: 'Problem schildern',
+    desc: 'Schreib uns kurz, was nicht funktioniert — per Nachricht oder Anruf.',
   },
   {
     num: '02',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-        <line x1="7" y1="7" x2="7.01" y2="7"/>
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
     ),
-    title: 'Unser Angebot erhalten',
-    desc: 'Wir prüfen deinen Scooter und schicken dir ein faires Angebot.',
+    title: 'Diagnose & Angebot',
+    desc: 'Wir schauen es uns an und geben dir einen fairen Kostenvoranschlag.',
   },
   {
     num: '03',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M7 16V4m0 0L3 8m4-4 4 4"/>
-        <path d="M17 8v12m0 0 4-4m-4 4-4-4"/>
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
     ),
-    title: 'Tausch abschließen',
-    desc: 'Gib deinen Scooter ab und mach Platz für etwas Neues.',
+    title: 'Reparatur & Abholung',
+    desc: 'Nach der Reparatur ist dein Scooter wieder einsatzbereit.',
   },
 ];
 
 export default function SellScooterSection() {
   const { ref: headRef, visible: headVisible } = useFadeIn(0);
   const { ref: formRef, visible: formVisible } = useFadeIn(200);
-  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!phone.trim()) return;
+    if (!message.trim()) return;
     setSent(true);
   }
 
@@ -172,22 +169,13 @@ export default function SellScooterSection() {
           .sell-form-wrapper {
             margin-bottom: 2.5rem !important;
           }
-          .sell-form {
-            flex-direction: column !important;
-            border-radius: 16px !important;
-            padding: 1rem !important;
-            gap: 0.75rem !important;
-            align-items: stretch !important;
-          }
-          .sell-form input {
-            width: 100% !important;
+          .sell-form textarea {
             font-size: 1rem !important;
           }
           .sell-form button {
             width: 100% !important;
             padding: 0.85rem 1rem !important;
             font-size: 0.9rem !important;
-            border-radius: 12px !important;
             text-align: center !important;
           }
           .sell-steps {
@@ -208,7 +196,7 @@ export default function SellScooterSection() {
       `}</style>
 
       <section
-        id="scooter-verkaufen"
+        id="reparatur"
         className="sell-section"
         style={{
           position: 'relative',
@@ -291,7 +279,7 @@ export default function SellScooterSection() {
                 letterSpacing: '0.01em',
               }}
             >
-              Du möchtest deinen{' '}
+              Dein Scooter{' '}
               <em
                 style={{
                   fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
@@ -300,7 +288,7 @@ export default function SellScooterSection() {
                   fontWeight: 400,
                 }}
               >
-                Scooter verkaufen?
+                ist kaputt?
               </em>
             </h2>
             <p
@@ -310,15 +298,15 @@ export default function SellScooterSection() {
                 color: '#555',
                 lineHeight: 1.6,
                 margin: 0,
-                maxWidth: '400px',
+                maxWidth: '420px',
                 marginInline: 'auto',
               }}
             >
-              Teile uns deine Scooter-Details mit und erhalte unkompliziert ein faires Angebot.
+              Schreib uns dein Problem oder ruf direkt an — wir helfen dir schnell und unkompliziert.
             </p>
           </div>
 
-          {/* Phone form */}
+          {/* Contact area */}
           <div
             ref={formRef}
             className="sell-form-wrapper"
@@ -328,7 +316,9 @@ export default function SellScooterSection() {
               transition: 'opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s',
               width: '100%',
               display: 'flex',
-              justifyContent: 'center',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.75rem',
               marginBottom: '3.5rem',
             }}
           >
@@ -336,7 +326,7 @@ export default function SellScooterSection() {
               <div
                 style={{
                   background: '#fff',
-                  borderRadius: '50px',
+                  borderRadius: '16px',
                   padding: '0.95rem 2rem',
                   fontFamily: 'var(--font-geist-sans), sans-serif',
                   fontSize: '0.9rem',
@@ -350,7 +340,7 @@ export default function SellScooterSection() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8BBDE8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
-                Wir melden uns bald bei dir!
+                Nachricht erhalten — wir melden uns bei dir!
               </div>
             ) : (
               <form
@@ -358,35 +348,33 @@ export default function SellScooterSection() {
                 className="sell-form"
                 style={{
                   display: 'flex',
+                  flexDirection: 'column',
                   gap: '0.5rem',
                   background: '#fff',
-                  borderRadius: '50px',
-                  padding: '0.4rem 0.4rem 0.4rem 1.2rem',
+                  borderRadius: '16px',
+                  padding: '1rem',
                   boxShadow: '0 4px 32px rgba(0,0,0,0.10)',
-                  alignItems: 'center',
                   width: '100%',
                   maxWidth: '460px',
                 }}
               >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                  <rect x="5" y="2" width="14" height="20" rx="2"/>
-                  <line x1="12" y1="18" x2="12.01" y2="18"/>
-                </svg>
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="Deine Telefonnummer"
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Beschreibe dein Problem kurz…"
                   required
+                  rows={4}
                   style={{
-                    flex: 1,
-                    border: 'none',
-                    outline: 'none',
+                    border: '1px solid #e8e8e8',
+                    borderRadius: '10px',
+                    padding: '0.75rem 1rem',
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '0.875rem',
                     color: '#0e0e0e',
-                    background: 'transparent',
-                    minWidth: 0,
+                    background: '#fafafa',
+                    resize: 'none',
+                    outline: 'none',
+                    lineHeight: 1.5,
                   }}
                 />
                 <button
@@ -395,24 +383,49 @@ export default function SellScooterSection() {
                     background: '#0C1523',
                     color: '#fff',
                     border: 'none',
-                    borderRadius: '50px',
-                    padding: '0.7rem 1.35rem',
+                    borderRadius: '10px',
+                    padding: '0.75rem 1.35rem',
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '0.84rem',
                     fontWeight: 600,
                     cursor: 'pointer',
                     letterSpacing: '0.02em',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0,
                     transition: 'background 0.2s ease',
                   }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#1e3352'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#0C1523'; }}
                 >
-                  Rückruf anfordern
+                  Nachricht senden
                 </button>
               </form>
             )}
+
+            <a
+              href="tel:+4923629747100"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.84rem',
+                fontWeight: 600,
+                color: '#0e0e0e',
+                textDecoration: 'none',
+                background: 'rgba(255,255,255,0.85)',
+                backdropFilter: 'blur(6px)',
+                borderRadius: '50px',
+                padding: '0.6rem 1.2rem',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
+                transition: 'background 0.2s ease',
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#fff'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.85)'; }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Jetzt anrufen
+            </a>
           </div>
 
           {/* Step cards */}

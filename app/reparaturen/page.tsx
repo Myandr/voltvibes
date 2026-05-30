@@ -5,6 +5,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, ExternalLink, Wrench, Buildi
 import Footer from "../components/Footer"
 import CustomerStoriesSection from "../components/CustomerStoriesSection"
 import { BlurTextEffect } from "../components/BlurTextEffect"
+import ConsentMap from "../components/ConsentMap"
 
 const italicStyle = {
   fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
@@ -173,12 +174,10 @@ export default function ReparaturenPage() {
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
 
             <div ref={dorstMap.ref} style={fadeStyle(dorstMap.visible, 0.1, 24)} className="relative rounded-2xl overflow-hidden h-[340px] sm:h-[420px] lg:h-full min-h-[340px]">
-              <iframe
+              <ConsentMap
                 src={dorsten.mapsEmbed}
-                width="100%" height="100%"
-                style={{ border: 0, filter: 'grayscale(20%) contrast(1.05)' }}
-                allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                 title="VoltVibes Dorsten Werkstatt"
+                address={`${dorsten.street}, ${dorsten.city}`}
               />
             </div>
 
@@ -256,12 +255,10 @@ export default function ReparaturenPage() {
           <div ref={botropCard.ref} style={fadeStyle(botropCard.visible, 0.1, 24)} className="grid lg:grid-cols-2 gap-4 sm:gap-6">
 
             <div className="relative rounded-2xl overflow-hidden h-[300px] sm:h-[380px]">
-              <iframe
+              <ConsentMap
                 src={bottrop.mapsEmbed}
-                width="100%" height="100%"
-                style={{ border: 0, filter: 'grayscale(20%) contrast(1.05)' }}
-                allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                 title="AWK Smart Repair Bottrop"
+                address={`${bottrop.street}, ${bottrop.city}`}
               />
             </div>
 
