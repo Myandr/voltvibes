@@ -1,0 +1,78 @@
+<h2>Werde Teil des Teams — welches Layout?</h2>
+<p class="subtitle">Drei Varianten für die neue Section auf der Das-Team-Seite. Klick zum Auswählen.</p>
+
+<div class="cards">
+
+  <!-- Option A: Dark CTA Banner -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0C1523; padding: 32px 28px; font-family: sans-serif; min-height: 220px; display:flex; flex-direction:column; justify-content:center; gap:16px; border-radius:10px 10px 0 0;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+        <span style="background:#8BBDE8; color:#0C1523; font-size:10px; font-weight:700; letter-spacing:0.1em; padding:4px 10px; border-radius:20px; text-transform:uppercase;">Jetzt bewerben</span>
+      </div>
+      <div style="color:#fff; font-size:32px; font-weight:800; line-height:1.05; font-family:'Georgia',serif;">
+        <span style="font-family:sans-serif; letter-spacing:0.02em;">Werde Teil</span><br>
+        <em style="color:#8BBDE8; font-style:italic;">des Teams</em>
+      </div>
+      <p style="color:rgba(255,255,255,0.55); font-size:13px; max-width:320px; line-height:1.6;">
+        Du liebst E-Scooter, bist zuverlässig und möchtest in einem jungen Team arbeiten? Dann meld dich bei uns.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button style="background:#8BBDE8; color:#0C1523; border:none; border-radius:20px; padding:10px 22px; font-weight:700; font-size:13px; cursor:pointer;">Jetzt bewerben</button>
+        <button style="background:transparent; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:10px 22px; font-size:13px; cursor:pointer;">Mehr erfahren</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Dark Banner</h3>
+      <p>Volle Breite, dunkler Hintergrund, Headline + kurzer Text + zwei Buttons. Klare CTA, hohes Kontrast.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Split Layout -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8f8f8; padding:24px; border-radius:10px 10px 0 0; min-height:220px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div style="display:flex; flex-direction:column; justify-content:center; gap:12px;">
+        <span style="font-size:10px; font-weight:700; letter-spacing:0.1em; color:#8BBDE8; text-transform:uppercase;">Karriere bei VoltVibes</span>
+        <div style="font-size:26px; font-weight:800; line-height:1.1; color:#0C1523;">
+          Werde Teil<br><em style="color:#8BBDE8; font-style:italic; font-family:'Georgia',serif;">des Teams</em>
+        </div>
+        <p style="font-size:12px; color:#666; line-height:1.6;">Wir suchen Menschen, die Bock auf E-Mobility haben und gerne anpacken.</p>
+        <button style="background:#0C1523; color:#fff; border:none; border-radius:20px; padding:9px 20px; font-size:12px; font-weight:600; width:fit-content; cursor:pointer;">Bewerbung senden →</button>
+      </div>
+      <div style="background:#0C1523; border-radius:10px; display:flex; align-items:center; justify-content:center; min-height:160px;">
+        <div style="text-align:center;">
+          <div style="font-size:40px;">⚡</div>
+          <div style="color:rgba(255,255,255,0.5); font-size:11px; margin-top:6px;">VoltVibes Team</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Split: Text links, Bild rechts</h3>
+      <p>Heller Hintergrund, zwei Spalten. Links: Headline + Text + Button. Rechts: Bild oder Illustration.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Bento-Kacheln -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fff; padding:20px; border-radius:10px 10px 0 0; min-height:220px; display:grid; grid-template-columns:2fr 1fr; grid-template-rows:1fr 1fr; gap:10px;">
+      <div style="grid-row:1/3; background:#0C1523; border-radius:10px; padding:22px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="color:#8BBDE8; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px;">Jetzt einsteigen</div>
+          <div style="color:#fff; font-size:22px; font-weight:800; line-height:1.1;">Werde Teil<br><em style="font-style:italic; color:#8BBDE8; font-family:'Georgia',serif;">des Teams</em></div>
+          <p style="color:rgba(255,255,255,0.5); font-size:11px; margin-top:8px; line-height:1.6;">Werkstatt, Verkauf oder Beratung — wir freuen uns auf dich.</p>
+        </div>
+        <button style="background:#8BBDE8; color:#0C1523; border:none; border-radius:16px; padding:8px 16px; font-size:11px; font-weight:700; width:fit-content; cursor:pointer;">Bewerben</button>
+      </div>
+      <div style="background:#8BBDE8; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; color:#0C1523; font-size:11px; font-weight:700;">📍 Dorsten</div>
+      </div>
+      <div style="background:#f0f0f0; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; color:#555; font-size:11px; font-weight:600;">✉ per E-Mail</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Bento Grid</h3>
+      <p>Kachelraster: große dunkle Hauptkachel links + zwei Info-Kacheln rechts (Standort, Kontaktweg).</p>
+    </div>
+  </div>
+
+</div>

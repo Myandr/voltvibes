@@ -18,28 +18,28 @@ const stories = [
     customerName: "Lukas Weber",
     customerDetail: "Kaufte einen Ninebot Max G2",
     customerAvatar: "/images/gallery-1.jpg",
-    backgroundImage: "/images/scooter-palmen.png",
+    backgroundImage: "/images/customer4.png",
   },
   {
     quote: "Reparatur innerhalb von einem Tag erledigt — schneller und günstiger als ich erwartet hatte.",
     customerName: "Sarah Müller",
     customerDetail: "Kundin in der Werkstatt",
     customerAvatar: "/images/gallery-2.jpg",
-    backgroundImage: "/images/services-background.png",
+    backgroundImage: "/images/customer.png",
   },
   {
     quote: "Bestes Scooter-Geschäft in Dorsten. Immer freundlich, immer ehrlich. Kauf nur noch hier.",
     customerName: "Tobias Becker",
     customerDetail: "Kaufte einen Xiaomi Pro 4",
     customerAvatar: "/images/gallery-3.jpg",
-    backgroundImage: "/images/hero-background.png",
+    backgroundImage: "/images/customer3.png",
   },
   {
     quote: "Das Zubehör-Sortiment ist riesig. Helm, Schloss, Tasche — alles auf einmal bekommen.",
     customerName: "Anna Koch",
     customerDetail: "Stammkundin",
     customerAvatar: "/images/gallery-4.jpg",
-    backgroundImage: "/images/services-background2.png",
+    backgroundImage: "/images/customer2.png",
   },
 ]
 
@@ -120,6 +120,7 @@ export default function CustomerStoriesSection() {
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-l from-black/40 to-transparent" />
 
         <div className="absolute top-1/2 -translate-y-1/2 left-6 right-6 sm:left-10 sm:right-auto sm:max-w-sm md:max-w-md">
           <p className="text-white font-bold text-lg sm:text-xl md:text-2xl leading-snug">

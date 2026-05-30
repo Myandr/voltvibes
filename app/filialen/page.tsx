@@ -150,7 +150,7 @@ export default function FilialenPage() {
                 href="https://maps.google.com/?q=Lippestraße+34,+46282+Dorsten"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-zinc-900 bg-zinc-900 text-white px-5 py-3 rounded-full hover:bg-zinc-700 transition-colors w-fit"
+                className="inline-flex items-center gap-2 text-sm font-medium text-white bg-zinc-900 px-5 py-3 rounded-full hover:bg-zinc-700 transition-colors w-fit"
               >
                 <MapPin className="h-4 w-4" />
                 In Google Maps öffnen
