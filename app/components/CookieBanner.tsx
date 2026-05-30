@@ -10,7 +10,7 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[9998] px-4 pb-4 sm:pb-6">
-      <div className="max-w-3xl mx-auto bg-[#0C1523] rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/10">
+      <div className="max-w-3xl mx-auto bg-[#0C1523]/80 backdrop-blur-xl rounded-2xl p-5 sm:p-6 shadow-2xl border border-white/10">
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
 
           {/* Text */}

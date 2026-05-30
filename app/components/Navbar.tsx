@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 import { Equal, X, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -80,15 +81,16 @@ export default function Navbar() {
               <Link
                 href="/"
                 aria-label="VoltVibes Home"
-                className="flex items-center gap-2"
+                className="flex items-center"
               >
-                <SlashIcon color={isLight ? '#0C1523' : '#ffffff'} />
-                <span
-                  className={cn('font-semibold text-[1.05rem] tracking-tight', isLight ? 'text-gray-900' : 'text-white')}
-                  style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
-                >
-                  VoltVibes
-                </span>
+                <Image
+                  src="/images/logo1.png"
+                  alt="VoltVibes"
+                  height={36}
+                  width={140}
+                  style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
+                  priority
+                />
               </Link>
 
               <div className="flex items-center gap-4 lg:hidden">
@@ -202,11 +204,3 @@ export default function Navbar() {
   );
 }
 
-function SlashIcon({ color = '#ffffff' }: { color?: string }) {
-  return (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-      <rect x="2" y="3" width="4" height="16" rx="1.5" fill={color} transform="skewX(-8)" />
-      <rect x="10" y="3" width="4" height="16" rx="1.5" fill={color} transform="skewX(-8)" />
-    </svg>
-  );
-}

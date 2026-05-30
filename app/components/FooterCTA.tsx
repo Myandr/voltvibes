@@ -80,13 +80,14 @@ export default function FooterCTA() {
             transition: 'opacity 0.7s ease, transform 0.7s ease',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <svg width="28" height="22" viewBox="0 0 28 22" fill="none" aria-hidden>
-              <path d="M0 11 L8 0 L14 8 L20 0 L28 11 L20 22 L14 14 L8 22 Z" fill="#fff" />
-            </svg>
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 600, color: '#fff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              VoltVibes
-            </span>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Image
+              src="/images/logo1.png"
+              alt="VoltVibes"
+              height={52}
+              width={200}
+              style={{ height: '52px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+            />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
             <a href="tel:+4923629747100" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: '#fff', textDecoration: 'underline', textUnderlineOffset: '3px' }}>+49 2362 9747100</a>

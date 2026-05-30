@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Footer() {
@@ -216,9 +217,18 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="footer-bottom-bar">
-          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: '#444' }}>
-            ©2026 VoltVibes Dorsten. Alle Rechte vorbehalten.
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Image
+              src="/images/logo1.png"
+              alt="VoltVibes"
+              height={28}
+              width={110}
+              style={{ height: '28px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.5 }}
+            />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: '#444' }}>
+              ©2026 VoltVibes Dorsten. Alle Rechte vorbehalten.
+            </span>
+          </div>
           <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
             {[
               { label: 'Datenschutz',   href: '/datenschutz' },
