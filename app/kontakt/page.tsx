@@ -54,18 +54,36 @@ export default function KontaktPage() {
   })
   const [submitted, setSubmitted] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState("")
+  const [honeypot, setHoneypot] = React.useState("")
+  const loadTime = React.useRef(Date.now())
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    setError("")
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          source: "kontakt",
+          _hp: honeypot,
+          _t: loadTime.current,
+        }),
+      })
+      if (!res.ok) throw new Error()
       setSubmitted(true)
-    }, 800)
+    } catch {
+      setError("Etwas ist schiefgelaufen. Bitte versuche es erneut oder ruf uns an.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   const inputClass =
@@ -133,6 +151,17 @@ export default function KontaktPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Honeypot — versteckt für Menschen, sichtbar für Bots */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }}
+                />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
@@ -218,7 +247,10 @@ export default function KontaktPage() {
                         </>
                       )}
                     </button>
-                    <p className="text-xs text-zinc-400">
+                    {error && (
+                    <p className="text-sm text-red-500">{error}</p>
+                  )}
+                  <p className="text-xs text-zinc-400">
                       Mit dem Absenden stimmst du unserer{" "}
                       <Link href="/datenschutzerklarung" className="text-[#8BBDE8] hover:underline underline-offset-2 transition-colors">
                         Datenschutzerklärung

@@ -132,11 +132,34 @@ export default function SellScooterSection() {
   const { ref: formRef, visible: formVisible } = useFadeIn(200);
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+  const loadTime = useRef(Date.now());
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!message.trim()) return;
-    setSent(true);
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nachricht: message,
+          source: 'reparatur',
+          _hp: honeypot,
+          _t: loadTime.current,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+    } catch {
+      setError('Fehler beim Senden. Bitte ruf uns direkt an.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -358,6 +381,17 @@ export default function SellScooterSection() {
                   maxWidth: '460px',
                 }}
               >
+                {/* Honeypot — für Bots sichtbar, für Menschen unsichtbar */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }}
+                />
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -377,8 +411,14 @@ export default function SellScooterSection() {
                     lineHeight: 1.5,
                   }}
                 />
+                {error && (
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: '#e53e3e', margin: 0 }}>
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     background: '#0C1523',
                     color: '#fff',
@@ -388,14 +428,15 @@ export default function SellScooterSection() {
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '0.84rem',
                     fontWeight: 600,
-                    cursor: 'pointer',
+                    cursor: loading ? 'default' : 'pointer',
                     letterSpacing: '0.02em',
                     transition: 'background 0.2s ease',
+                    opacity: loading ? 0.7 : 1,
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#1e3352'; }}
+                  onMouseEnter={(e) => { if (!loading) (e.currentTarget as HTMLElement).style.background = '#1e3352'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#0C1523'; }}
                 >
-                  Nachricht senden
+                  {loading ? 'Wird gesendet…' : 'Nachricht senden'}
                 </button>
               </form>
             )}
