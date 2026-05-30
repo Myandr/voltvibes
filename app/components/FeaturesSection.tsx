@@ -100,23 +100,30 @@ export default function FeaturesSection() {
           }
           @media (max-width: 680px) {
             .features-row {
-              flex-direction: column;
+              flex-direction: row;
               min-height: unset;
+              gap: 8px;
             }
             .feature-card {
-              flex: none !important;
-              width: 100% !important;
-              min-height: 220px;
+              flex: 1 !important;
+              width: 0 !important;
+              min-height: 160px;
+              padding: 1rem !important;
             }
             .feature-shop {
-              flex: none !important;
-              width: 100% !important;
-              height: 80px;
+              display: none !important;
+            }
+            .feature-thumb {
+              display: none !important;
+            }
+            .feature-desc {
+              display: none !important;
             }
             .feature-card-title {
               white-space: normal;
               overflow: visible;
               text-overflow: unset;
+              font-size: 0.82rem !important;
             }
             .feature-arrow {
               opacity: 1 !important;
@@ -155,7 +162,7 @@ export default function FeaturesSection() {
                   <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#888', background: '#ebebeb', borderRadius: '999px', padding: '0.3rem 0.75rem', fontWeight: 500 }}>
                     {num}
                   </span>
-                  <div style={{
+                  <div className="feature-thumb" style={{
                     width: isHovered ? '120px' : '88px',
                     height: isHovered ? '120px' : '88px',
                     borderRadius: '14px', overflow: 'hidden', flexShrink: 0, position: 'relative',
@@ -176,7 +183,7 @@ export default function FeaturesSection() {
                   <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '0.75rem' }}>
                     <div style={{ minWidth: 0, flex: 1 }}>
                       <h3 className="feature-card-title">{title}</h3>
-                      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#888', margin: 0, lineHeight: 1.5 }}>
+                      <p className="feature-desc" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#888', margin: 0, lineHeight: 1.5 }}>
                         {desc}
                       </p>
                     </div>
