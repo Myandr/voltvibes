@@ -231,9 +231,11 @@ export default function Footer() {
           </div>
           <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
             {[
-              { label: 'Datenschutz',   href: '/datenschutz' },
-              { label: 'Impressum',     href: '/impressum'   },
-              { label: 'Cookie-Einstellungen', href: '/cookies' },
+              { label: 'AGB',                  href: '/agb'         },
+              { label: 'Widerruf',             href: '/widerruf'    },
+              { label: 'Datenschutz',          href: '/datenschutz' },
+              { label: 'Impressum',            href: '/impressum'   },
+              { label: 'Cookie-Einstellungen', href: '/cookies'     },
             ].map(({ label, href }) => (
               <Link
                 key={href}

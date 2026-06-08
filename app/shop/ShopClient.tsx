@@ -61,7 +61,7 @@ function ProductCard({ product, priority = false }: { product: ShopifyProduct; p
             alt={product.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain transition-transform duration-500 group-hover:scale-105"
             priority={priority}
           />
         ) : (

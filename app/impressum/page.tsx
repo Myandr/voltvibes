@@ -23,7 +23,7 @@ export default function ImpressumPage() {
         >
           Impressum
         </h1>
-        <p className="text-sm text-zinc-400 mb-12">Angaben gemäß § 5 TMG</p>
+        <p className="text-sm text-zinc-400 mb-12">Angaben gemäß § 5 DDG</p>
 
         <div className="space-y-10 text-sm text-zinc-600 leading-relaxed">
 
@@ -32,6 +32,7 @@ export default function ImpressumPage() {
             <p>
               VoltVibes Dorsten<br />
               Inhaber: Markus Kremer<br />
+              Unternehmensform: Einzelunternehmen<br />
               Lippestraße 34<br />
               46282 Dorsten
             </p>
@@ -46,9 +47,16 @@ export default function ImpressumPage() {
           </section>
 
           <section>
+            <h2 className="text-base font-semibold text-zinc-900 mb-3">Steuerliche Angaben</h2>
+            <p>
+              Steuernummer: [Steuernummer eintragen]
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-base font-semibold text-zinc-900 mb-3">Haftungsausschluss</h2>
             <p>
-              Die Inhalte unserer Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+              Die Inhalte unserer Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
             </p>
           </section>
 

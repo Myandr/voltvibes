@@ -9,14 +9,11 @@ import { ShoppingCart, Check, ChevronRight, Minus, Plus, Truck, MapPin, RotateCc
 import { cn } from "@/lib/utils"
 
 function RelatedCard({ product }: { product: ShopifyProduct }) {
-  const isRemote = product.images[0]?.startsWith('https://')
   return (
     <Link href={`/shop/${product.handle}`} className="group flex flex-col">
       <div className="aspect-square overflow-hidden bg-[#f5f5f5] rounded-sm relative">
-        {isRemote ? (
-          <Image src={product.images[0]} alt={product.title} fill sizes="25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <img src={product.images[0]} alt={product.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        {product.images[0] && (
+          <Image src={product.images[0]} alt={product.title} fill sizes="25vw" className="object-contain transition-transform duration-500 group-hover:scale-105" />
         )}
       </div>
       <div className="mt-3">
@@ -56,7 +53,6 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
   const inStock = activeVariant?.availableForSale ?? product.availableForSale
   const variantPrice = activeVariant ? parseFloat(activeVariant.price) : product.price
 
-  const isRemote = product.images[0]?.startsWith('https://')
 
   const handleAddToCart = async () => {
     if (!activeVariant) return
@@ -91,22 +87,15 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
           {/* Image Gallery */}
           <div className="flex flex-col gap-3">
             <div className="relative aspect-square overflow-hidden bg-[#f5f5f5] rounded-sm">
-              {isRemote ? (
+              {product.images[selectedImage] && (
                 <Image
                   key={selectedImage}
                   src={product.images[selectedImage]}
                   alt={product.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-opacity duration-300"
+                  className="object-contain transition-opacity duration-300"
                   priority
-                />
-              ) : (
-                <img
-                  key={selectedImage}
-                  src={product.images[selectedImage]}
-                  alt={product.title}
-                  className="h-full w-full object-cover transition-opacity duration-300"
                 />
               )}
               {product.badge && (
@@ -126,13 +115,9 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
-                    className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-sm border-2 transition-colors", selectedImage === idx ? "border-[#0C1523]" : "border-transparent hover:border-[#888]")}
+                    className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-sm border-2 transition-colors bg-[#f5f5f5]", selectedImage === idx ? "border-[#0C1523]" : "border-transparent hover:border-[#888]")}
                   >
-                    {isRemote ? (
-                      <Image src={src} alt="" fill sizes="80px" className="object-cover" />
-                    ) : (
-                      <img src={src} alt="" className="h-full w-full object-cover" />
-                    )}
+                    <Image src={src} alt="" fill sizes="80px" className="object-contain" />
                   </button>
                 ))}
               </div>
