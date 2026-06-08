@@ -162,7 +162,7 @@ function mapNode(node: any): ShopifyProduct {
     tags: node.tags ?? [],
     description: node.description ?? '',
     availableForSale: node.availableForSale ?? true,
-    images: images.length > 0 ? images : ['/images/gallery-1.jpg'],
+    images,
     price,
     compareAtPrice: compareAmt > price && compareAmt > 0 ? compareAmt : undefined,
     options: node.options ?? [],
@@ -213,7 +213,7 @@ const PRODUCTS_QUERY = `
       edges {
         node {
           id handle title vendor productType tags description availableForSale
-          images(first: 4) { edges { node { url altText } } }
+          images(first: 1) { edges { node { url altText } } }
           priceRange { minVariantPrice { amount currencyCode } }
           compareAtPriceRange { minVariantPrice { amount currencyCode } }
           options { name values }
@@ -310,8 +310,8 @@ export async function fetchProducts(): Promise<ProductsResult> {
   try {
     const data = await shopifyFetch<{ products: { edges: { node: unknown }[] } }>(
       PRODUCTS_QUERY,
-      { first: 100 },
-      { revalidate: 60 }
+      { first: 250 },
+      { revalidate: 300 }
     )
     const products = (data.products?.edges ?? []).map((e) => mapNode(e.node))
 

@@ -4,9 +4,11 @@ import { useState, useMemo, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { type ShopifyProduct, type CategoryInfo } from "@/lib/shopify"
-import { Search, X, SlidersHorizontal, ChevronDown } from "lucide-react"
+import { Search, X, SlidersHorizontal, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { BlurTextEffect } from "../components/BlurTextEffect"
+
+const PRODUCTS_PER_PAGE = 12
 
 const SORT_OPTIONS = [
   { value: "empfohlen",  label: "Empfohlen" },
@@ -47,28 +49,27 @@ function fadeStyle(visible: boolean, delay = 0, y = 16): React.CSSProperties {
   }
 }
 
-function ProductCard({ product }: { product: ShopifyProduct }) {
-  const isRemote = product.images[0]?.startsWith("https://")
+function ProductCard({ product, priority = false }: { product: ShopifyProduct; priority?: boolean }) {
+  const img = product.images[0]
 
   return (
     <Link href={`/shop/${product.handle}`} className="group block">
       <div className="relative overflow-hidden rounded-sm aspect-[3/2] bg-[#f0f0f0]">
-        {product.images[0] && (
-          isRemote ? (
-            <Image
-              src={product.images[0]}
-              alt={product.title}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          ) : (
-            <img
-              src={product.images[0]}
-              alt={product.title}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          )
+        {img ? (
+          <Image
+            src={img}
+            alt={product.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            priority={priority}
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg className="h-12 w-12 text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
         )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
@@ -125,6 +126,9 @@ export default function ShopClient({ initialProducts, categories }: Props) {
   const [sort, setSort]                             = useState("empfohlen")
   const [sortOpen, setSortOpen]                     = useState(false)
   const [mobileFiltersOpen, setMobileFiltersOpen]   = useState(false)
+  const [currentPage, setCurrentPage]               = useState(1)
+
+  const gridRef = useRef<HTMLDivElement>(null)
 
   const heroSub   = useFadeIn()
   const searchFade = useFadeIn()
@@ -158,6 +162,21 @@ export default function ShopClient({ initialProducts, categories }: Props) {
     }
     return list
   }, [search, selectedCategories, selectedPriceRange, sort, initialProducts])
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [search, selectedCategories, selectedPriceRange, sort])
+
+  const totalPages = Math.ceil(filtered.length / PRODUCTS_PER_PAGE)
+  const paginatedProducts = filtered.slice(
+    (currentPage - 1) * PRODUCTS_PER_PAGE,
+    currentPage * PRODUCTS_PER_PAGE
+  )
+
+  function goToPage(page: number) {
+    setCurrentPage(page)
+    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
 
   const activeFilterCount = selectedCategories.length + (selectedPriceRange !== null ? 1 : 0)
 
@@ -297,7 +316,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
             </aside>
 
             {/* ── Product grid ── */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0" ref={gridRef}>
               <div className="flex items-center gap-3 mb-6">
                 <button
                   onClick={() => setMobileFiltersOpen(true)}
@@ -349,9 +368,70 @@ export default function ShopClient({ initialProducts, categories }: Props) {
               </p>
 
               {filtered.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                  {filtered.map(product => <ProductCard key={product.id} product={product} />)}
-                </div>
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                    {paginatedProducts.map((product, i) => (
+                      <ProductCard key={product.id} product={product} priority={i < 4} />
+                    ))}
+                  </div>
+
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-3 mt-10">
+                      <button
+                        onClick={() => goToPage(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className={cn(
+                          "flex items-center justify-center h-9 w-9 rounded-sm border transition-colors",
+                          currentPage === 1
+                            ? "border-[#e5e5e5] text-zinc-300 cursor-not-allowed"
+                            : "border-[#e5e5e5] text-[#0e0e0e] hover:border-[#0C1523] hover:text-[#0C1523]"
+                        )}
+                        aria-label="Vorherige Seite"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+
+                      <div className="flex items-center gap-1.5">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => {
+                          const near = Math.abs(page - currentPage) <= 1 || page === 1 || page === totalPages
+                          if (!near) {
+                            if (page === currentPage - 2 || page === currentPage + 2)
+                              return <span key={page} className="text-zinc-300 text-sm px-0.5">…</span>
+                            return null
+                          }
+                          return (
+                            <button
+                              key={page}
+                              onClick={() => goToPage(page)}
+                              className={cn(
+                                "h-9 w-9 rounded-sm text-sm font-medium transition-colors border",
+                                page === currentPage
+                                  ? "bg-[#0C1523] text-white border-[#0C1523]"
+                                  : "border-[#e5e5e5] text-[#0e0e0e] hover:border-[#0C1523] hover:text-[#0C1523]"
+                              )}
+                            >
+                              {page}
+                            </button>
+                          )
+                        })}
+                      </div>
+
+                      <button
+                        onClick={() => goToPage(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className={cn(
+                          "flex items-center justify-center h-9 w-9 rounded-sm border transition-colors",
+                          currentPage === totalPages
+                            ? "border-[#e5e5e5] text-zinc-300 cursor-not-allowed"
+                          : "border-[#e5e5e5] text-[#0e0e0e] hover:border-[#0C1523] hover:text-[#0C1523]"
+                        )}
+                        aria-label="Nächste Seite"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="flex flex-col items-center justify-center py-24 text-center">
                   <p className="text-lg font-medium text-[#0e0e0e]">Keine Produkte gefunden</p>
