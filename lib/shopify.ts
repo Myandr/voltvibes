@@ -38,13 +38,12 @@ function missingConfigError(): ShopifyFetchError {
 async function shopifyFetch<T>(
   query: string,
   variables: Record<string, unknown> = {},
-  cacheOpts?: RequestInit['next']
 ): Promise<T> {
   const res = await fetch(endpoint(), {
     method: 'POST',
     headers: headers(),
     body: JSON.stringify({ query, variables }),
-    next: cacheOpts,
+    cache: 'no-store',
   })
   const json = await res.json()
   if (json.errors?.length) throw new Error(json.errors[0].message)
@@ -310,8 +309,7 @@ export async function fetchProducts(): Promise<ProductsResult> {
   try {
     const data = await shopifyFetch<{ products: { edges: { node: unknown }[] } }>(
       PRODUCTS_QUERY,
-      { first: 250 },
-      { revalidate: 300 }
+      { first: 250 }
     )
     const products = (data.products?.edges ?? []).map((e) => mapNode(e.node))
 
@@ -344,8 +342,7 @@ export async function fetchProductByHandle(handle: string): Promise<ProductResul
   try {
     const data = await shopifyFetch<{ productByHandle: unknown }>(
       PRODUCT_QUERY,
-      { handle },
-      { revalidate: 60 }
+      { handle }
     )
     if (!data.productByHandle) {
       return {
