@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import CookieBanner from "./components/CookieBanner";
+import ScrollToTop from "./components/ScrollToTop";
 import { CartProvider } from "@/lib/cart-context";
 import { CookieConsentProvider } from "@/lib/cookie-consent";
 
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <CookieConsentProvider>
           <CartProvider>
+            <ScrollToTop />
             <Navbar />
             {children}
             <CookieBanner />
