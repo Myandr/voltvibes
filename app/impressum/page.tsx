@@ -33,7 +33,7 @@ export default function ImpressumPage() {
               VoltVibes Dorsten<br />
               Inhaber: Markus Kremer<br />
               Unternehmensform: Einzelunternehmen<br />
-              Lippestraße 34<br />
+              Essener Str. 24<br />
               46282 Dorsten
             </p>
           </section>

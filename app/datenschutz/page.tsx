@@ -32,7 +32,7 @@ export default function DatenschutzPage() {
             <p>
               VoltVibes Dorsten<br />
               Inhaber: Markus Kremer<br />
-              Lippestraße 34, 46282 Dorsten<br />
+              Essener Str. 24, 46282 Dorsten<br />
               E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#8BBDE8] hover:underline">info@voltvibes-dorsten.de</a><br />
               Telefon: <a href="tel:023629747100" className="text-[#8BBDE8] hover:underline">02362 9747100</a>
             </p>

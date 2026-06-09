@@ -256,7 +256,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[#888]">
                   <MapPin className="h-4 w-4 shrink-0" />
-                  <span>Abholung in Dorsten (Lippestraße 34) möglich</span>
+                  <span>Abholung in Dorsten (Essener Str. 24) möglich</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[#888]">
                   <RotateCcw className="h-4 w-4 shrink-0" />

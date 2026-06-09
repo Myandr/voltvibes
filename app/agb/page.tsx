@@ -30,7 +30,7 @@ export default function AgbPage() {
           <section>
             <h2 className="text-base font-semibold text-zinc-900 mb-3">§ 1 Geltungsbereich</h2>
             <p>
-              Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen VoltVibes Dorsten, Inhaber Markus Kremer, Lippestraße 34, 46282 Dorsten (nachfolgend „Verkäufer") und Verbrauchern sowie Unternehmern (nachfolgend „Kunde"), die über unseren Online-Shop oder in unseren Ladengeschäften geschlossen werden.
+              Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen VoltVibes Dorsten, Inhaber Markus Kremer, Essener Str. 24, 46282 Dorsten (nachfolgend „Verkäufer") und Verbrauchern sowie Unternehmern (nachfolgend „Kunde"), die über unseren Online-Shop oder in unseren Ladengeschäften geschlossen werden.
             </p>
             <p className="mt-3">
               Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbstständigen beruflichen Tätigkeit zugerechnet werden können (§ 13 BGB).

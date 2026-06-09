@@ -81,9 +81,9 @@ export default function FilialenPage() {
             {/* Map */}
             <div ref={dorstMap.ref} style={fadeStyle(dorstMap.visible, 0.1, 24)} className="relative rounded-2xl overflow-hidden h-[340px] sm:h-[420px] lg:h-full min-h-[340px]">
               <ConsentMap
-                src="https://maps.google.com/maps?q=Lippestraße+34,+46282+Dorsten&output=embed&z=16"
+                src="https://maps.google.com/maps?q=Essener+Str.+24,+46282+Dorsten&output=embed&z=16"
                 title="VoltVibes Dorsten"
-                address="Lippestraße 34, 46282 Dorsten"
+                address="Essener Str. 24, 46282 Dorsten"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function FilialenPage() {
                 <MapPin className="h-5 w-5 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-sm text-zinc-900">Adresse</p>
-                  <p className="text-sm text-zinc-500">Lippestraße 34</p>
+                  <p className="text-sm text-zinc-500">Essener Str. 24</p>
                   <p className="text-sm text-zinc-500">46282 Dorsten</p>
                   <p className="text-xs text-zinc-400 mt-0.5">Fußgängerzone Innenstadt</p>
                 </div>
@@ -143,7 +143,7 @@ export default function FilialenPage() {
               </div>
 
               <a
-                href="https://maps.google.com/?q=Lippestraße+34,+46282+Dorsten"
+                href="https://maps.google.com/?q=Essener+Str.+24,+46282+Dorsten"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-white bg-zinc-900 px-5 py-3 rounded-full hover:bg-zinc-700 transition-colors w-fit"

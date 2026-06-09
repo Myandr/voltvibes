@@ -297,7 +297,7 @@ export default function KontaktPage() {
                     <MapPin className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-0.5">Adresse</p>
-                      <p className="text-sm font-medium text-zinc-900">Lippestraße 34</p>
+                      <p className="text-sm font-medium text-zinc-900">Essener Str. 24</p>
                       <p className="text-sm text-zinc-500">46282 Dorsten</p>
                       <p className="text-xs text-zinc-400 mt-0.5">Fußgängerzone Innenstadt</p>
                     </div>
@@ -348,7 +348,7 @@ export default function KontaktPage() {
               {/* Quick links */}
               <div className="flex flex-col gap-2">
                 <a
-                  href="https://maps.google.com/?q=Lippestraße+34,+46282+Dorsten"
+                  href="https://maps.google.com/?q=Essener+Str.+24,+46282+Dorsten"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium bg-zinc-900 text-white px-5 py-3 rounded-full hover:bg-zinc-700 transition-colors w-fit"
@@ -367,9 +367,9 @@ export default function KontaktPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div ref={mapSection.ref} style={fadeStyle(mapSection.visible, 0.1, 24)} className="relative rounded-2xl overflow-hidden h-[300px] sm:h-[380px]">
             <ConsentMap
-              src="https://maps.google.com/maps?q=Lippestraße+34,+46282+Dorsten&output=embed&z=16"
+              src="https://maps.google.com/maps?q=Essener+Str.+24,+46282+Dorsten&output=embed&z=16"
               title="VoltVibes Dorsten"
-              address="Lippestraße 34, 46282 Dorsten"
+              address="Essener Str. 24, 46282 Dorsten"
             />
           </div>
         </div>

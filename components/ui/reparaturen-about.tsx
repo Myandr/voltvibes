@@ -20,7 +20,7 @@ interface ReparaturenAboutProps {
 }
 
 const defaultAnnahmestellen = [
-  { name: "VoltVibes Dorsten", address: "Lippestraße 34", city: "46282 Dorsten" },
+  { name: "VoltVibes Dorsten", address: "Essener Str. 24", city: "46282 Dorsten" },
   { name: "AWK Smart Repair", address: "Boschstraße 9", city: "46244 Bottrop" },
   { name: "Automanufaktur 57", address: "Westring 57", city: "45659 Recklinghausen" },
 ];
