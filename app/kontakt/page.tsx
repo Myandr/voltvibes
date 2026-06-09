@@ -77,6 +77,10 @@ export default function KontaktPage() {
           _t: loadTime.current,
         }),
       })
+      if (res.status === 429) {
+        setError("Zu viele Anfragen. Bitte warte ein paar Minuten.")
+        return
+      }
       if (!res.ok) throw new Error()
       setSubmitted(true)
     } catch {

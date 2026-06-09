@@ -130,6 +130,7 @@ const steps = [
 export default function SellScooterSection() {
   const { ref: headRef, visible: headVisible } = useFadeIn(0);
   const { ref: formRef, visible: formVisible } = useFadeIn(200);
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -147,12 +148,17 @@ export default function SellScooterSection() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          email,
           nachricht: message,
           source: 'reparatur',
           _hp: honeypot,
           _t: loadTime.current,
         }),
       });
+      if (res.status === 429) {
+        setError('Zu viele Anfragen. Bitte warte ein paar Minuten.');
+        return;
+      }
       if (!res.ok) throw new Error();
       setSent(true);
     } catch {
@@ -391,6 +397,24 @@ export default function SellScooterSection() {
                   autoComplete="off"
                   aria-hidden="true"
                   style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }}
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Deine E-Mail-Adresse"
+                  required
+                  style={{
+                    border: '1px solid #e8e8e8',
+                    borderRadius: '10px',
+                    padding: '0.75rem 1rem',
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.875rem',
+                    color: '#0e0e0e',
+                    background: '#fafafa',
+                    outline: 'none',
+                    lineHeight: 1.5,
+                  }}
                 />
                 <textarea
                   value={message}
