@@ -42,7 +42,7 @@ export default function HeroSection() {
 
       {/* Background image */}
       <Image
-        src="/images/hero1.png"
+        src="/images/hb.png"
         alt=""
         fill
         style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
