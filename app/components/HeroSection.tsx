@@ -34,7 +34,7 @@ export default function HeroSection() {
       width: '100%',
       height: '100dvh',
       minHeight: '640px',
-      background: '#118a41',
+      background: '#ffffff',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
