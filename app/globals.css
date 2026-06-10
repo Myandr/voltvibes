@@ -109,7 +109,7 @@ body {
 
   /* About stats: keep 3 columns on mobile, smaller text */
   .stat-card-0, .stat-card-1 { border-bottom: none; }
-  .stat-number { font-size: clamp(1.6rem, 7vw, 2.8rem) !important; }
+  .stat-number { font-size: clamp(2rem, 8vw, 3.2rem) !important; }
   .stat-card-0, .stat-card-1, .stat-card-2 { padding: 1.2rem 0.75rem 1.5rem !important; gap: 0.75rem !important; }
 
   /* Services bento: single column */
