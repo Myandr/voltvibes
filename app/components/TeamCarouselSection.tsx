@@ -60,7 +60,7 @@ export default function TeamCarouselSection() {
               <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
                 <BlurTextEffect scrollTrigger delay={0}>Euer </BlurTextEffect>
               </span>
-              <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+              <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
                 <BlurTextEffect scrollTrigger delay={0.15}>VoltVibes</BlurTextEffect>
               </em>
               <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>

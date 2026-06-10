@@ -18,7 +18,7 @@ function RelatedCard({ product }: { product: ShopifyProduct }) {
       </div>
       <div className="mt-3">
         <p className="text-[11px] uppercase tracking-widest text-[#888]">{product.vendor}</p>
-        <h4 className="text-sm font-medium mt-0.5 text-[#0e0e0e] group-hover:text-[#8BBDE8] transition-colors">{product.title}</h4>
+        <h4 className="text-sm font-medium mt-0.5 text-[#0e0e0e] group-hover:text-[#5CC987] transition-colors">{product.title}</h4>
         <p className="text-sm font-bold mt-1 text-[#0e0e0e]">{product.price.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</p>
       </div>
     </Link>
@@ -137,7 +137,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
                   <span className="text-lg text-[#888] line-through">
                     {product.compareAtPrice.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
                   </span>
-                  <span className="text-sm font-semibold text-[#8BBDE8]">
+                  <span className="text-sm font-semibold text-[#5CC987]">
                     −{Math.round((1 - product.price / product.compareAtPrice) * 100)} %
                   </span>
                 </>
@@ -221,7 +221,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
                     ? "bg-green-600 text-white"
                     : !inStock
                     ? "bg-[#e5e5e5] text-[#888] cursor-not-allowed"
-                    : "bg-[#0C1523] hover:bg-[#8BBDE8] hover:text-[#0C1523] text-white"
+                    : "bg-[#0C1523] hover:bg-[#5CC987] hover:text-[#0C1523] text-white"
                 )}
               >
                 {loading ? (

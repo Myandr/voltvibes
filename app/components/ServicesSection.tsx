@@ -102,7 +102,7 @@ export default function ServicesSection() {
             }}
           >
             <BlurTextEffect scrollTrigger>Mehr als ein </BlurTextEffect>
-            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
               <BlurTextEffect scrollTrigger delay={0.18}>Scooter Shop</BlurTextEffect>
             </em>
           </h2>

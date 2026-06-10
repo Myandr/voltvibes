@@ -49,7 +49,7 @@ export default function RangeSection() {
           </p>
           <h2 style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2rem, 3.8vw, 3.2rem)', lineHeight: 1.05, color: '#0e0e0e', margin: 0, letterSpacing: '0.01em' }}>
             <BlurTextEffect scrollTrigger>Unser </BlurTextEffect>
-            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
               <BlurTextEffect scrollTrigger delay={0.12}>Sortiment</BlurTextEffect>
             </em>
             <BlurTextEffect scrollTrigger delay={0.24}> im Überblick</BlurTextEffect>

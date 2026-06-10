@@ -33,8 +33,8 @@ export default function DatenschutzPage() {
               VoltVibes Dorsten<br />
               Inhaber: Markus Kremer<br />
               Essener Str. 24, 46282 Dorsten<br />
-              E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#8BBDE8] hover:underline">info@voltvibes-dorsten.de</a><br />
-              Telefon: <a href="tel:023629747100" className="text-[#8BBDE8] hover:underline">02362 9747100</a>
+              E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a><br />
+              Telefon: <a href="tel:023629747100" className="text-[#5CC987] hover:underline">02362 9747100</a>
             </p>
           </section>
 
@@ -59,7 +59,7 @@ export default function DatenschutzPage() {
               Die Übertragung in die USA erfolgt auf Basis von Standardvertragsklauseln (SCCs) gemäß Art. 46 Abs. 2 lit. c DSGVO.
               Speicherdauer: Zugriffsprotokolle werden nach spätestens 30 Tagen gelöscht.{" "}
               Weitere Informationen:{" "}
-              <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#8BBDE8] hover:underline">vercel.com/legal/privacy-policy</a>
+              <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">vercel.com/legal/privacy-policy</a>
             </p>
           </section>
 
@@ -87,7 +87,7 @@ export default function DatenschutzPage() {
               Mit der Eingabe deiner E-Mail-Adresse und dem Klick auf „Anmelden" erklärst du dich einverstanden, gelegentlich Neuigkeiten von VoltVibes Dorsten zu erhalten (Double-Opt-In-Verfahren: Du erhältst zunächst eine Bestätigungs-E-Mail).
               Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).
               Du kannst dich jederzeit formlos per E-Mail an{" "}
-              <a href="mailto:info@voltvibes-dorsten.de" className="text-[#8BBDE8] hover:underline">info@voltvibes-dorsten.de</a>{" "}
+              <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a>{" "}
               abmelden. Deine Adresse wird nicht an Dritte weitergegeben und nach der Abmeldung umgehend gelöscht.
             </p>
           </section>
@@ -98,7 +98,7 @@ export default function DatenschutzPage() {
               Unsere Website verwendet technisch notwendige Cookies (z.&nbsp;B. für den Warenkorb und deine Cookie-Einwilligung). Eine gesonderte Einwilligung ist hierfür nicht erforderlich.
               Darüber hinaus binden wir Google Maps nur nach deiner ausdrücklichen Einwilligung ein (Art. 6 Abs. 1 lit. a DSGVO / § 25 Abs. 1 TTDSG).
               Du kannst deine Einwilligung jederzeit unter{" "}
-              <a href="/cookies" className="text-[#8BBDE8] hover:underline">Cookie-Einstellungen</a>{" "}
+              <a href="/cookies" className="text-[#5CC987] hover:underline">Cookie-Einstellungen</a>{" "}
               widerrufen.
             </p>
           </section>
@@ -112,7 +112,7 @@ export default function DatenschutzPage() {
               Soweit Daten in die USA übertragen werden, erfolgt dies auf Basis von Standardvertragsklauseln (SCCs) gemäß Art. 46 Abs. 2 lit. c DSGVO.
               Shopify speichert Bestelldaten für die Dauer gesetzlicher Aufbewahrungsfristen (in Deutschland i.&nbsp;d.&nbsp;R. 10 Jahre für steuerrelevante Unterlagen).{" "}
               Weitere Informationen:{" "}
-              <a href="https://www.shopify.com/de/legal/datenschutz" target="_blank" rel="noopener noreferrer" className="text-[#8BBDE8] hover:underline">shopify.com/de/legal/datenschutz</a>
+              <a href="https://www.shopify.com/de/legal/datenschutz" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">shopify.com/de/legal/datenschutz</a>
             </p>
           </section>
 
@@ -123,10 +123,10 @@ export default function DatenschutzPage() {
               Google Maps wird nur nach deiner ausdrücklichen Einwilligung geladen (§ 25 Abs. 1 TTDSG, Art. 6 Abs. 1 lit. a DSGVO).
               Soweit Daten an Google LLC (USA) übertragen werden, erfolgt dies auf Basis von Standardvertragsklauseln (SCCs).
               Du kannst deine Einwilligung jederzeit unter{" "}
-              <a href="/cookies" className="text-[#8BBDE8] hover:underline">Cookie-Einstellungen</a>{" "}
+              <a href="/cookies" className="text-[#5CC987] hover:underline">Cookie-Einstellungen</a>{" "}
               widerrufen.{" "}
               Weitere Informationen:{" "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8BBDE8] hover:underline">policies.google.com/privacy</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">policies.google.com/privacy</a>
             </p>
           </section>
 
@@ -147,7 +147,7 @@ export default function DatenschutzPage() {
             </ul>
             <p className="mt-4">
               Wende dich für alle Anfragen an:{" "}
-              <a href="mailto:info@voltvibes-dorsten.de" className="text-[#8BBDE8] hover:underline">info@voltvibes-dorsten.de</a>
+              <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a>
             </p>
           </section>
 
@@ -155,7 +155,7 @@ export default function DatenschutzPage() {
             <h2 className="text-base font-semibold text-zinc-900 mb-3">11. Beschwerderecht</h2>
             <p>
               Du hast das Recht, dich bei der zuständigen Aufsichtsbehörde zu beschweren. In Nordrhein-Westfalen ist dies die Landesbeauftragte für Datenschutz und Informationsfreiheit (LDI NRW),{" "}
-              <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" className="text-[#8BBDE8] hover:underline">www.ldi.nrw.de</a>.
+              <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">www.ldi.nrw.de</a>.
             </p>
           </section>
 

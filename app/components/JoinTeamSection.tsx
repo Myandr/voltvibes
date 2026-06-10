@@ -38,7 +38,7 @@ export default function JoinTeamSection() {
         >
           {/* Left: badge + headline + copy */}
           <div className="flex flex-col gap-4 max-w-lg">
-            <span className="inline-flex w-fit items-center rounded-full bg-[#8BBDE8]/15 border border-[#8BBDE8]/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#8BBDE8]">
+            <span className="inline-flex w-fit items-center rounded-full bg-[#5CC987]/15 border border-[#5CC987]/30 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#5CC987]">
               Karriere bei VoltVibes
             </span>
 
@@ -46,7 +46,7 @@ export default function JoinTeamSection() {
               <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.2rem, 5vw, 4rem)', letterSpacing: '0.02em', color: '#fff' }}>
                 <BlurTextEffect scrollTrigger delay={0}>Werde Teil </BlurTextEffect>
               </span>
-              <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2rem, 4.7vw, 3.8rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+              <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2rem, 4.7vw, 3.8rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
                 <BlurTextEffect scrollTrigger delay={0.15}>des Teams</BlurTextEffect>
               </em>
             </h2>
@@ -60,7 +60,7 @@ export default function JoinTeamSection() {
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link
               href="/kontakt"
-              className="inline-flex items-center justify-center gap-2 bg-[#8BBDE8] text-[#0C1523] text-sm font-semibold px-6 py-3 rounded-full hover:bg-[#8BBDE8]/90 transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-[#5CC987] text-[#0C1523] text-sm font-semibold px-6 py-3 rounded-full hover:bg-[#5CC987]/90 transition-colors"
             >
               Jetzt bewerben
               <ArrowRight className="h-4 w-4" />

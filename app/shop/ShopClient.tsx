@@ -191,7 +191,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                 <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
                   <BlurTextEffect delay={0}>Unser </BlurTextEffect>
                 </span>
-                <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+                <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
                   <BlurTextEffect delay={0.15}>Shop</BlurTextEffect>
                 </em>
               </h1>
@@ -282,7 +282,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                     >
                       <span className={cn(
                         "h-1.5 w-1.5 rounded-full shrink-0 transition-colors",
-                        selectedCategories.includes(cat.value) ? "bg-[#8BBDE8]" : "bg-zinc-300"
+                        selectedCategories.includes(cat.value) ? "bg-[#5CC987]" : "bg-zinc-300"
                       )} />
                       {cat.label}
                     </button>
@@ -306,7 +306,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                     >
                       <span className={cn(
                         "h-1.5 w-1.5 rounded-full shrink-0 transition-colors",
-                        selectedPriceRange === idx ? "bg-[#8BBDE8]" : "bg-zinc-300"
+                        selectedPriceRange === idx ? "bg-[#5CC987]" : "bg-zinc-300"
                       )} />
                       {range.label}
                     </button>
@@ -352,7 +352,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                           onClick={() => { setSort(o.value); setSortOpen(false) }}
                           className={cn(
                             "w-full text-left px-4 py-2.5 text-sm hover:bg-[#f5f5f5] transition-colors text-[#0e0e0e]",
-                            sort === o.value && "font-semibold text-[#8BBDE8]"
+                            sort === o.value && "font-semibold text-[#5CC987]"
                           )}
                         >
                           {o.label}
@@ -438,7 +438,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                   <p className="text-zinc-500 text-sm mt-1">Passe deine Filter oder Suche an.</p>
                   <button
                     onClick={() => { setSearch(""); setSelectedCategories([]); setSelectedPriceRange(null) }}
-                    className="mt-4 text-sm text-[#8BBDE8] hover:underline"
+                    className="mt-4 text-sm text-[#5CC987] hover:underline"
                   >
                     Filter zurücksetzen
                   </button>
@@ -485,7 +485,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                       >
                         <span className={cn(
                           "h-1.5 w-1.5 rounded-full shrink-0",
-                          selectedCategories.includes(cat.value) ? "bg-[#8BBDE8]" : "bg-zinc-300"
+                          selectedCategories.includes(cat.value) ? "bg-[#5CC987]" : "bg-zinc-300"
                         )} />
                         {cat.label}
                       </button>
@@ -507,7 +507,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                     >
                       <span className={cn(
                         "h-1.5 w-1.5 rounded-full shrink-0",
-                        selectedPriceRange === idx ? "bg-[#8BBDE8]" : "bg-zinc-300"
+                        selectedPriceRange === idx ? "bg-[#5CC987]" : "bg-zinc-300"
                       )} />
                       {range.label}
                     </button>
@@ -524,7 +524,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
               </button>
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="flex-1 py-2.5 text-sm bg-[#0C1523] text-white rounded-sm font-medium hover:bg-[#8BBDE8] hover:text-[#0C1523] transition-colors"
+                className="flex-1 py-2.5 text-sm bg-[#0C1523] text-white rounded-sm font-medium hover:bg-[#5CC987] hover:text-[#0C1523] transition-colors"
               >
                 Anwenden ({filtered.length})
               </button>

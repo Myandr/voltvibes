@@ -80,7 +80,7 @@ export default function DienstleistungenPage() {
                 <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
                   <BlurTextEffect scrollTrigger delay={0}>Unsere </BlurTextEffect>
                 </span>
-                <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+                <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
                   <BlurTextEffect scrollTrigger delay={0.15}>Dienstleistungen</BlurTextEffect>
                 </em>
               </h1>
@@ -140,7 +140,7 @@ export default function DienstleistungenPage() {
         <div ref={newsHeader.ref} style={fadeStyle(newsHeader.visible, 0)}>
           <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-zinc-900 tracking-tight mb-2" style={{ lineHeight: 0.95 }}>
             <BlurTextEffect scrollTrigger delay={0}>{"Neuigkeiten fur jeden"}</BlurTextEffect>{" "}
-            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400 }}>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#5CC987', fontStyle: 'italic', fontWeight: 400 }}>
               <BlurTextEffect scrollTrigger delay={0.2}>Rider</BlurTextEffect>
             </em>
           </h2>
@@ -191,7 +191,7 @@ export default function DienstleistungenPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs sm:text-sm text-zinc-400 mb-1">{article.date}</p>
-                  <h3 className="text-base sm:text-lg font-bold text-zinc-900 leading-snug group-hover:text-[#8BBDE8] transition-colors line-clamp-2">
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-900 leading-snug group-hover:text-[#5CC987] transition-colors line-clamp-2">
                     {article.title}
                   </h3>
                 </div>

@@ -22,7 +22,7 @@ export default function HeroSection() {
   const italicStyle = {
     fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
     fontSize: 'clamp(2.7rem, 6.6vw, 8rem)',
-    color: '#8BBDE8',
+    color: '#5CC987',
     fontStyle: 'italic',
     fontWeight: 400,
     letterSpacing: '0.01em',
@@ -42,7 +42,7 @@ export default function HeroSection() {
 
       {/* Background image */}
       <Image
-        src="/images/hb.png"
+        src="/images/hero1.png"
         alt=""
         fill
         style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}

@@ -20,7 +20,7 @@ export default function CookieBanner() {
             </p>
             <p className="text-white/50 text-xs leading-relaxed">
               Technisch notwendige Cookies sind immer aktiv. Mit deiner Zustimmung laden wir auch Google Maps. Mehr dazu in unserer{' '}
-              <Link href="/datenschutz" className="text-[#8BBDE8] hover:underline underline-offset-2">
+              <Link href="/datenschutz" className="text-[#5CC987] hover:underline underline-offset-2">
                 Datenschutzerklärung
               </Link>
               .
@@ -37,7 +37,7 @@ export default function CookieBanner() {
             </button>
             <button
               onClick={accept}
-              className="flex-1 sm:flex-none px-5 py-2.5 rounded-full text-xs font-semibold bg-[#8BBDE8] text-[#0C1523] hover:bg-[#8BBDE8]/90 transition-colors"
+              className="flex-1 sm:flex-none px-5 py-2.5 rounded-full text-xs font-semibold bg-[#5CC987] text-[#0C1523] hover:bg-[#5CC987]/90 transition-colors"
             >
               Alle akzeptieren
             </button>

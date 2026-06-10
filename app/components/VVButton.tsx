@@ -13,7 +13,7 @@ interface VVButtonProps {
 }
 
 export default function VVButton({ href, children, variant = 'light', className = '', target, rel }: VVButtonProps) {
-  const bg    = variant === 'light' ? '#fff'     : variant === 'blue' ? '#8BBDE8' : '#0e0e0e';
+  const bg    = variant === 'light' ? '#fff'     : variant === 'blue' ? '#5CC987' : '#0e0e0e';
   const text  = variant === 'light' ? '#0C1523'  : '#fff';
   const iconBg= variant === 'light' ? '#0C1523'  : variant === 'blue' ? '#fff' : '#fff';
   const iconFg= variant === 'dark' ? '#0C1523' : variant === 'blue' ? '#0C1523' : '#fff';

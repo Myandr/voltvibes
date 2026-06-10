@@ -126,7 +126,7 @@ const EYEBROW: React.CSSProperties = {
   fontSize: "0.7rem",
   letterSpacing: "0.12em",
   textTransform: "uppercase",
-  color: "#8BBDE8",
+  color: "#5CC987",
   fontWeight: 600,
 };
 
@@ -174,7 +174,7 @@ export const ReparaturenAbout = ({
             {/* Left: text */}
             <div style={{ paddingBottom: "clamp(3rem, 6vw, 5rem)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
-                <div style={{ width: "2rem", height: "1.5px", background: "#8BBDE8" }} />
+                <div style={{ width: "2rem", height: "1.5px", background: "#5CC987" }} />
                 <span style={EYEBROW}>Werkstatt Dorsten</span>
               </div>
 
@@ -235,7 +235,7 @@ export const ReparaturenAbout = ({
                 width: "300px",
                 zIndex: 10,
               }}>
-                <p style={{ ...BEBAS("1.375rem", "#8BBDE8"), margin: "0 0 0.6rem", lineHeight: 1.2 }}>
+                <p style={{ ...BEBAS("1.375rem", "#5CC987"), margin: "0 0 0.6rem", lineHeight: 1.2 }}>
                   {breakout.title}
                 </p>
                 <p style={{ ...BODY("rgba(255,255,255,0.45)"), fontSize: "0.8rem" }}>
@@ -250,7 +250,7 @@ export const ReparaturenAbout = ({
                 right: "-1px",
                 width: "4px",
                 height: "4rem",
-                background: "#8BBDE8",
+                background: "#5CC987",
               }} />
             </div>
           </div>
@@ -289,7 +289,7 @@ export const ReparaturenAbout = ({
                   gap: "1rem",
                 }}
               >
-                <div style={{ color: "#8BBDE8" }}>{l.icon}</div>
+                <div style={{ color: "#5CC987" }}>{l.icon}</div>
                 <div>
                   <p style={{ ...BEBAS("1.2rem", "#fff"), margin: "0 0 0.4rem", letterSpacing: "0.04em" }}>
                     {l.label}
@@ -309,7 +309,7 @@ export const ReparaturenAbout = ({
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 3rem)" }}>
           <div style={{ marginBottom: "3rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-              <div style={{ width: "2rem", height: "1.5px", background: "#8BBDE8" }} />
+              <div style={{ width: "2rem", height: "1.5px", background: "#5CC987" }} />
               <span style={EYEBROW}>Ablauf</span>
             </div>
             <h2 style={{ ...BEBAS("clamp(2rem, 4.5vw, 3.25rem)") }}>
@@ -335,14 +335,14 @@ export const ReparaturenAbout = ({
                 <div style={{
                   width: "3.5rem",
                   height: "3.5rem",
-                  background: i === 1 ? "#8BBDE8" : "#0C1523",
+                  background: i === 1 ? "#5CC987" : "#0C1523",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   marginBottom: "1.5rem",
                 }}>
                   <span style={{
-                    ...BEBAS("1.25rem", i === 1 ? "#0C1523" : "#8BBDE8"),
+                    ...BEBAS("1.25rem", i === 1 ? "#0C1523" : "#5CC987"),
                     letterSpacing: "0.06em",
                   }}>{step.num}</span>
                 </div>
@@ -390,7 +390,7 @@ export const ReparaturenAbout = ({
                   borderBottom: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
-                <p style={{ ...BEBAS("clamp(3.5rem, 6vw, 5.5rem)", "#8BBDE8"), margin: "0 0 0.5rem" }}>
+                <p style={{ ...BEBAS("clamp(3.5rem, 6vw, 5.5rem)", "#5CC987"), margin: "0 0 0.5rem" }}>
                   {item.value}
                 </p>
                 <p style={{
@@ -416,7 +416,7 @@ export const ReparaturenAbout = ({
           >
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-                <div style={{ width: "2rem", height: "1.5px", background: "#8BBDE8" }} />
+                <div style={{ width: "2rem", height: "1.5px", background: "#5CC987" }} />
                 <span style={EYEBROW}>Standorte</span>
               </div>
               <h2 style={{ ...BEBAS("clamp(2rem, 4.5vw, 3.25rem)") }}>
@@ -444,13 +444,13 @@ export const ReparaturenAbout = ({
               >
                 {/* Badge */}
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.25rem" }}>
-                  <div style={{ width: "6px", height: "6px", background: "#8BBDE8", borderRadius: "50%", flexShrink: 0 }} />
+                  <div style={{ width: "6px", height: "6px", background: "#5CC987", borderRadius: "50%", flexShrink: 0 }} />
                   <span style={{
                     fontFamily: "var(--font-geist-sans), sans-serif",
                     fontSize: "0.65rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    color: "#8BBDE8",
+                    color: "#5CC987",
                     fontWeight: 700,
                   }}>
                     {i === 0 ? "Hauptwerkstatt" : "Annahmestelle"}
@@ -487,7 +487,7 @@ export const ReparaturenAbout = ({
               top: 0, left: 0,
               width: "4px",
               height: "100%",
-              background: "#8BBDE8",
+              background: "#5CC987",
             }} />
 
             <div>
@@ -506,7 +506,7 @@ export const ReparaturenAbout = ({
                   display: "inline-flex",
                   alignItems: "center",
                   padding: "0.8rem 1.75rem",
-                  background: "#8BBDE8",
+                  background: "#5CC987",
                   color: "#0C1523",
                   fontFamily: "var(--font-geist-sans), sans-serif",
                   fontWeight: 700,

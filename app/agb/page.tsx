@@ -79,7 +79,7 @@ export default function AgbPage() {
             <h2 className="text-base font-semibold text-zinc-900 mb-3">§ 5 Widerrufsrecht</h2>
             <p>
               Verbrauchern steht ein gesetzliches Widerrufsrecht zu. Einzelheiten ergeben sich aus der gesonderten{" "}
-              <Link href="/widerruf" className="text-[#8BBDE8] hover:underline">Widerrufsbelehrung</Link>.
+              <Link href="/widerruf" className="text-[#5CC987] hover:underline">Widerrufsbelehrung</Link>.
             </p>
           </section>
 
@@ -98,9 +98,9 @@ export default function AgbPage() {
             </p>
             <p className="mt-3">
               Bei Mängeln wende dich bitte an:{" "}
-              <a href="mailto:info@voltvibes-dorsten.de" className="text-[#8BBDE8] hover:underline">info@voltvibes-dorsten.de</a>{" "}
+              <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a>{" "}
               oder{" "}
-              <a href="tel:023629747100" className="text-[#8BBDE8] hover:underline">02362 9747100</a>.
+              <a href="tel:023629747100" className="text-[#5CC987] hover:underline">02362 9747100</a>.
             </p>
           </section>
 
@@ -119,7 +119,7 @@ export default function AgbPage() {
             <h2 className="text-base font-semibold text-zinc-900 mb-3">§ 9 Streitbeilegung</h2>
             <p>
               Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[#8BBDE8] hover:underline">https://ec.europa.eu/consumers/odr</a>.
+              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">https://ec.europa.eu/consumers/odr</a>.
               Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
             </p>
           </section>

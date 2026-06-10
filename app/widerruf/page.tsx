@@ -43,8 +43,8 @@ export default function WiderrufPage() {
               Inhaber: Markus Kremer<br />
               Essener Str. 24<br />
               46282 Dorsten<br />
-              E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#8BBDE8] hover:underline">info@voltvibes-dorsten.de</a><br />
-              Telefon: <a href="tel:023629747100" className="text-[#8BBDE8] hover:underline">02362 9747100</a>
+              E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a><br />
+              Telefon: <a href="tel:023629747100" className="text-[#5CC987] hover:underline">02362 9747100</a>
             </p>
             <p className="mt-3">
               mittels einer eindeutigen Erklärung (z.&nbsp;B. ein mit der Post versandter Brief oder eine E-Mail) über deinen Entschluss, diesen Vertrag zu widerrufen, informieren. Du kannst dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.

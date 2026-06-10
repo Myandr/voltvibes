@@ -9,7 +9,7 @@ import CustomerStoriesSection from "../components/CustomerStoriesSection"
 type BadgeColor = "red" | "blue" | "green" | "purple"
 
 const tagColors: Record<BadgeColor, string> = {
-  red:    "border border-[#8BBDE8]/30 bg-[#8BBDE8]/8 text-[#8BBDE8]",
+  red:    "border border-[#5CC987]/30 bg-[#5CC987]/8 text-[#5CC987]",
   blue:   "border border-blue-500/30 bg-blue-500/8 text-blue-600",
   green:  "border border-green-500/30 bg-green-500/8 text-green-600",
   purple: "border border-purple-500/30 bg-purple-500/8 text-purple-600",
@@ -107,7 +107,7 @@ export default function NewsAndEventsPage() {
             <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
               <BlurTextEffect scrollTrigger delay={0}>News </BlurTextEffect>
             </span>
-            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
               <BlurTextEffect scrollTrigger delay={0.15}>& Events</BlurTextEffect>
             </em>
           </h1>

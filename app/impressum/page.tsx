@@ -41,8 +41,8 @@ export default function ImpressumPage() {
           <section>
             <h2 className="text-base font-semibold text-zinc-900 mb-3">Kontakt</h2>
             <p>
-              Telefon: <a href="tel:023629747100" className="text-[#8BBDE8] hover:underline">02362 9747100</a><br />
-              E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#8BBDE8] hover:underline">info@voltvibes-dorsten.de</a>
+              Telefon: <a href="tel:023629747100" className="text-[#5CC987] hover:underline">02362 9747100</a><br />
+              E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a>
             </p>
           </section>
 
@@ -78,7 +78,7 @@ export default function ImpressumPage() {
             <h2 className="text-base font-semibold text-zinc-900 mb-3">Streitschlichtung</h2>
             <p>
               Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[#8BBDE8] hover:underline">https://ec.europa.eu/consumers/odr</a>.
+              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">https://ec.europa.eu/consumers/odr</a>.
               Unsere E-Mail-Adresse findest du oben. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
             </p>
           </section>

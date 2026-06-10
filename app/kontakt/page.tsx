@@ -35,7 +35,7 @@ function fadeStyle(visible: boolean, delay = 0, y = 16): React.CSSProperties {
 
 const italicStyle = {
   fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
-  color: "#8BBDE8",
+  color: "#5CC987",
   fontStyle: "italic" as const,
   fontWeight: 400,
 }
@@ -91,7 +91,7 @@ export default function KontaktPage() {
   }
 
   const inputClass =
-    "w-full rounded-xl bg-white border border-zinc-200 px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#8BBDE8]/40 focus:border-transparent transition-all"
+    "w-full rounded-xl bg-white border border-zinc-200 px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#5CC987]/40 focus:border-transparent transition-all"
 
   return (
     <main className="flex flex-col flex-1 bg-white">
@@ -103,7 +103,7 @@ export default function KontaktPage() {
             <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
               <BlurTextEffect scrollTrigger delay={0}>Kontakt </BlurTextEffect>
             </span>
-            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
               <BlurTextEffect scrollTrigger delay={0.15}>aufnehmen</BlurTextEffect>
             </em>
           </h1>
@@ -136,8 +136,8 @@ export default function KontaktPage() {
               {submitted ? (
                 <div className="flex flex-col items-start gap-4 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#8BBDE8]/10">
-                      <Check className="h-4 w-4 text-[#8BBDE8]" />
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#5CC987]/10">
+                      <Check className="h-4 w-4 text-[#5CC987]" />
                     </div>
                     <div>
                       <p className="font-semibold text-zinc-900">Nachricht gesendet!</p>
@@ -148,7 +148,7 @@ export default function KontaktPage() {
                   </div>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: "", email: "", betreff: "", nachricht: "" }) }}
-                    className="text-sm text-[#8BBDE8] hover:underline underline-offset-2 transition-colors mt-2"
+                    className="text-sm text-[#5CC987] hover:underline underline-offset-2 transition-colors mt-2"
                   >
                     Weitere Nachricht senden
                   </button>
@@ -169,7 +169,7 @@ export default function KontaktPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                        Name <span className="text-[#8BBDE8]">*</span>
+                        Name <span className="text-[#5CC987]">*</span>
                       </label>
                       <input
                         id="name"
@@ -184,7 +184,7 @@ export default function KontaktPage() {
                     </div>
                     <div className="space-y-1.5">
                       <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                        E-Mail <span className="text-[#8BBDE8]">*</span>
+                        E-Mail <span className="text-[#5CC987]">*</span>
                       </label>
                       <input
                         id="email"
@@ -216,7 +216,7 @@ export default function KontaktPage() {
 
                   <div className="space-y-1.5">
                     <label htmlFor="nachricht" className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                      Nachricht <span className="text-[#8BBDE8]">*</span>
+                      Nachricht <span className="text-[#5CC987]">*</span>
                     </label>
                     <textarea
                       id="nachricht"
@@ -256,7 +256,7 @@ export default function KontaktPage() {
                   )}
                   <p className="text-xs text-zinc-400">
                       Mit dem Absenden stimmst du unserer{" "}
-                      <Link href="/datenschutzerklarung" className="text-[#8BBDE8] hover:underline underline-offset-2 transition-colors">
+                      <Link href="/datenschutzerklarung" className="text-[#5CC987] hover:underline underline-offset-2 transition-colors">
                         Datenschutzerklärung
                       </Link>{" "}
                       zu.
@@ -274,27 +274,27 @@ export default function KontaktPage() {
 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <Phone className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <Phone className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-0.5">Telefon</p>
-                      <a href="tel:02362-9747100" className="text-sm font-medium text-zinc-900 hover:text-[#8BBDE8] transition-colors">
+                      <a href="tel:02362-9747100" className="text-sm font-medium text-zinc-900 hover:text-[#5CC987] transition-colors">
                         02362-9747100
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Mail className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <Mail className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-0.5">E-Mail</p>
-                      <a href="mailto:info@voltvibes-dorsten.de" className="text-sm font-medium text-zinc-900 hover:text-[#8BBDE8] transition-colors break-all">
+                      <a href="mailto:info@voltvibes-dorsten.de" className="text-sm font-medium text-zinc-900 hover:text-[#5CC987] transition-colors break-all">
                         info@voltvibes-dorsten.de
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <MapPin className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <MapPin className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-0.5">Adresse</p>
                       <p className="text-sm font-medium text-zinc-900">Essener Str. 24</p>
@@ -304,14 +304,14 @@ export default function KontaktPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <MessageCircle className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <MessageCircle className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-0.5">WhatsApp</p>
                       <a
                         href="https://wa.me/4923629747100"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-zinc-900 hover:text-[#8BBDE8] transition-colors"
+                        className="text-sm font-medium text-zinc-900 hover:text-[#5CC987] transition-colors"
                       >
                         WhatsApp verfügbar
                       </a>
@@ -321,7 +321,7 @@ export default function KontaktPage() {
 
                 <div className="border-t border-zinc-100 pt-5">
                   <div className="flex items-start gap-3">
-                    <Clock className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                    <Clock className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                     <div className="w-full">
                       <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Öffnungszeiten</p>
                       <table className="w-full text-sm">

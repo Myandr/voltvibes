@@ -46,7 +46,7 @@ export default function BlogSection() {
           }}
         >
           <BlurTextEffect scrollTrigger>Aktuelles aus </BlurTextEffect>
-          <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+          <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
             <BlurTextEffect scrollTrigger delay={0.22}>Dorsten</BlurTextEffect>
           </em>
         </h2>

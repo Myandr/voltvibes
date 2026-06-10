@@ -78,7 +78,7 @@ export default function PageHero({ eyebrow, title, titleAccent, titleAfter, subt
                 style={{
                   fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
                   fontSize: 'clamp(2.8rem, 6.6vw, 6.1rem)',
-                  color: '#8BBDE8',
+                  color: '#5CC987',
                   fontStyle: 'italic',
                   fontWeight: 400,
                   letterSpacing: '0.01em',

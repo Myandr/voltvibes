@@ -78,7 +78,7 @@ export default function CookiesPage() {
                 </div>
                 <p className="text-sm text-zinc-500 leading-relaxed">
                   Für die Anzeige interaktiver Karten verwenden wir Google Maps. Dabei werden Daten an Google Ireland Limited übertragen. Weitere Informationen findest du in der{' '}
-                  <Link href="/datenschutz" className="text-[#8BBDE8] hover:underline underline-offset-2">
+                  <Link href="/datenschutz" className="text-[#5CC987] hover:underline underline-offset-2">
                     Datenschutzerklärung
                   </Link>
                   .

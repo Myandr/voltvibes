@@ -45,7 +45,7 @@ export default function Footer() {
           }}
         >
           {subscribed ? (
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', color: '#8BBDE8' }}>
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', color: '#5CC987' }}>
               ✓ Danke! Du bist jetzt dabei.
             </span>
           ) : (

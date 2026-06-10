@@ -52,7 +52,7 @@ export default function FooterCTA() {
           }}
         >
           Besuche uns in der{' '}
-          <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>Essener Str. 24,</em>{' '}
+          <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>Essener Str. 24,</em>{' '}
           Dorsten
         </h2>
 

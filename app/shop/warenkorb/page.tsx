@@ -49,7 +49,7 @@ export default function WarenkorbPage() {
             <ShoppingBag className="h-16 w-16 text-[#ccc] mb-4" />
             <p className="text-lg font-medium text-[#0e0e0e]">Dein Warenkorb ist leer</p>
             <p className="text-[#888] text-sm mt-1 mb-6">Entdecke unsere Produkte und füge sie hier hinzu.</p>
-            <Link href="/shop" className="px-6 py-3 bg-[#0C1523] text-white text-sm font-semibold rounded-sm hover:bg-[#8BBDE8] hover:text-[#0C1523] transition-colors">
+            <Link href="/shop" className="px-6 py-3 bg-[#0C1523] text-white text-sm font-semibold rounded-sm hover:bg-[#5CC987] hover:text-[#0C1523] transition-colors">
               Zum Shop
             </Link>
           </div>
@@ -85,7 +85,7 @@ export default function WarenkorbPage() {
                           <div>
                             <p className="text-[11px] uppercase tracking-widest text-[#888]">{item.vendor}</p>
                             <Link href={`/shop/${item.productHandle}`}>
-                              <h3 className="font-medium text-sm mt-0.5 text-[#0e0e0e] hover:text-[#8BBDE8] transition-colors">{item.productTitle}</h3>
+                              <h3 className="font-medium text-sm mt-0.5 text-[#0e0e0e] hover:text-[#5CC987] transition-colors">{item.productTitle}</h3>
                             </Link>
                             {item.variantTitle && (
                               <p className="text-xs text-[#888] mt-1">{item.variantTitle}</p>
@@ -94,7 +94,7 @@ export default function WarenkorbPage() {
                           <button
                             onClick={() => removeItem(item.id)}
                             disabled={loading}
-                            className="text-[#bbb] hover:text-[#8BBDE8] transition-colors shrink-0 disabled:opacity-40"
+                            className="text-[#bbb] hover:text-[#5CC987] transition-colors shrink-0 disabled:opacity-40"
                             aria-label="Entfernen"
                           >
                             <X className="h-4 w-4" />
@@ -180,7 +180,7 @@ export default function WarenkorbPage() {
                 {checkoutUrl ? (
                   <a
                     href={checkoutUrl}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0C1523] hover:bg-[#8BBDE8] hover:text-[#0C1523] text-white font-semibold text-sm rounded-sm transition-colors"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0C1523] hover:bg-[#5CC987] hover:text-[#0C1523] text-white font-semibold text-sm rounded-sm transition-colors"
                   >
                     {loading && <Loader2 className="h-4 w-4 animate-spin" />}
                     Zur Kasse →

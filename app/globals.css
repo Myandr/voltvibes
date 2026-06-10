@@ -107,9 +107,8 @@ body {
 /* ── Mobile (≤768px) ────────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* About stats: stack vertically */
-  .stats-grid { grid-template-columns: 1fr !important; }
-  .stat-card-0, .stat-card-1 { border-right: none !important; border-bottom: 1px solid #e0e0e0; }
+  /* About stats: keep 3 columns on mobile */
+  .stat-card-0, .stat-card-1 { border-bottom: none; }
 
   /* Services bento: single column */
   .bento-grid {

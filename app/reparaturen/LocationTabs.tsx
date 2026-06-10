@@ -117,7 +117,7 @@ export default function LocationTabs() {
           </div>
 
           {loc.description && (
-            <p className="text-sm text-zinc-500 leading-relaxed border-l-2 border-[#8BBDE8] pl-4">
+            <p className="text-sm text-zinc-500 leading-relaxed border-l-2 border-[#5CC987] pl-4">
               {loc.description}
             </p>
           )}
@@ -209,7 +209,7 @@ export default function LocationTabs() {
           })}
 
           {loc.id !== "dorsten" && (
-            <div className="mt-4 rounded-xl bg-[#8BBDE8]/10 border border-[#8BBDE8]/20 px-4 py-3.5">
+            <div className="mt-4 rounded-xl bg-[#5CC987]/10 border border-[#5CC987]/20 px-4 py-3.5">
               <p className="text-xs font-semibold text-[#0C1523] mb-1">Wie funktioniert's?</p>
               <p className="text-xs text-zinc-600 leading-relaxed">
                 Scooter abgeben → unser Servicemobil holt ihn ab → Reparatur in Dorsten → Abholung oder Lieferung zurück.

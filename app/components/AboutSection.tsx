@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const blue = '#8BBDE8';
+const green = '#5CC987';
 
 // Word-level scroll reveal
 const words = [
@@ -118,7 +118,7 @@ function StatCard({ label, target, decimals, suffix, i }: {
           fontSize: 'clamp(3.5rem, 6vw, 5.5rem)',
           lineHeight: 1,
           letterSpacing: '0.01em',
-          background: 'linear-gradient(to right, #111111 0%, #8BBDE8 30%, #8BBDE8 100%)',
+          background: 'linear-gradient(to right, #111111 0%, #5CC987 30%, #5CC987 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -172,7 +172,7 @@ export default function AboutSection() {
             <span
               key={i}
               style={{
-                color: revealAt(i) ? (w.green ? blue : '#111') : '#ddd',
+                color: revealAt(i) ? (w.green ? green : '#111') : '#ddd',
                 transition: 'color 0.35s ease',
                 marginRight: '0.28em',
                 display: 'inline-block',

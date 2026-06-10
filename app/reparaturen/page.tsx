@@ -9,13 +9,13 @@ import ConsentMap from "../components/ConsentMap"
 
 const italicStyle = {
   fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
-  color: "#8BBDE8",
+  color: "#5CC987",
   fontStyle: "italic" as const,
   fontWeight: 400,
 }
 
 const contactIcons  = { whatsapp: MessageCircle, phone: Phone, email: Mail } as const
-const contactColors = { whatsapp: '#25D366', phone: '#8BBDE8', email: '#8BBDE8' } as const
+const contactColors = { whatsapp: '#25D366', phone: '#5CC987', email: '#5CC987' } as const
 
 const locations = [
   {
@@ -155,7 +155,7 @@ export default function ReparaturenPage() {
             <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
               <BlurTextEffect scrollTrigger delay={0}>Reparatur &amp; </BlurTextEffect>
             </span>
-            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
               <BlurTextEffect scrollTrigger delay={0.15}>Ersatzteile</BlurTextEffect>
             </em>
           </h1>
@@ -183,7 +183,7 @@ export default function ReparaturenPage() {
 
             <div ref={dorstInfo.ref} style={fadeStyle(dorstInfo.visible, 0.2, 24)} className="flex flex-col gap-6 py-2">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#8BBDE8]/40 bg-[#8BBDE8]/5 px-4 py-1.5 text-sm font-medium text-[#8BBDE8] mb-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#5CC987]/40 bg-[#5CC987]/5 px-4 py-1.5 text-sm font-medium text-[#5CC987] mb-4">
                   <Wrench className="h-3.5 w-3.5" />
                   Hauptfiliale Dorsten
                 </span>
@@ -194,7 +194,7 @@ export default function ReparaturenPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                <MapPin className="h-5 w-5 text-[#5CC987] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-sm text-zinc-900">{dorsten.street}</p>
                   <p className="text-sm text-zinc-500">{dorsten.city}</p>
@@ -202,7 +202,7 @@ export default function ReparaturenPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Clock className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                <Clock className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                 <div className="w-full">
                   <p className="font-semibold text-sm text-zinc-900 mb-2">Öffnungszeiten</p>
                   <table className="w-full text-sm">
@@ -275,7 +275,7 @@ export default function ReparaturenPage() {
               </h3>
 
               <div className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-zinc-900 font-medium">{bottrop.street}</p>
                   <p className="text-sm text-zinc-500">{bottrop.city}</p>
@@ -283,7 +283,7 @@ export default function ReparaturenPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Clock className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-1" />
+                <Clock className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-1" />
                 <table className="text-sm flex-1">
                   <tbody className="divide-y divide-zinc-100">
                     {bottrop.hours.map((h) => (
@@ -298,7 +298,7 @@ export default function ReparaturenPage() {
 
               <IconButtons contacts={bottrop.contacts} />
 
-              <div className="bg-[#8BBDE8]/5 border border-[#8BBDE8]/20 rounded-xl p-4">
+              <div className="bg-[#5CC987]/5 border border-[#5CC987]/20 rounded-xl p-4">
                 <p className="text-sm text-zinc-600">
                   Scooter abgeben → Servicemobil holt ab → Reparatur in Dorsten → Abholung oder Lieferung zurück.
                 </p>

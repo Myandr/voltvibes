@@ -35,7 +35,7 @@ function fadeStyle(visible: boolean, delay = 0, y = 16): React.CSSProperties {
 
 const italicStyle = {
   fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
-  color: "#8BBDE8",
+  color: "#5CC987",
   fontStyle: "italic" as const,
   fontWeight: 400,
 }
@@ -60,7 +60,7 @@ export default function FilialenPage() {
             <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 7rem)', letterSpacing: '0.02em', color: '#0C1523' }}>
               <BlurTextEffect scrollTrigger delay={0}>Unsere </BlurTextEffect>
             </span>
-            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+            <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', fontSize: 'clamp(2.1rem, 5.6vw, 6.6rem)', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
               <BlurTextEffect scrollTrigger delay={0.15}>Filialen</BlurTextEffect>
             </em>
           </h1>
@@ -90,7 +90,7 @@ export default function FilialenPage() {
             {/* Info */}
             <div ref={dorstInfo.ref} style={fadeStyle(dorstInfo.visible, 0.2, 24)} className="flex flex-col gap-6 py-2">
               <div>
-                <span className="inline-flex items-center rounded-full border border-[#8BBDE8]/40 bg-[#8BBDE8]/5 px-4 py-1.5 text-sm font-medium text-[#8BBDE8] mb-4">
+                <span className="inline-flex items-center rounded-full border border-[#5CC987]/40 bg-[#5CC987]/5 px-4 py-1.5 text-sm font-medium text-[#5CC987] mb-4">
                   Hauptfiliale
                 </span>
                 <h2 style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', letterSpacing: '0.02em', color: '#0C1523', lineHeight: 1 }}>
@@ -99,7 +99,7 @@ export default function FilialenPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                <MapPin className="h-5 w-5 text-[#5CC987] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-sm text-zinc-900">Adresse</p>
                   <p className="text-sm text-zinc-500">Essener Str. 24</p>
@@ -110,17 +110,17 @@ export default function FilialenPage() {
 
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                  <Phone className="h-4 w-4 text-[#5CC987] flex-shrink-0" />
                   <a href="tel:023629747100" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">02362 9747100</a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                  <Mail className="h-4 w-4 text-[#5CC987] flex-shrink-0" />
                   <a href="mailto:info@voltvibes-dorsten.de" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">info@voltvibes-dorsten.de</a>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <Clock className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                <Clock className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                 <div className="w-full">
                   <p className="font-semibold text-sm text-zinc-900 mb-2">Öffnungszeiten</p>
                   <table className="w-full text-sm">
@@ -193,7 +193,7 @@ export default function FilialenPage() {
                 <span className="inline-flex items-center rounded-full border border-zinc-200 px-4 py-1.5 text-sm font-medium text-zinc-500">
                   Neue Filiale
                 </span>
-                <span className="inline-flex items-center rounded-full bg-[#8BBDE8] px-4 py-1.5 text-sm font-medium text-[#0C1523]">
+                <span className="inline-flex items-center rounded-full bg-[#5CC987] px-4 py-1.5 text-sm font-medium text-[#0C1523]">
                   Eröffnung Mai 2026
                 </span>
               </div>
@@ -208,7 +208,7 @@ export default function FilialenPage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-[#8BBDE8] flex-shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-[#5CC987] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-zinc-900 font-medium">Groner Straße 8</p>
                   <p className="text-sm text-zinc-500">37073 Göttingen</p>
@@ -217,16 +217,16 @@ export default function FilialenPage() {
 
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                  <Phone className="h-4 w-4 text-[#5CC987] flex-shrink-0" />
                   <span className="text-sm text-zinc-500">+49 551 27077600</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-[#8BBDE8] flex-shrink-0" />
+                  <Mail className="h-4 w-4 text-[#5CC987] flex-shrink-0" />
                   <span className="text-sm text-zinc-500">info@voltvibes-goettingen.de</span>
                 </div>
               </div>
 
-              <div className="bg-[#8BBDE8]/5 border border-[#8BBDE8]/20 rounded-xl p-4">
+              <div className="bg-[#5CC987]/5 border border-[#5CC987]/20 rounded-xl p-4">
                 <p className="text-sm text-zinc-600">
                   Öffnungszeiten werden zur Eröffnung im <strong className="text-zinc-900">Mai 2026</strong> bekanntgegeben.
                 </p>

@@ -59,7 +59,7 @@ export default function FeaturesSection() {
           }}
         >
           <BlurTextEffect scrollTrigger>Was uns in </BlurTextEffect>
-          <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#8BBDE8', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
+          <em style={{ fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif', color: '#5CC987', fontStyle: 'italic', fontWeight: 400, letterSpacing: '0.01em' }}>
             <BlurTextEffect scrollTrigger delay={0.16}>Dorsten</BlurTextEffect>
           </em>
           <BlurTextEffect scrollTrigger delay={0.28}> besonders macht</BlurTextEffect>

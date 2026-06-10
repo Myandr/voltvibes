@@ -7,7 +7,7 @@ import { BlurTextEffect } from "./BlurTextEffect"
 
 const italicStyle = {
   fontFamily: 'Georgia, "Palatino Linotype", Palatino, serif',
-  color: "#8BBDE8",
+  color: "#5CC987",
   fontStyle: "italic",
   fontWeight: 400,
 } as const

@@ -35,7 +35,7 @@ function CartIcon({ isLight }: { isLight: boolean }) {
         )}
       />
       {totalQuantity > 0 && (
-        <span className="absolute -top-1.5 -right-1.5 h-4 w-4 rounded-full bg-[#8BBDE8] text-[#0C1523] text-[10px] font-bold flex items-center justify-center leading-none">
+        <span className="absolute -top-1.5 -right-1.5 h-4 w-4 rounded-full bg-[#5CC987] text-[#0C1523] text-[10px] font-bold flex items-center justify-center leading-none">
           {totalQuantity > 9 ? '9+' : totalQuantity}
         </span>
       )}
@@ -137,7 +137,7 @@ export default function Navbar() {
             <div
               className={cn(
                 'mb-6 hidden w-full flex-wrap items-center justify-end space-y-8',
-                'rounded-3xl border border-white/10 bg-[#0C1523] p-6 shadow-2xl shadow-black/40',
+                'rounded-3xl border border-white/10 bg-black p-6 shadow-2xl shadow-black/40',
                 'md:flex-nowrap',
                 'lg:m-0 lg:flex lg:w-fit lg:gap-4 lg:space-y-0',
                 'lg:rounded-none lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none',
