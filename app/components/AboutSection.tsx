@@ -113,6 +113,7 @@ function StatCard({ label, target, decimals, suffix, i }: {
         {label}
       </span>
       <div
+        className="stat-number"
         style={{
           fontFamily: 'var(--font-bebas), sans-serif',
           fontSize: 'clamp(3.5rem, 6vw, 5.5rem)',
