@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 function RelatedCard({ product }: { product: ShopifyProduct }) {
   return (
     <Link href={`/shop/${product.handle}`} className="group flex flex-col">
-      <div className="aspect-square overflow-hidden bg-[#f5f5f5] rounded-sm relative">
+      <div className="aspect-square overflow-hidden bg-white rounded-sm relative">
         {product.images[0] && (
           <Image src={product.images[0]} alt={product.title} fill sizes="25vw" className="object-contain transition-transform duration-500 group-hover:scale-105" />
         )}
@@ -86,7 +86,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
 
           {/* Image Gallery */}
           <div className="flex flex-col gap-3">
-            <div className="relative aspect-square overflow-hidden bg-[#f5f5f5] rounded-sm">
+            <div className="relative aspect-square overflow-hidden bg-white rounded-sm">
               {product.images[selectedImage] && (
                 <Image
                   key={selectedImage}
@@ -115,7 +115,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
-                    className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-sm border-2 transition-colors bg-[#f5f5f5]", selectedImage === idx ? "border-[#0C1523]" : "border-transparent hover:border-[#888]")}
+                    className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-sm border-2 transition-colors bg-white", selectedImage === idx ? "border-[#0C1523]" : "border-transparent hover:border-[#888]")}
                   >
                     <Image src={src} alt="" fill sizes="80px" className="object-contain" />
                   </button>
@@ -201,11 +201,11 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
               <div>
                 <p className="text-sm font-medium text-[#0e0e0e] mb-2.5">Menge</p>
                 <div className="flex items-center w-fit border border-[#e5e5e5] rounded-sm overflow-hidden">
-                  <button onClick={() => setQuantity((q) => Math.max(1, q - 1))} className="px-3 py-2 hover:bg-[#f5f5f5] transition-colors text-[#0e0e0e]">
+                  <button onClick={() => setQuantity((q) => Math.max(1, q - 1))} className="px-3 py-2 hover:bg-white transition-colors text-[#0e0e0e]">
                     <Minus className="h-4 w-4" />
                   </button>
                   <span className="px-5 py-2 text-sm font-medium border-x border-[#e5e5e5] min-w-[3rem] text-center text-[#0e0e0e]">{quantity}</span>
-                  <button onClick={() => setQuantity((q) => q + 1)} className="px-3 py-2 hover:bg-[#f5f5f5] transition-colors text-[#0e0e0e]">
+                  <button onClick={() => setQuantity((q) => q + 1)} className="px-3 py-2 hover:bg-white transition-colors text-[#0e0e0e]">
                     <Plus className="h-4 w-4" />
                   </button>
                 </div>
@@ -269,7 +269,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
                 <div className="border-t border-[#e5e5e5] pt-5">
                   <div className="flex flex-wrap gap-1.5">
                     {product.tags.map((tag) => (
-                      <span key={tag} className="text-xs px-2 py-0.5 bg-[#f5f5f5] text-[#888] rounded-sm">{tag}</span>
+                      <span key={tag} className="text-xs px-2 py-0.5 bg-white text-[#888] rounded-sm">{tag}</span>
                     ))}
                   </div>
                 </div>

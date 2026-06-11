@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { BlurTextEffect } from './BlurTextEffect';
 import VVButton from './VVButton';
@@ -59,11 +60,28 @@ export default function HeroSection() {
         priority
       />
 
+      {/* Stamp keyframes */}
+      <style>{`
+        @keyframes stampIn {
+          0%   { opacity: 0; transform: rotate(-12deg) scale(1.7); }
+          60%  { opacity: 1; transform: rotate(-12deg) scale(0.9); }
+          80%  { transform: rotate(-12deg) scale(1.06); }
+          100% { opacity: 1; transform: rotate(-12deg) scale(1); }
+        }
+        .vv-stamp {
+          transform: rotate(-12deg) scale(1);
+          transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+        }
+        .vv-stamp:hover {
+          transform: rotate(348deg) scale(1.12) !important;
+          box-shadow: 0 10px 44px rgba(92,201,135,0.8) !important;
+        }
+      `}</style>
+
       {/* ── TEXT BLOCK — centered in section ── */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        zIndex: 10,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -79,14 +97,47 @@ export default function HeroSection() {
             <span style={textStyle}><BlurTextEffect delay={0.28}>Dein Scooter</BlurTextEffect></span>
           </div>
 
-          <div style={{ height: 'clamp(4rem, 20vh, 12rem)' }} />
+          <div style={{ height: 'clamp(4rem, 15vh, 12rem)' }} />
 
           <div>
             <span style={textStyle}><BlurTextEffect delay={0.44}>vom </BlurTextEffect></span>
             <em style={italicStyle}><BlurTextEffect delay={0.56}>besten Laden</BlurTextEffect></em>
           </div>
-          <div>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(10px, 1.4vw, 20px)' }}>
             <span style={textStyle}><BlurTextEffect delay={0.72}>in Dorsten</BlurTextEffect></span>
+            <Link
+              href="/filialen"
+              className="vv-stamp"
+              aria-label="Neu eröffnet in Göttingen – zur Filialseite"
+              style={{
+                position: 'relative',
+                zIndex: 25,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                width: 'clamp(96px, 10.5vw, 128px)',
+                height: 'clamp(96px, 10.5vw, 128px)',
+                borderRadius: '50%',
+                background: '#5CC987',
+                border: '2.5px dashed rgba(12,21,35,0.5)',
+                outline: '3px solid rgba(12,21,35,0.15)',
+                outlineOffset: '5px',
+                cursor: 'pointer',
+                textDecoration: 'none',
+                boxShadow: '0 4px 22px rgba(92,201,135,0.4)',
+                animation: mounted ? 'stampIn 0.55s cubic-bezier(0.34,1.56,0.64,1) 1.3s both' : 'none',
+                opacity: mounted ? undefined : 0,
+                gap: '2px',
+              }}
+            >
+              <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(1rem, 1.6vw, 1.55rem)', color: '#0C1523', letterSpacing: '0.04em', lineHeight: 1 }}>JETZT</span>
+              <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(0.88rem, 1.3vw, 1.3rem)', color: '#0C1523', letterSpacing: '0.04em', lineHeight: 1 }}>NEU IN</span>
+              <div style={{ width: '58%', height: '1.5px', background: 'rgba(12,21,35,0.4)', borderRadius: '1px', margin: '2px 0' }} />
+              <span style={{ fontFamily: 'var(--font-bebas), sans-serif', fontSize: 'clamp(0.9rem, 1.4vw, 1.35rem)', color: '#0C1523', letterSpacing: '0.03em', lineHeight: 1 }}>GÖTTINGEN</span>
+            </Link>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ function ProductCard({ product, priority = false }: { product: ShopifyProduct; p
 
   return (
     <Link href={`/shop/${product.handle}`} className="group block">
-      <div className="relative overflow-hidden rounded-sm aspect-[3/2] bg-[#f0f0f0]">
+      <div className="relative overflow-hidden aspect-[3/2] bg-white" style={{ borderRadius: '8px', border: '1px solid #e0e0e0' }}>
         {img ? (
           <Image
             src={img}
@@ -72,7 +72,6 @@ function ProductCard({ product, priority = false }: { product: ShopifyProduct; p
           </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
 
         {product.badge && (
           <span className={cn(
@@ -93,22 +92,22 @@ function ProductCard({ product, priority = false }: { product: ShopifyProduct; p
           </div>
         )}
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-          <p className="text-white/60 text-xs mb-0.5">
-            {product.price.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
-            {product.compareAtPrice && (
-              <span className="line-through ml-2 text-white/35">
-                {product.compareAtPrice.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
-              </span>
-            )}
-          </p>
-          <h3
-            className="text-white font-medium text-sm sm:text-base leading-tight"
-            style={{ fontFamily: "var(--font-geist-sans), sans-serif" }}
-          >
-            {product.title}
-          </h3>
-        </div>
+      </div>
+      <div className="pt-4 px-0.5">
+        <h3
+          className="font-medium text-sm sm:text-base leading-tight"
+          style={{ fontFamily: "var(--font-geist-sans), sans-serif", color: '#000' }}
+        >
+          {product.title}
+        </h3>
+        <p className="text-zinc-500 text-xs mt-0.5">
+          {product.price.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
+          {product.compareAtPrice && (
+            <span className="line-through ml-2 text-zinc-400">
+              {product.compareAtPrice.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
+            </span>
+          )}
+        </p>
       </div>
     </Link>
   )
@@ -208,26 +207,47 @@ export default function ShopClient({ initialProducts, categories }: Props) {
       {/* ── Quick filters ── */}
       <div ref={searchFade.ref} style={fadeStyle(searchFade.visible, 0.2)} className="px-4 mb-4">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {([
-              { value: "helm",        label: "Helme & Schoner" },
-              { value: "stunt",       label: "Stunt Scooter" },
-              { value: "e-scooter",   label: "E-Scooter" },
-              { value: "elektromobil",label: "Elektromobil für Senioren" },
-            ] as const).map(f => (
-              <button
-                key={f.value}
-                onClick={() => toggleCategory(f.value)}
-                className={cn(
-                  "px-4 py-2 text-sm rounded-sm border transition-colors font-medium",
-                  selectedCategories.includes(f.value)
-                    ? "bg-[#0C1523] text-white border-[#0C1523]"
-                    : "bg-white text-[#0e0e0e] border-[#e5e5e5] hover:border-[#0C1523] hover:text-[#0C1523]"
-                )}
-              >
-                {f.label}
-              </button>
-            ))}
+              { value: "helm",         label: "Helme & Schoner",           img: "/images/helm.png" },
+              { value: "stunt",        label: "Stunt Scooter",             img: "/images/stuntscooter.png" },
+              { value: "e-scooter",    label: "E-Scooter",                 img: "/images/e-scooter.png" },
+              { value: "elektromobil", label: "Elektromobil für Senioren", img: "/images/senioren.png" },
+            ] as const).map(f => {
+              const active = selectedCategories.includes(f.value)
+              return (
+                <button
+                  key={f.value}
+                  onClick={() => toggleCategory(f.value)}
+                  className="relative overflow-hidden rounded-lg group text-left"
+                  style={{
+                    aspectRatio: '3/2',
+                    border: active ? '2px solid #0C1523' : '2px solid transparent',
+                    transition: 'border-color 0.2s ease',
+                  }}
+                >
+                  <Image
+                    src={f.img}
+                    alt={f.label}
+                    fill
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%)' }} />
+                  <span
+                    className="absolute bottom-0 left-0 right-0 px-3 pb-3 text-white text-xs font-semibold"
+                    style={{ fontFamily: 'var(--font-geist-sans), sans-serif' }}
+                  >
+                    {f.label}
+                  </span>
+                  {active && (
+                    <div className="absolute top-2 right-2 h-5 w-5 rounded-full bg-[#5CC987] flex items-center justify-center">
+                      <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#0C1523" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </div>
+                  )}
+                </button>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -255,6 +275,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
 
             {/* ── Sidebar ── */}
             <aside className="w-44 shrink-0 hidden lg:block">
+              <div className="sticky top-24">
               <button
                 onClick={() => { setSelectedCategories([]); setSelectedPriceRange(null) }}
                 className={cn(
@@ -313,6 +334,7 @@ export default function ShopClient({ initialProducts, categories }: Props) {
                   ))}
                 </div>
               </div>
+            </div>
             </aside>
 
             {/* ── Product grid ── */}

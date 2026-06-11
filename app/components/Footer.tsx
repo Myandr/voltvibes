@@ -2,18 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setSubscribed(true);
-  }
-
   return (
     <footer
       style={{
@@ -34,63 +24,6 @@ export default function Footer() {
           gap: '3rem',
         }}
       >
-        {/* Email input */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            borderBottom: '1px solid #333',
-            paddingBottom: '1rem',
-            maxWidth: '420px',
-          }}
-        >
-          {subscribed ? (
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', color: '#5CC987' }}>
-              ✓ Danke! Du bist jetzt dabei.
-            </span>
-          ) : (
-            <form onSubmit={handleSubscribe} style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '0.5rem' }}>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="deine@email.com"
-                required
-                style={{
-                  flex: 1,
-                  background: 'transparent',
-                  border: 'none',
-                  outline: 'none',
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '1.1rem',
-                  color: '#fff',
-                  letterSpacing: '0.01em',
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  background: '#2a2a2a',
-                  border: 'none',
-                  borderRadius: '6px',
-                  width: '38px',
-                  height: '38px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  flexShrink: 0,
-                  transition: 'background 0.2s ease',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#3a3a3a'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#2a2a2a'; }}
-              >
-                <span style={{ color: '#fff', fontSize: '1rem', lineHeight: 1 }}>→</span>
-              </button>
-            </form>
-          )}
-        </div>
-
         {/* Nav + columns row */}
         <div className="footer-nav-row">
           {/* Nav links */}
