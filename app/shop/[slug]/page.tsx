@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import Footer from "../../components/Footer"
-import { fetchProductByHandle } from "@/lib/shopify"
+import { fetchProductByHandle, fetchProducts } from "@/lib/shopify"
 import ProductDetailClient from "./product-detail"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -15,11 +15,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const result = await fetchProductByHandle(slug)
+  const [result, allResult] = await Promise.all([
+    fetchProductByHandle(slug),
+    fetchProducts(),
+  ])
 
   if (!result.ok) notFound()
 
   const { product } = result
+  const related = allResult.ok
+    ? allResult.products
+        .filter(p => p.id !== product.id && p.category === product.category)
+        .slice(0, 4)
+        .concat(
+          allResult.products
+            .filter(p => p.id !== product.id && p.category !== product.category)
+            .slice(0, Math.max(0, 4 - allResult.products.filter(p => p.id !== product.id && p.category === product.category).length))
+        )
+        .slice(0, 4)
+    : []
 
   return (
     <main className="flex flex-col flex-1 min-h-screen bg-white">
@@ -41,7 +55,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
 
-      <ProductDetailClient product={result.product} />
+      <ProductDetailClient product={result.product} relatedProducts={related} />
       <Footer />
     </main>
   )

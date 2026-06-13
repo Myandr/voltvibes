@@ -69,6 +69,7 @@ export type ShopifyProduct = {
   productType: string
   tags: string[]
   description: string
+  descriptionHtml: string
   availableForSale: boolean
   images: string[]
   price: number
@@ -160,6 +161,7 @@ function mapNode(node: any): ShopifyProduct {
     productType: node.productType ?? '',
     tags: node.tags ?? [],
     description: node.description ?? '',
+    descriptionHtml: node.descriptionHtml ?? '',
     availableForSale: node.availableForSale ?? true,
     images,
     price,
@@ -226,8 +228,8 @@ const PRODUCTS_QUERY = `
 const PRODUCT_QUERY = `
   query getProduct($handle: String!) {
     productByHandle(handle: $handle) {
-      id handle title vendor productType tags description availableForSale
-      images(first: 8) { edges { node { url altText } } }
+      id handle title vendor productType tags description descriptionHtml availableForSale
+      images(first: 20) { edges { node { url altText } } }
       priceRange { minVariantPrice { amount currencyCode } }
       compareAtPriceRange { minVariantPrice { amount currencyCode } }
       options { name values }

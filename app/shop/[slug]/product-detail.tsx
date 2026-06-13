@@ -48,6 +48,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
   const [addedToCart, setAddedToCart]     = useState(false)
   const [addError, setAddError]           = useState<string | null>(null)
   const [activeTab, setActiveTab]         = useState<"beschreibung" | "technik">("beschreibung")
+  const [descExpanded, setDescExpanded]   = useState(false)
 
   const activeVariant = findVariant(product.variants, selectedColor, selectedSize)
   const inStock = activeVariant?.availableForSale ?? product.availableForSale
@@ -115,7 +116,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
-                    className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-sm border-2 transition-colors bg-white", selectedImage === idx ? "border-[#0C1523]" : "border-transparent hover:border-[#888]")}
+                    className={cn("relative h-20 w-20 shrink-0 overflow-hidden rounded-sm border-2 transition-colors bg-white", selectedImage === idx ? "border-[#0C1523]" : "border-[#e0e0e0] hover:border-[#888]")}
                   >
                     <Image src={src} alt="" fill sizes="80px" className="object-contain" />
                   </button>
@@ -300,7 +301,28 @@ export default function ProductDetailClient({ product, relatedProducts = [] }: {
 
           <div className="py-8 max-w-3xl">
             {activeTab === "beschreibung" && (
-              <p className="text-[#555] leading-relaxed whitespace-pre-line">{product.description || 'Keine Beschreibung verfügbar.'}</p>
+              product.descriptionHtml ? (
+                <div>
+                  <div
+                    className="product-description text-[#555] leading-relaxed"
+                    style={{
+                      maxHeight: descExpanded ? 'none' : '9rem',
+                      overflow: 'hidden',
+                      maskImage: descExpanded ? 'none' : 'linear-gradient(to bottom, black 40%, transparent 100%)',
+                      WebkitMaskImage: descExpanded ? 'none' : 'linear-gradient(to bottom, black 40%, transparent 100%)',
+                    }}
+                    dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                  />
+                  <button
+                    onClick={() => setDescExpanded(v => !v)}
+                    className="mt-3 text-sm font-medium text-[#0C1523] hover:text-[#5CC987] transition-colors flex items-center gap-1"
+                  >
+                    {descExpanded ? 'Weniger anzeigen ↑' : 'Mehr anzeigen ↓'}
+                  </button>
+                </div>
+              ) : (
+                <p className="text-[#555] leading-relaxed">Keine Beschreibung verfügbar.</p>
+              )
             )}
             {activeTab === "technik" && (
               <div>
