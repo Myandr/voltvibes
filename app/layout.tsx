@@ -24,8 +24,28 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "VoltVibes Dorsten — E-Scooter, Stunt Scooter & Reparatur",
-  description: "VoltVibes Dorsten: Dein Fachgeschäft in der Innenstadt für E-Scooter, Stunt Scooter und Reparaturen. Essener Str. 24, 46282 Dorsten.",
+  metadataBase: new URL("https://www.voltvibes-dorsten.de"),
+  title: {
+    default: "VoltVibes Dorsten — E-Scooter, Stunt Scooter & Reparatur",
+    template: "%s | VoltVibes Dorsten",
+  },
+  description:
+    "VoltVibes Dorsten: Dein Fachgeschäft in der Innenstadt für E-Scooter, Stunt Scooter und Reparaturen. Essener Str. 24, 46282 Dorsten.",
+  keywords: ["E-Scooter Dorsten", "VoltVibes", "Stunt Scooter", "E-Scooter Reparatur"],
+  authors: [{ name: "VoltVibes" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  openGraph: {
+    siteName: "VoltVibes",
+    locale: "de_DE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
   verification: {
     google: "Kp0rlwmVsmEIdswXJN7XdYydf-KYfehYOt08-6TrhoM",
   },

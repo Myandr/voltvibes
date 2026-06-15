@@ -1,7 +1,49 @@
+import type { Metadata } from "next"
 import Footer from "../components/Footer"
 import ShopClient from "./ShopClient"
 import { fetchProducts } from "@/lib/shopify"
 import { AlertTriangle, Settings, Wifi, KeyRound } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "E-Scooter Shop — VoltVibes Dorsten | Scooter & Zubehör online",
+  description:
+    "Kaufe E-Scooter, Stunt Scooter und Zubehör direkt im VoltVibes Online-Shop. Qualitätsprodukte aus Dorsten — auch vor Ort in der Essener Str. 24 verfügbar.",
+  keywords: [
+    "E-Scooter kaufen",
+    "Stunt Scooter kaufen",
+    "E-Scooter Online-Shop",
+    "VoltVibes Shop",
+    "E-Scooter Zubehör Dorsten",
+    "Scooter kaufen NRW",
+  ],
+  alternates: {
+    canonical: "https://www.voltvibes-dorsten.de/shop",
+  },
+  openGraph: {
+    title: "E-Scooter Shop — VoltVibes Dorsten",
+    description:
+      "E-Scooter, Stunt Scooter und Zubehör im VoltVibes Online-Shop. Geprüfte Qualität, fairer Preis.",
+    url: "https://www.voltvibes-dorsten.de/shop",
+    siteName: "VoltVibes",
+    locale: "de_DE",
+    type: "website",
+    images: [
+      {
+        url: "https://www.voltvibes-dorsten.de/og-image.png",
+        width: 768,
+        height: 768,
+        alt: "VoltVibes Dorsten — E-Scooter Shop",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "E-Scooter Shop — VoltVibes Dorsten",
+    description:
+      "E-Scooter, Stunt Scooter und Zubehör im VoltVibes Shop. Qualität aus Dorsten.",
+    images: ["https://www.voltvibes-dorsten.de/og-image.png"],
+  },
+}
 
 const ERROR_META = {
   missing_config: { Icon: Settings,      bg: 'bg-amber-50', border: 'border-amber-200', icon: 'text-amber-500', title: 'text-amber-900', text: 'text-amber-700' },
