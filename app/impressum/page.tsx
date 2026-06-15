@@ -31,10 +31,11 @@ export default function ImpressumPage() {
             <h2 className="text-base font-semibold text-zinc-900 mb-3">Anbieter</h2>
             <p>
               VoltVibes Dorsten<br />
-              Inhaber: Markus Kremer<br />
+              Geschäftsführender Inhaber: Markus Kremer<br />
               Unternehmensform: Einzelunternehmen<br />
-              Essener Str. 24<br />
-              46282 Dorsten
+              Essener Straße 24<br />
+              46282 Dorsten<br />
+              Website: <a href="https://www.voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">www.voltvibes-dorsten.de</a>
             </p>
           </section>
 
@@ -49,8 +50,37 @@ export default function ImpressumPage() {
           <section>
             <h2 className="text-base font-semibold text-zinc-900 mb-3">Steuerliche Angaben</h2>
             <p>
-              Steuernummer: [Steuernummer eintragen]
+              Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE460861455
             </p>
+          </section>
+
+          <section>
+            <h2 className="text-base font-semibold text-zinc-900 mb-3">Redaktionell verantwortlich</h2>
+            <p>Markus Kremer</p>
+          </section>
+
+          <section>
+            <h2 className="text-base font-semibold text-zinc-900 mb-3">Filialen</h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <p className="font-medium text-zinc-800 mb-1">Hauptfiliale NRW</p>
+                <p>
+                  VoltVibes Dorsten<br />
+                  Essener Straße 24, 46282 Dorsten<br />
+                  E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a><br />
+                  Telefon: <a href="tel:023629747100" className="text-[#5CC987] hover:underline">02362 9747100</a>
+                </p>
+              </div>
+              <div>
+                <p className="font-medium text-zinc-800 mb-1">Filiale Niedersachsen <span className="text-zinc-400 font-normal">(öffnet Mai 2026)</span></p>
+                <p>
+                  VoltVibes Göttingen<br />
+                  Groner Straße 8, 37073 Göttingen<br />
+                  E-Mail: <a href="mailto:info@voltvibes-goettingen.de" className="text-[#5CC987] hover:underline">info@voltvibes-goettingen.de</a><br />
+                  Telefon: <a href="tel:+495512707760" className="text-[#5CC987] hover:underline">+49 551 27077600</a>
+                </p>
+              </div>
+            </div>
           </section>
 
           <section>
@@ -75,11 +105,28 @@ export default function ImpressumPage() {
           </section>
 
           <section>
-            <h2 className="text-base font-semibold text-zinc-900 mb-3">Streitschlichtung</h2>
+            <h2 className="text-base font-semibold text-zinc-900 mb-3">Verbraucherstreitbeilegung</h2>
             <p>
-              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">https://ec.europa.eu/consumers/odr</a>.
-              Unsere E-Mail-Adresse findest du oben. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+              Wir nehmen an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil. Zuständig ist die Universalschlichtungsstelle des Zentrums für Schlichtung e.V., Straßburger Straße 8, 77694 Kehl am Rhein.{" "}
+              <a href="https://www.verbraucher-schlichter.de" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">www.verbraucher-schlichter.de</a>
+            </p>
+            <p className="mt-3">
+              Die Europäische Kommission stellt zudem eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
+              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-[#5CC987] hover:underline">ec.europa.eu/consumers/odr</a>
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-base font-semibold text-zinc-900 mb-3">Zentrale Kontaktstelle nach dem Digital Services Act (DSA)</h2>
+            <p>
+              Unsere zentrale Kontaktstelle für Nutzer und Behörden nach Art. 11, 12 DSA (Verordnung (EU) 2022/2065) erreichen Sie wie folgt:
+            </p>
+            <p className="mt-3">
+              E-Mail: <a href="mailto:info@voltvibes-dorsten.de" className="text-[#5CC987] hover:underline">info@voltvibes-dorsten.de</a><br />
+              Telefon: <a href="tel:023629747100" className="text-[#5CC987] hover:underline">02362 9747100</a>
+            </p>
+            <p className="mt-3">
+              Verfügbare Sprachen: Deutsch, Englisch.
             </p>
           </section>
 
