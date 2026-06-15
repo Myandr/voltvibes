@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import { Equal, X, ShoppingBag } from 'lucide-react';
+import { Equal, X, ShoppingBag, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/liquid-glass-button';
 import { cn } from '@/lib/utils';
@@ -14,9 +14,13 @@ const navLinks = [
   { label: 'Shop', href: '/shop' },
   { label: 'Dienstleistungen', href: '/dienstleistungen' },
   { label: 'Reparaturen', href: '/reparaturen' },
-  { label: 'Filialen', href: '/filialen' },
   { label: 'Team', href: '/das-team' },
   { label: 'News', href: '/news-and-events' },
+];
+
+const filialenLinks = [
+  { label: 'Dorsten', href: 'https://voltvibes-dorsten.com' },
+  { label: 'Göttingen', href: 'https://voltvibes-goettingen.de' },
 ];
 
 function CartIcon({ isLight }: { isLight: boolean }) {
@@ -46,8 +50,11 @@ function CartIcon({ isLight }: { isLight: boolean }) {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [filialenOpen, setFilialenOpen] = React.useState(false);
+  const [mobileFilialenOpen, setMobileFilialenOpen] = React.useState(false);
   const pathname = usePathname();
   const isLight = isScrolled || pathname !== '/';
+  const filialenRef = React.useRef<HTMLLIElement>(null);
 
   React.useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -60,7 +67,20 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const close = () => setMenuOpen(false);
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (filialenRef.current && !filialenRef.current.contains(e.target as Node)) {
+        setFilialenOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const close = () => {
+    setMenuOpen(false);
+    setMobileFilialenOpen(false);
+  };
 
   return (
     <header>
@@ -118,18 +138,69 @@ export default function Navbar() {
 
             {/* ── Desktop: centered nav links ── */}
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-              <ul className="flex gap-8 text-sm">
-                {navLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className={cn('block duration-150 font-[450] tracking-[0.01em]', isLight ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white')}
-                      style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+              <ul className="flex gap-8 text-sm items-center">
+                {/* Shop mit Border */}
+                <li>
+                  <Link
+                    href="/shop"
+                    className={cn('block duration-150 font-[450] tracking-[0.01em] px-3 py-1 rounded-full border', isLight ? 'text-gray-600 hover:text-gray-900 border-gray-400 hover:border-gray-700' : 'text-white/70 hover:text-white border-white/60 hover:border-white')}
+                    style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
+                  >
+                    Shop
+                  </Link>
+                </li>
+
+                {navLinks.slice(1).map((link) =>
+                  link.label === 'Filialen' ? null : (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className={cn('block duration-150 font-[450] tracking-[0.01em]', isLight ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white')}
+                        style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                )}
+
+                {/* Filialen Dropdown */}
+                <li ref={filialenRef} className="relative">
+                  <button
+                    onClick={() => setFilialenOpen((o) => !o)}
+                    className={cn('flex items-center gap-1 duration-150 font-[450] tracking-[0.01em] cursor-pointer', isLight ? 'text-gray-600 hover:text-gray-900' : 'text-white/70 hover:text-white')}
+                    style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
+                  >
+                    Filialen
+                    <ChevronDown size={14} className={cn('transition-transform duration-200', filialenOpen && 'rotate-180')} />
+                  </button>
+                  <AnimatePresence>
+                    {filialenOpen && (
+                      <motion.ul
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-[140px] rounded-xl border border-gray-200/80 bg-white/95 backdrop-blur-md shadow-lg py-1.5 z-50"
+                      >
+                        {filialenLinks.map((fl) => (
+                          <li key={fl.label}>
+                            <a
+                              href={fl.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setFilialenOpen(false)}
+                              className="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-100"
+                              style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", fontWeight: 450 }}
+                            >
+                              {fl.label}
+                            </a>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </li>
               </ul>
             </div>
 
@@ -147,12 +218,28 @@ export default function Navbar() {
               {/* Mobile-only nav links */}
               <div className="lg:hidden w-full">
                 <ul className="space-y-1">
-                  {navLinks.map((link, i) => (
+                  {/* Shop mit Border */}
+                  <motion.li
+                    initial={menuOpen ? { x: -16, opacity: 0 } : false}
+                    animate={menuOpen ? { x: 0, opacity: 1 } : {}}
+                    transition={{ delay: 0.04, duration: 0.28 }}
+                  >
+                    <Link
+                      href="/shop"
+                      onClick={close}
+                      className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-150 border border-white/50 hover:border-white"
+                      style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", fontSize: '1rem', fontWeight: 450 }}
+                    >
+                      Shop
+                    </Link>
+                  </motion.li>
+
+                  {navLinks.slice(1).map((link, i) => (
                     <motion.li
                       key={link.label}
                       initial={menuOpen ? { x: -16, opacity: 0 } : false}
                       animate={menuOpen ? { x: 0, opacity: 1 } : {}}
-                      transition={{ delay: 0.04 + i * 0.055, duration: 0.28 }}
+                      transition={{ delay: 0.04 + (i + 1) * 0.055, duration: 0.28 }}
                     >
                       <Link
                         href={link.href}
@@ -164,6 +251,48 @@ export default function Navbar() {
                       </Link>
                     </motion.li>
                   ))}
+
+                  {/* Filialen mit Sub-Links im Mobile-Menü */}
+                  <motion.li
+                    initial={menuOpen ? { x: -16, opacity: 0 } : false}
+                    animate={menuOpen ? { x: 0, opacity: 1 } : {}}
+                    transition={{ delay: 0.04 + navLinks.length * 0.055, duration: 0.28 }}
+                  >
+                    <button
+                      onClick={() => setMobileFilialenOpen((o) => !o)}
+                      className="flex w-full items-center justify-between px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-150"
+                      style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", fontSize: '1rem', fontWeight: 450 }}
+                    >
+                      Filialen
+                      <ChevronDown size={16} className={cn('transition-transform duration-200', mobileFilialenOpen && 'rotate-180')} />
+                    </button>
+                    <AnimatePresence>
+                      {mobileFilialenOpen && (
+                        <motion.ul
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden pl-4"
+                        >
+                          {filialenLinks.map((fl) => (
+                            <li key={fl.label}>
+                              <a
+                                href={fl.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={close}
+                                className="block px-3 py-2.5 text-white/60 hover:text-white hover:bg-white/5 rounded-xl transition-colors duration-150"
+                                style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", fontSize: '0.9rem', fontWeight: 450 }}
+                              >
+                                {fl.label}
+                              </a>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </motion.li>
                 </ul>
               </div>
 
@@ -203,4 +332,3 @@ export default function Navbar() {
     </header>
   );
 }
-
